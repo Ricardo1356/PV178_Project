@@ -1,0 +1,142 @@
+[
+    {
+        "Name": "Wayne Gretzky",
+        "Age": 60,
+        "Height": 183,
+        "Weight": 84,
+        "Position": "Center"
+    },
+    {
+        "Name": "Mario Lemieux",
+        "Age": 56,
+        "Height": 193,
+        "Weight": 100,
+        "Position": "Center"
+    },
+    {
+        "Name": "Sidney Crosby",
+        "Age": 34,
+        "Height": 180,
+        "Weight": 91,
+        "Position": "Center"
+    },
+    {
+        "Name": "Bobby Orr",
+        "Age": 73,
+        "Height": 183,
+        "Weight": 88,
+        "Position": "Defense"
+    },
+    {
+        "Name": "Gordie Howe",
+        "Age": 93,
+        "Height": 185,
+        "Weight": 100,
+        "Position": "Right Wing"
+    },
+    {
+        "Name": "Jaromir Jagr",
+        "Age": 50,
+        "Height": 191,
+        "Weight": 108,
+        "Position": "Right Wing"
+    },
+    {
+        "Name": "Maurice Richard",
+        "Age": 100,
+        "Height": 180,
+        "Weight": 86,
+        "Position": "Right Wing"
+    },
+    {
+        "Name": "Bobby Hull",
+        "Age": 83,
+        "Height": 180,
+        "Weight": 99,
+        "Position": "Left Wing"
+    },
+    {
+        "Name": "Bobby Clarke",
+        "Age": 72,
+        "Height": 183,
+        "Weight": 86,
+        "Position": "Center"
+    },
+    {
+        "Name": "Mark Messier",
+        "Age": 61,
+        "Height": 185,
+        "Weight": 97,
+        "Position": "Center"
+    },
+    {
+        "Name": "Steve Yzerman",
+        "Age": 57,
+        "Height": 180,
+        "Weight": 88,
+        "Position": "Center"
+    },
+    {
+        "Name": "Paul Coffey",
+        "Age": 61,
+        "Height": 185,
+        "Weight": 91,
+        "Position": "Defense"
+    },
+    {
+        "Name": "Ray Bourque",
+        "Age": 61,
+        "Height": 180,
+        "Weight": 94,
+        "Position": "Defense"
+    },
+    {
+        "Name": "Denis Potvin",
+        "Age": 68,
+        "Height": 185,
+        "Weight": 98,
+        "Position": "Defense"
+    },
+    {
+        "Name": "Dominik Hasek",
+        "Age": 57,
+        "Height": 183,
+        "Weight": 83,
+        "Position": "Goalie"
+    },
+    {
+        "Name": "Patrick Roy",
+        "Age": 56,
+        "Height": 188,
+        "Weight": 89,
+        "Position": "Goalie"
+    },
+    {
+        "Name": "Martin Brodeur",
+        "Age": 50,
+        "Height": 185,
+        "Weight": 102,
+        "Position": "Goalie"
+    },
+    {
+        "Name": "Ken Dryden",
+        "Age": 75,
+        "Height": 193,
+        "Weight": 92,
+        "Position": "Goalie"
+    },
+    {
+        "Name": "Grant Fuhr",
+        "Age": 59,
+        "Height": 183,
+        "Weight": 84,
+        "Position": "Goalie"
+    },
+    {
+        "Name": "Ed Belfour",
+        "Age": 56,
+        "Height": 183,
+        "Weight": 88,
+        "Position": "Goalie"
+    }
+]

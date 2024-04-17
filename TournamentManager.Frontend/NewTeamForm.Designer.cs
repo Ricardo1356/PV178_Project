@@ -32,6 +32,7 @@
             CancelButton = new Button();
             NewTeamNameTextBox = new TextBox();
             NewTeamCityTextBox = new TextBox();
+            ImportTeamButton = new Button();
             SuspendLayout();
             // 
             // OKButton
@@ -68,11 +69,22 @@
             NewTeamCityTextBox.Size = new Size(125, 23);
             NewTeamCityTextBox.TabIndex = 3;
             // 
+            // ImportTeamButton
+            // 
+            ImportTeamButton.Location = new Point(152, 229);
+            ImportTeamButton.Name = "ImportTeamButton";
+            ImportTeamButton.Size = new Size(75, 23);
+            ImportTeamButton.TabIndex = 4;
+            ImportTeamButton.Text = "Import";
+            ImportTeamButton.UseVisualStyleBackColor = true;
+            ImportTeamButton.Click += ImportTeamButton_Click;
+            // 
             // NewTeamForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(297, 360);
+            Controls.Add(ImportTeamButton);
             Controls.Add(NewTeamCityTextBox);
             Controls.Add(NewTeamNameTextBox);
             Controls.Add(CancelButton);
@@ -89,5 +101,6 @@
         private new Button CancelButton;
         private TextBox NewTeamNameTextBox;
         private TextBox NewTeamCityTextBox;
+        private Button ImportTeamButton;
     }
 }

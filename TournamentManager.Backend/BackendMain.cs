@@ -24,10 +24,26 @@ namespace TournamentManager.Backend
             return false;
         }
 
-        public bool RegisterNewTeam(string teamName, string teamCity)
+        public Team GetExistingTeam(string teamName, string city)
         {
+            foreach(var team in this._teams)
+            {
+                if (team.Name == teamName && team.City == city) return team;
+            }
+            return new Team("", "", []); // unreachable code
+        }
+
+        public bool RegisterNewTeam(string teamName = "", string teamCity = "", Team? team = null)
+        {
+            if (teamName == "" && teamCity == "" && team == null) { return false; }
+            if (team != null)
+            {
+                if (CheckNewTeamName(team.Name)) return false;
+                this._teams.Add(team);
+                return true;
+            }
             if (CheckNewTeamName(teamName)) return false;        
-            Team newTeam = new Team(teamName, teamCity);
+            Team newTeam = new Team(teamName, teamCity, []);
 
             this._teams.Add(newTeam);
             return true;

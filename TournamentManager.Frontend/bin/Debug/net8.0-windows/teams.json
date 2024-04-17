@@ -1,0 +1,762 @@
+[
+  {
+    "Name": "Maple Leaves",
+    "City": "Toronto",
+    "Players": [
+      {
+        "Name": "Connor McDavid",
+        "Age": 29,
+        "Height": 174,
+        "Weight": 96,
+        "Position": "C"
+      },
+      {
+        "Name": "Nathan MacKinnon",
+        "Age": 31,
+        "Height": 192,
+        "Weight": 125,
+        "Position": "C"
+      },
+      {
+        "Name": "Nikita Kucherov",
+        "Age": 38,
+        "Height": 200,
+        "Weight": 128,
+        "Position": "RW"
+      },
+      {
+        "Name": "Auston Matthews",
+        "Age": 39,
+        "Height": 156,
+        "Weight": 121,
+        "Position": "C"
+      },
+      {
+        "Name": "David Pastrnak",
+        "Age": 35,
+        "Height": 179,
+        "Weight": 114,
+        "Position": "RW"
+      },
+      {
+        "Name": "Leon Draisaitl",
+        "Age": 31,
+        "Height": 194,
+        "Weight": 127,
+        "Position": "C"
+      },
+      {
+        "Name": "William Nylander",
+        "Age": 39,
+        "Height": 181,
+        "Weight": 109,
+        "Position": "RW"
+      },
+      {
+        "Name": "Artemi Panarin",
+        "Age": 38,
+        "Height": 162,
+        "Weight": 81,
+        "Position": "LW"
+      },
+      {
+        "Name": "Mikko Rantanen",
+        "Age": 31,
+        "Height": 185,
+        "Weight": 136,
+        "Position": "RW"
+      },
+      {
+        "Name": "Elias Pettersson",
+        "Age": 20,
+        "Height": 195,
+        "Weight": 94,
+        "Position": "C"
+      }
+    ]
+  },
+  {
+    "Name": "Penguins",
+    "City": "Pittsburgh",
+    "Players": [
+      {
+        "Name": "J.T",
+        "Age": 38,
+        "Height": 151,
+        "Weight": 82,
+        "Position": "C"
+      },
+      {
+        "Name": "Brady Tkachuk",
+        "Age": 19,
+        "Height": 179,
+        "Weight": 113,
+        "Position": "C"
+      },
+      {
+        "Name": "Sidney Crosby",
+        "Age": 25,
+        "Height": 157,
+        "Weight": 122,
+        "Position": "C"
+      },
+      {
+        "Name": "Sam Reinhart",
+        "Age": 38,
+        "Height": 191,
+        "Weight": 84,
+        "Position": "C"
+      },
+      {
+        "Name": "Matthew Tkachuk",
+        "Age": 24,
+        "Height": 189,
+        "Weight": 80,
+        "Position": "LW"
+      },
+      {
+        "Name": "Zach Hyman",
+        "Age": 23,
+        "Height": 167,
+        "Weight": 99,
+        "Position": "LW"
+      },
+      {
+        "Name": "Filip Forsberg",
+        "Age": 40,
+        "Height": 172,
+        "Weight": 117,
+        "Position": "LW"
+      },
+      {
+        "Name": "Connor Hellebuyck",
+        "Age": 22,
+        "Height": 150,
+        "Weight": 127,
+        "Position": "G"
+      },
+      {
+        "Name": "Kirill Kaprizov",
+        "Age": 34,
+        "Height": 183,
+        "Weight": 139,
+        "Position": "LW"
+      },
+      {
+        "Name": "Quinn Hughes",
+        "Age": 20,
+        "Height": 163,
+        "Weight": 82,
+        "Position": "D"
+      }
+    ]
+  },
+  {
+    "Name": "Oilers",
+    "City": "Edmonton",
+    "Players": [
+      {
+        "Name": "Cale Makar",
+        "Age": 23,
+        "Height": 198,
+        "Weight": 131,
+        "Position": "D"
+      },
+      {
+        "Name": "Evan Bouchard",
+        "Age": 19,
+        "Height": 190,
+        "Weight": 92,
+        "Position": "D"
+      },
+      {
+        "Name": "Jason Robertson",
+        "Age": 24,
+        "Height": 186,
+        "Weight": 86,
+        "Position": "LW"
+      },
+      {
+        "Name": "Roman Josi",
+        "Age": 40,
+        "Height": 192,
+        "Weight": 86,
+        "Position": "D"
+      },
+      {
+        "Name": "Thatcher Demko",
+        "Age": 34,
+        "Height": 169,
+        "Weight": 115,
+        "Position": "G"
+      },
+      {
+        "Name": "Sergei Bobrovsky",
+        "Age": 38,
+        "Height": 153,
+        "Weight": 87,
+        "Position": "G"
+      },
+      {
+        "Name": "Kyle Connor",
+        "Age": 32,
+        "Height": 168,
+        "Weight": 110,
+        "Position": "LW"
+      },
+      {
+        "Name": "Sebastian Aho",
+        "Age": 27,
+        "Height": 177,
+        "Weight": 110,
+        "Position": "C"
+      },
+      {
+        "Name": "Chris Kreider",
+        "Age": 37,
+        "Height": 152,
+        "Weight": 107,
+        "Position": "LW"
+      },
+      {
+        "Name": "Alex Ovechkin",
+        "Age": 19,
+        "Height": 177,
+        "Weight": 88,
+        "Position": "LW"
+      }
+    ]
+  },
+  {
+    "Name": "Rangers",
+    "City": "New York",
+    "Players": [
+      {
+        "Name": "Jack Eichel",
+        "Age": 23,
+        "Height": 170,
+        "Weight": 126,
+        "Position": "C"
+      },
+      {
+        "Name": "Brad Marchand",
+        "Age": 20,
+        "Height": 178,
+        "Weight": 92,
+        "Position": "LW"
+      },
+      {
+        "Name": "Brayden Point",
+        "Age": 29,
+        "Height": 156,
+        "Weight": 147,
+        "Position": "C"
+      },
+      {
+        "Name": "Vincent Trocheck",
+        "Age": 34,
+        "Height": 185,
+        "Weight": 136,
+        "Position": "C"
+      },
+      {
+        "Name": "Juuse Saros",
+        "Age": 34,
+        "Height": 180,
+        "Weight": 110,
+        "Position": "G"
+      },
+      {
+        "Name": "Igor Shesterkin",
+        "Age": 40,
+        "Height": 169,
+        "Weight": 137,
+        "Position": "G"
+      },
+      {
+        "Name": "Jake Oettinger",
+        "Age": 25,
+        "Height": 168,
+        "Weight": 109,
+        "Position": "G"
+      },
+      {
+        "Name": "Joel Eriksson Ek",
+        "Age": 28,
+        "Height": 185,
+        "Weight": 150,
+        "Position": "C"
+      },
+      {
+        "Name": "Jonathan Marchessault",
+        "Age": 34,
+        "Height": 200,
+        "Weight": 111,
+        "Position": "RW"
+      },
+      {
+        "Name": "Jeremy Swayman",
+        "Age": 32,
+        "Height": 150,
+        "Weight": 126,
+        "Position": "G"
+      }
+    ]
+  },
+  {
+    "Name": "Hurricanes",
+    "City": "Carolina",
+    "Players": [
+      {
+        "Name": "Mitchell Marner",
+        "Age": 40,
+        "Height": 153,
+        "Weight": 86,
+        "Position": "RW"
+      },
+      {
+        "Name": "Adrian Kempe",
+        "Age": 19,
+        "Height": 196,
+        "Weight": 107,
+        "Position": "C"
+      },
+      {
+        "Name": "Brock Boeser",
+        "Age": 30,
+        "Height": 187,
+        "Weight": 107,
+        "Position": "RW"
+      },
+      {
+        "Name": "Aleksander Barkov",
+        "Age": 28,
+        "Height": 187,
+        "Weight": 127,
+        "Position": "C"
+      },
+      {
+        "Name": "Jake Guentzel",
+        "Age": 25,
+        "Height": 190,
+        "Weight": 120,
+        "Position": "LW"
+      },
+      {
+        "Name": "Adam Fox",
+        "Age": 21,
+        "Height": 165,
+        "Weight": 148,
+        "Position": "D"
+      },
+      {
+        "Name": "Rasmus Dahlin",
+        "Age": 22,
+        "Height": 164,
+        "Weight": 142,
+        "Position": "D"
+      },
+      {
+        "Name": "Andrei Vasilevskiy",
+        "Age": 19,
+        "Height": 194,
+        "Weight": 150,
+        "Position": "G"
+      },
+      {
+        "Name": "Carter Verhaeghe",
+        "Age": 22,
+        "Height": 152,
+        "Weight": 102,
+        "Position": "C"
+      },
+      {
+        "Name": "Mathew Barzal",
+        "Age": 18,
+        "Height": 173,
+        "Weight": 120,
+        "Position": "C"
+      }
+    ]
+  },
+  {
+    "Name": "Bruins",
+    "City": "Boston",
+    "Players": [
+      {
+        "Name": "Alexandar Georgiev",
+        "Age": 33,
+        "Height": 185,
+        "Weight": 112,
+        "Position": "G"
+      },
+      {
+        "Name": "Travis Konecny",
+        "Age": 30,
+        "Height": 164,
+        "Weight": 124,
+        "Position": "LW"
+      },
+      {
+        "Name": "Noah Dobson",
+        "Age": 27,
+        "Height": 152,
+        "Weight": 93,
+        "Position": "D"
+      },
+      {
+        "Name": "Jesper Bratt",
+        "Age": 26,
+        "Height": 168,
+        "Weight": 124,
+        "Position": "LW"
+      },
+      {
+        "Name": "Dylan Larkin",
+        "Age": 22,
+        "Height": 193,
+        "Weight": 104,
+        "Position": "C"
+      },
+      {
+        "Name": "John Tavares",
+        "Age": 25,
+        "Height": 198,
+        "Weight": 98,
+        "Position": "C"
+      },
+      {
+        "Name": "Steven Stamkos",
+        "Age": 34,
+        "Height": 182,
+        "Weight": 91,
+        "Position": "C"
+      },
+      {
+        "Name": "Tim St\u00C3\u00BCtzle",
+        "Age": 24,
+        "Height": 174,
+        "Weight": 133,
+        "Position": "C"
+      },
+      {
+        "Name": "Stuart Skinner",
+        "Age": 23,
+        "Height": 171,
+        "Weight": 122,
+        "Position": "G"
+      },
+      {
+        "Name": "Frederik Andersen",
+        "Age": 21,
+        "Height": 150,
+        "Weight": 84,
+        "Position": "G"
+      }
+    ]
+  },
+  {
+    "Name": "Stars",
+    "City": "Dallas",
+    "Players": [
+      {
+        "Name": "Evander Kane",
+        "Age": 36,
+        "Height": 193,
+        "Weight": 137,
+        "Position": "LW"
+      },
+      {
+        "Name": "Mika Zibanejad",
+        "Age": 29,
+        "Height": 160,
+        "Weight": 97,
+        "Position": "C"
+      },
+      {
+        "Name": "Connor Bedard",
+        "Age": 40,
+        "Height": 185,
+        "Weight": 80,
+        "Position": "C"
+      },
+      {
+        "Name": "Tomas Hertl",
+        "Age": 33,
+        "Height": 199,
+        "Weight": 113,
+        "Position": "C"
+      },
+      {
+        "Name": "Owen Tippett",
+        "Age": 18,
+        "Height": 199,
+        "Weight": 145,
+        "Position": "LW"
+      },
+      {
+        "Name": "Kevin Fiala",
+        "Age": 31,
+        "Height": 169,
+        "Weight": 149,
+        "Position": "LW"
+      },
+      {
+        "Name": "Ryan Nugent-Hopkins",
+        "Age": 22,
+        "Height": 189,
+        "Weight": 110,
+        "Position": "C"
+      },
+      {
+        "Name": "Cole Caufield",
+        "Age": 20,
+        "Height": 177,
+        "Weight": 112,
+        "Position": "LW"
+      },
+      {
+        "Name": "Josh Morrissey",
+        "Age": 24,
+        "Height": 200,
+        "Weight": 93,
+        "Position": "D"
+      },
+      {
+        "Name": "Valeri Nichushkin",
+        "Age": 29,
+        "Height": 177,
+        "Weight": 121,
+        "Position": "LW"
+      }
+    ]
+  },
+  {
+    "Name": "Kings",
+    "City": "Los Angeles",
+    "Players": [
+      {
+        "Name": "Victor Hedman",
+        "Age": 26,
+        "Height": 162,
+        "Weight": 120,
+        "Position": "D"
+      },
+      {
+        "Name": "Bo Horvat",
+        "Age": 20,
+        "Height": 191,
+        "Weight": 82,
+        "Position": "C"
+      },
+      {
+        "Name": "Roope Hintz",
+        "Age": 30,
+        "Height": 166,
+        "Weight": 113,
+        "Position": "C"
+      },
+      {
+        "Name": "Linus Ullmark",
+        "Age": 31,
+        "Height": 186,
+        "Weight": 85,
+        "Position": "G"
+      },
+      {
+        "Name": "Tage Thompson",
+        "Age": 33,
+        "Height": 184,
+        "Weight": 137,
+        "Position": "C"
+      },
+      {
+        "Name": "Nikolaj Ehlers",
+        "Age": 38,
+        "Height": 159,
+        "Weight": 144,
+        "Position": "LW"
+      },
+      {
+        "Name": "Blake Coleman",
+        "Age": 37,
+        "Height": 176,
+        "Weight": 143,
+        "Position": "C"
+      },
+      {
+        "Name": "Joe Pavelski",
+        "Age": 37,
+        "Height": 177,
+        "Weight": 100,
+        "Position": "C"
+      },
+      {
+        "Name": "Mark Scheifele",
+        "Age": 20,
+        "Height": 200,
+        "Weight": 99,
+        "Position": "C"
+      },
+      {
+        "Name": "Patrick Kane",
+        "Age": 18,
+        "Height": 157,
+        "Weight": 120,
+        "Position": "RW"
+      }
+    ]
+  },
+  {
+    "Name": "Coyotes",
+    "City": "Arizona",
+    "Players": [
+      {
+        "Name": "Clayton Keller",
+        "Age": 19,
+        "Height": 173,
+        "Weight": 82,
+        "Position": "LW"
+      },
+      {
+        "Name": "Robert Thomas",
+        "Age": 25,
+        "Height": 159,
+        "Weight": 104,
+        "Position": "C"
+      },
+      {
+        "Name": "Brock Nelson",
+        "Age": 21,
+        "Height": 152,
+        "Weight": 82,
+        "Position": "C"
+      },
+      {
+        "Name": "Charlie McAvoy",
+        "Age": 26,
+        "Height": 197,
+        "Weight": 96,
+        "Position": "D"
+      },
+      {
+        "Name": "Tyler Toffoli",
+        "Age": 40,
+        "Height": 164,
+        "Weight": 131,
+        "Position": "LW"
+      },
+      {
+        "Name": "Anze Kopitar",
+        "Age": 20,
+        "Height": 184,
+        "Weight": 146,
+        "Position": "C"
+      },
+      {
+        "Name": "MacKenzie Weegar",
+        "Age": 27,
+        "Height": 170,
+        "Weight": 138,
+        "Position": "D"
+      },
+      {
+        "Name": "Devon Toews",
+        "Age": 27,
+        "Height": 198,
+        "Weight": 132,
+        "Position": "D"
+      },
+      {
+        "Name": "Andrei Svechnikov",
+        "Age": 25,
+        "Height": 161,
+        "Weight": 101,
+        "Position": "LW"
+      },
+      {
+        "Name": "Trevor Moore",
+        "Age": 30,
+        "Height": 163,
+        "Weight": 145,
+        "Position": "LW"
+      }
+    ]
+  },
+  {
+    "Name": "Sabres",
+    "City": "Buffalo",
+    "Players": [
+      {
+        "Name": "Alex DeBrincat",
+        "Age": 23,
+        "Height": 165,
+        "Weight": 93,
+        "Position": "LW"
+      },
+      {
+        "Name": "Matt Boldy",
+        "Age": 18,
+        "Height": 160,
+        "Weight": 108,
+        "Position": "LW"
+      },
+      {
+        "Name": "Ilya Sorokin",
+        "Age": 19,
+        "Height": 189,
+        "Weight": 145,
+        "Position": "G"
+      },
+      {
+        "Name": "Matt Duchene",
+        "Age": 30,
+        "Height": 197,
+        "Weight": 88,
+        "Position": "C"
+      },
+      {
+        "Name": "Vladimir Tarasenko",
+        "Age": 22,
+        "Height": 153,
+        "Weight": 139,
+        "Position": "LW"
+      },
+      {
+        "Name": "Nick Suzuki",
+        "Age": 36,
+        "Height": 166,
+        "Weight": 122,
+        "Position": "C"
+      },
+      {
+        "Name": "Brandon Hagel",
+        "Age": 20,
+        "Height": 194,
+        "Weight": 133,
+        "Position": "LW"
+      },
+      {
+        "Name": "Wyatt Johnston",
+        "Age": 29,
+        "Height": 152,
+        "Weight": 135,
+        "Position": "C"
+      },
+      {
+        "Name": "Gustav Nyquist",
+        "Age": 37,
+        "Height": 160,
+        "Weight": 145,
+        "Position": "LW"
+      },
+      {
+        "Name": "Seth Jarvis",
+        "Age": 27,
+        "Height": 151,
+        "Weight": 108,
+        "Position": "C"
+      }
+    ]
+  }
+]

@@ -1,20 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TournamentManager.Backend.Structures
+﻿namespace TournamentManager.Backend.Structures
 {
     public class Team
     {
-        public string Name {  get; private set; }
+        public string Name { get; private set; }
         public string City { get; private set; }
+        public List<Player> Players { get; private set; } = new List<Player>();
         
-        public Team(string name, string city)
+        private Tournament? _currentTournament = null;
+
+        public Team(string name, string city, List<Player> players)
         {
             this.Name = name;
             this.City = city;
+            this.Players = players;
+        }
+
+        public Tournament? GetTournament()
+        {
+            return this._currentTournament;
+        }   
+        public void SetTournament(Tournament tournament)
+        {
+            this._currentTournament = tournament;
+        }
+
+        public void AddPlayer(Player player)
+        {
+            this.Players.Add(player);           
+        }
+
+        public void AddPlayers(List<Player> players)
+        {
+            this.Players.AddRange(players);
+        }
+
+        public void RemovePlayer(Player player)
+        {
+            try
+            {
+                this.Players.Remove(player);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Player not found");
+            }
         }
     }
 }

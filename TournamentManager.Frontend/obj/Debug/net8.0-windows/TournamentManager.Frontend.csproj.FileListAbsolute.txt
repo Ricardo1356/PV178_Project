@@ -45,3 +45,5 @@ C:\School\PV178\PV178_Project\TournamentManager.Frontend\obj\Debug\net8.0-window
 C:\School\PV178\PV178_Project\TournamentManager.Frontend\obj\Debug\net8.0-windows\TournamentManager.Frontend.pdb
 C:\School\PV178\PV178_Project\TournamentManager.Frontend\obj\Debug\net8.0-windows\TournamentManager.Frontend.genruntimeconfig.cache
 C:\School\PV178\PV178_Project\TournamentManager.Frontend\obj\Debug\net8.0-windows\ref\TournamentManager.Frontend.dll
+C:\School\PV178\PV178_Project\TournamentManager.Frontend\obj\Debug\net8.0-windows\TournamentManager.Frontend.TeamManagementForm.resources
+C:\School\PV178\PV178_Project\TournamentManager.Frontend\obj\Debug\net8.0-windows\TournamentManager.Frontend.TeamOverviewForm.resources

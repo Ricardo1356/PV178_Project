@@ -28,24 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            RegisterNewTeamButton = new Button();
+            components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            OpenTeamManagerButton = new Button();
             StartNewTournamentButton = new Button();
             AppExitButton = new Button();
+            teamBindingSource = new BindingSource(components);
+            TeamsView = new DataGridView();
+            cityDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)teamBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)TeamsView).BeginInit();
             SuspendLayout();
             // 
-            // RegisterNewTeamButton
+            // OpenTeamManagerButton
             // 
-            RegisterNewTeamButton.Location = new Point(390, 427);
-            RegisterNewTeamButton.Name = "RegisterNewTeamButton";
-            RegisterNewTeamButton.Size = new Size(172, 86);
-            RegisterNewTeamButton.TabIndex = 0;
-            RegisterNewTeamButton.Text = "Register New Team";
-            RegisterNewTeamButton.UseVisualStyleBackColor = true;
-            RegisterNewTeamButton.Click += RegisterNewTeamButton_Click;
+            OpenTeamManagerButton.Location = new Point(51, 126);
+            OpenTeamManagerButton.Name = "OpenTeamManagerButton";
+            OpenTeamManagerButton.Size = new Size(151, 41);
+            OpenTeamManagerButton.TabIndex = 0;
+            OpenTeamManagerButton.Text = "Manage Teams";
+            OpenTeamManagerButton.UseVisualStyleBackColor = true;
+            OpenTeamManagerButton.Click += OpenTeamManagerButton_Click;
             // 
             // StartNewTournamentButton
             // 
-            StartNewTournamentButton.Location = new Point(568, 427);
+            StartNewTournamentButton.Location = new Point(590, 332);
             StartNewTournamentButton.Name = "StartNewTournamentButton";
             StartNewTournamentButton.Size = new Size(172, 86);
             StartNewTournamentButton.TabIndex = 1;
@@ -55,7 +63,7 @@
             // 
             // AppExitButton
             // 
-            AppExitButton.Location = new Point(835, 690);
+            AppExitButton.Location = new Point(899, 12);
             AppExitButton.Name = "AppExitButton";
             AppExitButton.Size = new Size(114, 54);
             AppExitButton.TabIndex = 2;
@@ -63,23 +71,65 @@
             AppExitButton.UseVisualStyleBackColor = true;
             AppExitButton.Click += AppExitButton_Click;
             // 
+            // teamBindingSource
+            // 
+            teamBindingSource.DataSource = typeof(Backend.Structures.Team);
+            // 
+            // TeamsView
+            // 
+            TeamsView.AutoGenerateColumns = false;
+            TeamsView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            TeamsView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            TeamsView.Columns.AddRange(new DataGridViewColumn[] { cityDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn });
+            TeamsView.DataSource = teamBindingSource;
+            TeamsView.Location = new Point(51, 190);
+            TeamsView.Name = "TeamsView";
+            TeamsView.Size = new Size(311, 150);
+            TeamsView.TabIndex = 3;
+            TeamsView.CellDoubleClick += TeamsView_CellDoubleClick;
+            // 
+            // cityDataGridViewTextBoxColumn
+            // 
+            cityDataGridViewTextBoxColumn.DataPropertyName = "City";
+            cityDataGridViewTextBoxColumn.FillWeight = 120F;
+            cityDataGridViewTextBoxColumn.HeaderText = "City";
+            cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
+            cityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            nameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            nameDataGridViewTextBoxColumn.FillWeight = 120F;
+            nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1584, 861);
+            ClientSize = new Size(1025, 861);
+            Controls.Add(TeamsView);
             Controls.Add(AppExitButton);
             Controls.Add(StartNewTournamentButton);
-            Controls.Add(RegisterNewTeamButton);
+            Controls.Add(OpenTeamManagerButton);
             Name = "MainForm";
             Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)teamBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)TeamsView).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button RegisterNewTeamButton;
+        private Button OpenTeamManagerButton;
         private Button StartNewTournamentButton;
         private Button AppExitButton;
+        private BindingSource teamBindingSource;
+        private DataGridView TeamsView;
+        private DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
     }
 }
