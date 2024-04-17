@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Dh8qYCGgveDuQ7wmy9kzh2nS81vtNlbmm9bAe6D2yal+DsVS9ih83IgwzOS+qccekxtHwUOWfey3FFKpvpZ74w==",
+  "dgSpecHash": "M0lIBMWUNO/nzDCynTaV5RUahdHHCWXhzSauvklUKuVnPDxaZrNj6tbbPahK0zjjCXBaguY+yj3TlAS50mu/xA==",
   "success": true,
-  "projectFilePath": "C:\\School\\PV178\\TournamentManager_v3\\TournamentManager.Backend\\TournamentManager.Backend.csproj",
+  "projectFilePath": "C:\\School\\PV178\\PV178_Project\\TournamentManager.Backend\\TournamentManager.Backend.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

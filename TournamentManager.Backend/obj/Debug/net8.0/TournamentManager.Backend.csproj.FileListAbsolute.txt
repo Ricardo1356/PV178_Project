@@ -9,3 +9,15 @@ C:\School\PV178\TournamentManager_v3\TournamentManager.Backend\obj\Debug\net8.0\
 C:\School\PV178\TournamentManager_v3\TournamentManager.Backend\obj\Debug\net8.0\refint\TournamentManager.Backend.dll
 C:\School\PV178\TournamentManager_v3\TournamentManager.Backend\obj\Debug\net8.0\TournamentManager.Backend.pdb
 C:\School\PV178\TournamentManager_v3\TournamentManager.Backend\obj\Debug\net8.0\ref\TournamentManager.Backend.dll
+C:\School\PV178\PV178_Project\TournamentManager.Backend\bin\Debug\net8.0\TournamentManager.Backend.deps.json
+C:\School\PV178\PV178_Project\TournamentManager.Backend\bin\Debug\net8.0\TournamentManager.Backend.dll
+C:\School\PV178\PV178_Project\TournamentManager.Backend\bin\Debug\net8.0\TournamentManager.Backend.pdb
+C:\School\PV178\PV178_Project\TournamentManager.Backend\obj\Debug\net8.0\TournamentManager.Backend.GeneratedMSBuildEditorConfig.editorconfig
+C:\School\PV178\PV178_Project\TournamentManager.Backend\obj\Debug\net8.0\TournamentManager.Backend.AssemblyInfoInputs.cache
+C:\School\PV178\PV178_Project\TournamentManager.Backend\obj\Debug\net8.0\TournamentManager.Backend.AssemblyInfo.cs
+C:\School\PV178\PV178_Project\TournamentManager.Backend\obj\Debug\net8.0\TournamentManager.Backend.csproj.CoreCompileInputs.cache
+C:\School\PV178\PV178_Project\TournamentManager.Backend\obj\Debug\net8.0\TournamentManager.Backend.sourcelink.json
+C:\School\PV178\PV178_Project\TournamentManager.Backend\obj\Debug\net8.0\TournamentManager.Backend.dll
+C:\School\PV178\PV178_Project\TournamentManager.Backend\obj\Debug\net8.0\refint\TournamentManager.Backend.dll
+C:\School\PV178\PV178_Project\TournamentManager.Backend\obj\Debug\net8.0\TournamentManager.Backend.pdb
+C:\School\PV178\PV178_Project\TournamentManager.Backend\obj\Debug\net8.0\ref\TournamentManager.Backend.dll

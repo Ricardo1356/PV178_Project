@@ -32,10 +32,15 @@ namespace TournamentManager.Frontend
             }
             else
             {
-                bool nameExists = Backend.CheckNewTeamName(NewTeamNameTextBox.Text);
-
-                if (nameExists) MessageBox.Show("This team is already registered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else this.Close();
+                bool success = this.Backend.RegisterNewTeam(NewTeamNameTextBox.Text, NewTeamCityTextBox.Text);
+                if (!success)
+                {
+                    MessageBox.Show("Team already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    this.Close();
+                }
             }
         }
 

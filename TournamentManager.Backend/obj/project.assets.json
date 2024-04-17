@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\School\\PV178\\TournamentManager_v3\\TournamentManager.Backend\\TournamentManager.Backend.csproj",
+      "projectUniqueName": "C:\\School\\PV178\\PV178_Project\\TournamentManager.Backend\\TournamentManager.Backend.csproj",
       "projectName": "TournamentManager.Backend",
-      "projectPath": "C:\\School\\PV178\\TournamentManager_v3\\TournamentManager.Backend\\TournamentManager.Backend.csproj",
+      "projectPath": "C:\\School\\PV178\\PV178_Project\\TournamentManager.Backend\\TournamentManager.Backend.csproj",
       "packagesPath": "C:\\Users\\risac\\.nuget\\packages\\",
-      "outputPath": "C:\\School\\PV178\\TournamentManager_v3\\TournamentManager.Backend\\obj\\",
+      "outputPath": "C:\\School\\PV178\\PV178_Project\\TournamentManager.Backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

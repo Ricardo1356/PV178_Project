@@ -30,6 +30,7 @@
         {
             RegisterNewTeamButton = new Button();
             StartNewTournamentButton = new Button();
+            AppExitButton = new Button();
             SuspendLayout();
             // 
             // RegisterNewTeamButton
@@ -52,11 +53,22 @@
             StartNewTournamentButton.UseVisualStyleBackColor = true;
             StartNewTournamentButton.Click += StartNewTournamentButton_Click;
             // 
+            // AppExitButton
+            // 
+            AppExitButton.Location = new Point(835, 690);
+            AppExitButton.Name = "AppExitButton";
+            AppExitButton.Size = new Size(114, 54);
+            AppExitButton.TabIndex = 2;
+            AppExitButton.Text = "End Application";
+            AppExitButton.UseVisualStyleBackColor = true;
+            AppExitButton.Click += AppExitButton_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
+            Controls.Add(AppExitButton);
             Controls.Add(StartNewTournamentButton);
             Controls.Add(RegisterNewTeamButton);
             Name = "MainForm";
@@ -68,5 +80,6 @@
 
         private Button RegisterNewTeamButton;
         private Button StartNewTournamentButton;
+        private Button AppExitButton;
     }
 }

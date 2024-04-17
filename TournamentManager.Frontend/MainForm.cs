@@ -19,8 +19,14 @@ namespace TournamentManager.Frontend
 
         private void StartNewTournamentButton_Click(object sender, EventArgs e)
         {
-            TournamentTypeSelectionForm tournamentTypeSelectionForm = new TournamentTypeSelectionForm();
+            TournamentTypeSelectionForm tournamentTypeSelectionForm = new TournamentTypeSelectionForm(Backend);
             tournamentTypeSelectionForm.ShowDialog();
+        }
+
+
+        private void AppExitButton_Click(object sender, EventArgs e)
+        {
+            Backend.EndProgram();
         }
     }
 }

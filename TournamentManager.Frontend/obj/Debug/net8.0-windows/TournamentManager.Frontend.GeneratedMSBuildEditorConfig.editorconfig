@@ -14,6 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TournamentManager.Frontend
-build_property.ProjectDir = C:\School\PV178\TournamentManager_v3\TournamentManager.Frontend\
+build_property.ProjectDir = C:\School\PV178\PV178_Project\TournamentManager.Frontend\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

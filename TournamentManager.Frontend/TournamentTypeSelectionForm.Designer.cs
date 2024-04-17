@@ -67,7 +67,6 @@
             // ExistingTeamsSelectionBox
             // 
             ExistingTeamsSelectionBox.FormattingEnabled = true;
-            ExistingTeamsSelectionBox.Items.AddRange(new object[] { "hu", "d", "d", "d", "d", "d", "d", "d", "d", "adaw", "dq", "dwq", "d", "qd" });
             ExistingTeamsSelectionBox.Location = new Point(114, 139);
             ExistingTeamsSelectionBox.Name = "ExistingTeamsSelectionBox";
             ExistingTeamsSelectionBox.Size = new Size(212, 76);
