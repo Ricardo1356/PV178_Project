@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "TournamentManager.Frontend/1.0.0": {
+        "dependencies": {
+          "TournamentManager.Backend": "1.0.0"
+        },
+        "runtime": {
+          "TournamentManager.Frontend.dll": {}
+        }
+      },
+      "TournamentManager.Backend/1.0.0": {
+        "runtime": {
+          "TournamentManager.Backend.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TournamentManager.Frontend/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TournamentManager.Backend/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
