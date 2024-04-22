@@ -33,6 +33,22 @@ namespace TournamentManager.Backend
             return new Team("", "", []); // unreachable code
         }
 
+        public Team GetTeamByJoined(string joinedCityName)
+        {
+            foreach (var team in this._teams)
+            {
+                if (team.City + " " + team.Name == joinedCityName) return team;
+            }
+            return new Team("", "", []); // unreachable code
+        }
+
+        public bool RemoveTeam(Team team)
+        {
+            if (!team.CanBeManaged) return false;
+            this._teams.Remove(team);
+            return true;
+        }
+
         public bool RegisterNewTeam(string teamName = "", string teamCity = "", Team? team = null)
         {
             if (teamName == "" && teamCity == "" && team == null) { return false; }
@@ -49,9 +65,10 @@ namespace TournamentManager.Backend
             return true;
         }
 
-        public Tournament? CreateNewTournament(TournamentType type, List<Team> teams)
+        public Tournament CreateNewTournament(TournamentType type, List<Team> teams)
         {
-            return new Tournament(type, 6, teams);
+            if (type == TournamentType.FFA) return new FFATournament(teams.Count, teams);
+            else return new PlayOffTournament(teams.Count, teams);
         }
 
         public void EndProgram()

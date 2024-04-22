@@ -13,12 +13,17 @@ namespace TournamentManager.Frontend
 
         }
 
-        private void OpenTeamManagerButton_Click(object sender, EventArgs e)
+        private void RefreshTeamsView()
         {
-            TeamManagementForm teamManagementForm = new TeamManagementForm(this.Backend);
-            teamManagementForm.ShowDialog();
+            this.TeamsView.DataSource = null;
+            this.TeamsView.DataSource = this.Backend.GetTeams();
+        }
+
+        private void RegisterNewTeamButton_Click(object sender, EventArgs e)
+        {
             NewTeamForm newTeamForm = new NewTeamForm(this.Backend);
             newTeamForm.ShowDialog();
+            this.RefreshTeamsView();
         }
 
         private void StartNewTournamentButton_Click(object sender, EventArgs e)
@@ -46,8 +51,10 @@ namespace TournamentManager.Frontend
 
                 TeamOverviewForm teamOverviewForm = new TeamOverviewForm(Backend, Backend.GetExistingTeam(name, city));
                 teamOverviewForm.ShowDialog();
-
+                this.RefreshTeamsView();
             }
         }
+
+
     }
 }

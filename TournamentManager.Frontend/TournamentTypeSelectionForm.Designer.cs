@@ -36,9 +36,10 @@
             // 
             // PlayOffTounamentTypeButton
             // 
+            PlayOffTounamentTypeButton.Font = new Font("Microsoft Sans Serif", 15F);
             PlayOffTounamentTypeButton.Location = new Point(12, 406);
             PlayOffTounamentTypeButton.Name = "PlayOffTounamentTypeButton";
-            PlayOffTounamentTypeButton.Size = new Size(147, 76);
+            PlayOffTounamentTypeButton.Size = new Size(183, 96);
             PlayOffTounamentTypeButton.TabIndex = 0;
             PlayOffTounamentTypeButton.Text = "Play Off";
             PlayOffTounamentTypeButton.UseVisualStyleBackColor = true;
@@ -46,9 +47,10 @@
             // 
             // FreeForAllTournamentTypeButton
             // 
-            FreeForAllTournamentTypeButton.Location = new Point(165, 406);
+            FreeForAllTournamentTypeButton.Font = new Font("Microsoft Sans Serif", 15F);
+            FreeForAllTournamentTypeButton.Location = new Point(201, 406);
             FreeForAllTournamentTypeButton.Name = "FreeForAllTournamentTypeButton";
-            FreeForAllTournamentTypeButton.Size = new Size(141, 76);
+            FreeForAllTournamentTypeButton.Size = new Size(177, 96);
             FreeForAllTournamentTypeButton.TabIndex = 1;
             FreeForAllTournamentTypeButton.Text = "Free For All";
             FreeForAllTournamentTypeButton.UseVisualStyleBackColor = true;
@@ -56,9 +58,10 @@
             // 
             // TouramentTypeSelectionCancellButton
             // 
+            TouramentTypeSelectionCancellButton.Font = new Font("Microsoft Sans Serif", 15F);
             TouramentTypeSelectionCancellButton.Location = new Point(511, 459);
             TouramentTypeSelectionCancellButton.Name = "TouramentTypeSelectionCancellButton";
-            TouramentTypeSelectionCancellButton.Size = new Size(75, 23);
+            TouramentTypeSelectionCancellButton.Size = new Size(111, 43);
             TouramentTypeSelectionCancellButton.TabIndex = 2;
             TouramentTypeSelectionCancellButton.Text = "Cancel";
             TouramentTypeSelectionCancellButton.UseVisualStyleBackColor = true;
@@ -66,10 +69,11 @@
             // 
             // ExistingTeamsSelectionBox
             // 
+            ExistingTeamsSelectionBox.Font = new Font("Microsoft Sans Serif", 15F);
             ExistingTeamsSelectionBox.FormattingEnabled = true;
-            ExistingTeamsSelectionBox.Location = new Point(114, 139);
+            ExistingTeamsSelectionBox.Location = new Point(12, 47);
             ExistingTeamsSelectionBox.Name = "ExistingTeamsSelectionBox";
-            ExistingTeamsSelectionBox.Size = new Size(212, 76);
+            ExistingTeamsSelectionBox.Size = new Size(318, 229);
             ExistingTeamsSelectionBox.TabIndex = 3;
             // 
             // TournamentTypeSelectionForm

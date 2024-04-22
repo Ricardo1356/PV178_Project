@@ -30,30 +30,20 @@
         {
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            OpenTeamManagerButton = new Button();
             StartNewTournamentButton = new Button();
             AppExitButton = new Button();
             teamBindingSource = new BindingSource(components);
             TeamsView = new DataGridView();
             cityDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            RegisterNewTeamButton = new Button();
             ((System.ComponentModel.ISupportInitialize)teamBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)TeamsView).BeginInit();
             SuspendLayout();
             // 
-            // OpenTeamManagerButton
-            // 
-            OpenTeamManagerButton.Location = new Point(51, 126);
-            OpenTeamManagerButton.Name = "OpenTeamManagerButton";
-            OpenTeamManagerButton.Size = new Size(151, 41);
-            OpenTeamManagerButton.TabIndex = 0;
-            OpenTeamManagerButton.Text = "Manage Teams";
-            OpenTeamManagerButton.UseVisualStyleBackColor = true;
-            OpenTeamManagerButton.Click += OpenTeamManagerButton_Click;
-            // 
             // StartNewTournamentButton
             // 
-            StartNewTournamentButton.Location = new Point(590, 332);
+            StartNewTournamentButton.Location = new Point(596, 264);
             StartNewTournamentButton.Name = "StartNewTournamentButton";
             StartNewTournamentButton.Size = new Size(172, 86);
             StartNewTournamentButton.TabIndex = 1;
@@ -83,8 +73,11 @@
             TeamsView.Columns.AddRange(new DataGridViewColumn[] { cityDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn });
             TeamsView.DataSource = teamBindingSource;
             TeamsView.Location = new Point(51, 190);
+            TeamsView.MultiSelect = false;
             TeamsView.Name = "TeamsView";
-            TeamsView.Size = new Size(311, 150);
+            TeamsView.ReadOnly = true;
+            TeamsView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            TeamsView.Size = new Size(502, 189);
             TeamsView.TabIndex = 3;
             TeamsView.CellDoubleClick += TeamsView_CellDoubleClick;
             // 
@@ -106,15 +99,25 @@
             nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             nameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // RegisterNewTeamButton
+            // 
+            RegisterNewTeamButton.Location = new Point(51, 130);
+            RegisterNewTeamButton.Name = "RegisterNewTeamButton";
+            RegisterNewTeamButton.Size = new Size(157, 42);
+            RegisterNewTeamButton.TabIndex = 4;
+            RegisterNewTeamButton.Text = "Register New Team";
+            RegisterNewTeamButton.UseVisualStyleBackColor = true;
+            RegisterNewTeamButton.Click += RegisterNewTeamButton_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1025, 861);
+            Controls.Add(RegisterNewTeamButton);
             Controls.Add(TeamsView);
             Controls.Add(AppExitButton);
             Controls.Add(StartNewTournamentButton);
-            Controls.Add(OpenTeamManagerButton);
             Name = "MainForm";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)teamBindingSource).EndInit();
@@ -123,13 +126,12 @@
         }
 
         #endregion
-
-        private Button OpenTeamManagerButton;
         private Button StartNewTournamentButton;
         private Button AppExitButton;
         private BindingSource teamBindingSource;
         private DataGridView TeamsView;
         private DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private Button RegisterNewTeamButton;
     }
 }

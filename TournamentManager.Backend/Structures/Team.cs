@@ -8,6 +8,8 @@
         
         private Tournament? _currentTournament = null;
 
+        public bool CanBeManaged => this._currentTournament == null;
+
         public Team(string name, string city, List<Player> players)
         {
             this.Name = name;
@@ -36,14 +38,7 @@
 
         public void RemovePlayer(Player player)
         {
-            try
-            {
-                this.Players.Remove(player);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Player not found");
-            }
+            this.Players.Remove(player);
         }
     }
 }

@@ -28,10 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FFATournamentForm";
+            SuspendLayout();
+            // 
+            // FFATournamentForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            ClientSize = new Size(120, 0);
+            Name = "FFATournamentForm";
+            Text = "FFATournamentForm";
+            ResumeLayout(false);
         }
 
         #endregion
