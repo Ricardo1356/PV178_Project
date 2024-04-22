@@ -45,17 +45,22 @@ namespace TournamentManager.Frontend
                     Size = new Size(buttonWidth, buttonHeight),
                     Tag = "Winner"                   
                 };
-                Button Team1 = new Button
+
+                MulticolorButton Team1 = new MulticolorButton
                 {
+
                     Text = team1.Name,
                     Tag = team1,
                     Size = new Size(buttonWidth, buttonHeight),
                     Location = currentPosition
                     
                 };
+                MessageBox.Show(Team1.BackgroundColor.ToString());
+
                 currentPosition.Y += buttonHeight + spacing;
-                Button Team2 = new Button
+                MulticolorButton Team2 = new MulticolorButton
                 {
+
                     Text = team2.Name,
                     Tag = team2,
                     Size = new Size(buttonWidth, buttonHeight),
@@ -94,17 +99,15 @@ namespace TournamentManager.Frontend
                 {
                     POButton prev1 = duels[round - 1][i];
                     POButton prev2 = duels[round - 1][i + 1];
-                    Button duel = new MulticolorButton
+                    Button duel = new Button
                     {
-                        StartColor = Color.Blue,
-                        EndColor = Color.Red,
                         Text = "Duel",
                         Size = new Size(buttonWidth, buttonHeight),
                         Tag = "Duel",
                         Location = new Point(prev1.Winner.Location.X + buttonWidth + margin, 
                         (prev1.Winner.Location.Y + prev2.Winner.Location.Y + buttonHeight)/2 - buttonHeight/2)
                     };
-                    Button winner = new Button
+                    Button winner = new MulticolorButton
                     {
                         Text = "Winner",
                         Size = new Size(buttonWidth, buttonHeight),
