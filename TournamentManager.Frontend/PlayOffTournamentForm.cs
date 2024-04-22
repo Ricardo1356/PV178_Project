@@ -8,6 +8,8 @@ namespace TournamentManager.Frontend
     {
         private BackendMain Backend;
         private PlayOffTournament Tournament;
+        private List<(Point Start, Point End)> linesToDraw = new List<(Point Start, Point End)>();
+
 
         public PlayOffTournamentForm(BackendMain Backend, Tournament tournament)
         {
@@ -19,8 +21,8 @@ namespace TournamentManager.Frontend
 
         private void Generate()
         {
-            int margin = 30;
-            int spacing = 10;
+            int margin = 50;
+            int spacing = 20;
             int buttonWidth = 140; 
             int buttonHeight = 80;
             int roundCount = (int)Math.Log2(this.Tournament.ParticipatingTeams.Count);
@@ -72,6 +74,12 @@ namespace TournamentManager.Frontend
                 winnerButton.Location = new Point(poButton.Duel.Location.X + buttonWidth + spacing, poButton.Duel.Location.Y);
                 currentPosition.Y += margin;
                 duels[0].Add(poButton);
+
+                linesToDraw.Add((new Point(Team1.Location.X + buttonWidth, Team1.Location.Y + buttonHeight/2), 
+                           new Point(Team1.Location.X + buttonWidth + buttonWidth/2 + margin, Team1.Location.Y + buttonHeight/2)));
+
+                linesToDraw.Add((new Point(Team2.Location.X + buttonWidth, Team2.Location.Y + buttonHeight / 2),
+                           new Point(Team2.Location.X + buttonWidth + buttonWidth / 2 + margin, Team2.Location.Y + buttonHeight / 2)));
             }
 
             for (int round = 1; round < roundCount; round++)
@@ -103,62 +111,13 @@ namespace TournamentManager.Frontend
                 }
             }
         }
-
-        
-
-        private void GenerateLayout()
+        protected override void OnPaint(PaintEventArgs e)
         {
-            int margin = 30;
-            int _buttonWidth = 100;
-            int _buttonHeight = 50;
-            int _spacing = 10;
-            int _duelSpacing = 50;
-            int _roundSpacing = 100;
-            int roundCount = (int)Math.Log2(this.Tournament.ParticipatingTeams.Count);
-            Point currentLocation = new Point(margin, margin);
-            for (int i = 0; i < this.Tournament.ParticipatingTeams.Count; i += 2)
+            base.OnPaint(e);
+            var pen = new Pen(Color.Black, 2);
+            foreach (var line in linesToDraw)
             {
-                Team team1 = this.Tournament.ParticipatingTeams[i];
-                Team team2 = this.Tournament.ParticipatingTeams[i + 1];
-
-                Button team1Button = new Button
-                {
-                    Text = team1.Name,
-                    Location = currentLocation,
-                    Size = new Size(_buttonWidth, _buttonHeight),
-                    Tag = team1
-                };
-                this.Controls.Add(team1Button);
-                currentLocation.Y += _buttonHeight + _spacing;
-
-                Button team2Button = new Button
-                {
-                    Text = team2.Name,
-                    Location = currentLocation,
-                    Size = new Size(_buttonWidth, _buttonHeight),
-                    Tag = team2
-                };
-                this.Controls.Add(team2Button);
-                currentLocation.Y += _buttonHeight + _spacing;
-            }
-
-
-            for (int round = 0 ; round < roundCount; round++)
-            {
-                currentLocation.Y = margin * (roundCount + round);
-                currentLocation.X += _buttonWidth + _roundSpacing;
-                for (int i = 0; i < this.Tournament.ParticipatingTeams.Count / 2; i++)
-                {
-                    Button duelButton = new Button
-                    {
-                        Text = "Duel",
-                        Location = currentLocation,
-                        Size = new Size(_buttonWidth, _buttonHeight),
-                        Tag = "Duel"
-                    };
-                    this.Controls.Add(duelButton);
-                    currentLocation.Y += _buttonHeight + _spacing + _duelSpacing;
-                }
+                e.Graphics.DrawLine(pen, line.Start, line.End);
             }
         }
     }
