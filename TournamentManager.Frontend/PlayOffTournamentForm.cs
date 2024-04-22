@@ -94,8 +94,10 @@ namespace TournamentManager.Frontend
                 {
                     POButton prev1 = duels[round - 1][i];
                     POButton prev2 = duels[round - 1][i + 1];
-                    Button duel = new Button
+                    Button duel = new MulticolorButton
                     {
+                        StartColor = Color.Blue,
+                        EndColor = Color.Red,
                         Text = "Duel",
                         Size = new Size(buttonWidth, buttonHeight),
                         Tag = "Duel",
