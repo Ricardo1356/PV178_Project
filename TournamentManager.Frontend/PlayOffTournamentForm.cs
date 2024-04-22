@@ -21,7 +21,7 @@ namespace TournamentManager.Frontend
 
         private void Generate()
         {
-            int margin = 50;
+            int margin = 30;
             int spacing = 20;
             int buttonWidth = 140; 
             int buttonHeight = 80;
@@ -75,11 +75,15 @@ namespace TournamentManager.Frontend
                 currentPosition.Y += margin;
                 duels[0].Add(poButton);
 
-                linesToDraw.Add((new Point(Team1.Location.X + buttonWidth, Team1.Location.Y + buttonHeight/2), 
-                           new Point(Team1.Location.X + buttonWidth + buttonWidth/2 + margin, Team1.Location.Y + buttonHeight/2)));
+                linesToDraw.Add((new Point(Team1.Right, Team1.Location.Y + buttonHeight / 2), 
+                           new Point(Team1.Right + buttonWidth / 2 + margin, Team1.Location.Y + buttonHeight / 2)));
+                linesToDraw.Add((new Point(Team1.Right + buttonWidth / 2 + margin, Team1.Location.Y + buttonHeight / 2), 
+                           new Point(Team1.Right + buttonWidth / 2 + margin, duelButton.Top)));
 
-                linesToDraw.Add((new Point(Team2.Location.X + buttonWidth, Team2.Location.Y + buttonHeight / 2),
-                           new Point(Team2.Location.X + buttonWidth + buttonWidth / 2 + margin, Team2.Location.Y + buttonHeight / 2)));
+                linesToDraw.Add((new Point(Team2.Right, Team2.Location.Y + buttonHeight / 2),
+                           new Point(Team2.Right + buttonWidth / 2 + margin, Team2.Location.Y + buttonHeight / 2)));
+                linesToDraw.Add((new Point(Team2.Right + buttonWidth / 2 + margin, Team2.Location.Y + buttonHeight / 2),
+                           new Point(Team2.Right + buttonWidth / 2 + margin, duelButton.Bottom)));
             }
 
             for (int round = 1; round < roundCount; round++)
@@ -108,6 +112,15 @@ namespace TournamentManager.Frontend
                     winner.Location = new Point(duel.Location.X + buttonWidth + spacing, duel.Location.Y);
                     POButton pOButton = new POButton(prev1.Winner, prev2.Winner, winner, duel);
                     duels[round].Add(pOButton);
+                    linesToDraw.Add((new Point(prev1.Winner.Right, prev1.Winner.Location.Y + buttonHeight / 2),
+                                new Point(prev1.Winner.Right + buttonWidth / 2 + margin, prev1.Winner.Location.Y + buttonHeight / 2)));
+                    linesToDraw.Add((new Point(prev1.Winner.Right + buttonWidth / 2 + margin, prev1.Winner.Location.Y + buttonHeight / 2),
+                               new Point(prev1.Winner.Right + buttonWidth / 2 + margin, duel.Top)));
+
+                    linesToDraw.Add((new Point(prev2.Winner.Right, prev2.Winner.Location.Y + buttonHeight / 2),
+                               new Point(prev2.Winner.Right + buttonWidth / 2 + margin, prev2.Winner.Location.Y + buttonHeight / 2)));
+                    linesToDraw.Add((new Point(prev2.Winner.Right + buttonWidth / 2 + margin, prev2.Winner.Location.Y + buttonHeight / 2),
+                               new Point(prev2.Winner.Right + buttonWidth / 2 + margin, duel.Bottom)));
                 }
             }
         }
