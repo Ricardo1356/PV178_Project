@@ -68,6 +68,7 @@ namespace TournamentManager.Frontend
                 this.Controls.Add(poButton.Team2);
                 this.Controls.Add(poButton.Duel);
                 this.Controls.Add(winnerButton);
+                duelButton.Click += Button_Click!;
                 poButton.Winner = winnerButton;
                 poButton.Duel.Location = new Point(poButton.Team1.Location.X + buttonWidth + margin, 
                     poButton.Team2.Location.Y - (2*buttonHeight+spacing)/2 + buttonHeight/2);
@@ -109,6 +110,7 @@ namespace TournamentManager.Frontend
                     };
                     this.Controls.Add(duel);
                     this.Controls.Add(winner);
+                    duel.Click += Button_Click!;
                     winner.Location = new Point(duel.Location.X + buttonWidth + spacing, duel.Location.Y);
                     POButton pOButton = new POButton(prev1.Winner, prev2.Winner, winner, duel);
                     duels[round].Add(pOButton);
@@ -133,5 +135,31 @@ namespace TournamentManager.Frontend
                 e.Graphics.DrawLine(pen, line.Start, line.End);
             }
         }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+
+            if (clickedButton != null)
+            {
+                if (clickedButton.Tag.ToString() == "Duel")
+                {
+                    MessageBox.Show("Duel button clicked!");
+                }
+                else if (clickedButton.Tag.ToString() == "Winner")
+                {
+                    MessageBox.Show("Winner button clicked!");
+                }
+                else
+                {
+                    Team team = clickedButton.Tag as Team;
+                    if (team != null)
+                    {
+                        MessageBox.Show($"Team {team.Name} button clicked!");
+                    }
+                }
+            }
+        }
+
     }
 }
