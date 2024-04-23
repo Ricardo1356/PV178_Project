@@ -13,44 +13,87 @@ namespace TournamentManager.Backend
                 WriteIndented = true
             };
             File.WriteAllText("teams.json", JsonSerializer.Serialize(Teams, options));
-        }   
+        }
 
         public static List<Team> LoadSavedTeams()
         {
-            if(!File.Exists("teams.json"))
+            if (!File.Exists("teams.json"))
             {
                 return new List<Team>();
             }
-            var teams = JsonSerializer.Deserialize<List<Team>>(File.ReadAllText("teams.json"));
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+            };
+
+            var jsonString = File.ReadAllText("teams.json");
+            var teams = JsonSerializer.Deserialize<List<Team>>(jsonString, options);
+
+            if (teams == null)
+            {
+                throw new InvalidOperationException("Deserialization resulted in null.");
+            }
+
             try
             {
                 ValidateTeams(teams);
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine($"Failed to load teams: {e.Message}");
                 Environment.Exit(1);
             }
-            return teams!;
+
+            return teams;
         }
 
-        private static void ValidateTeams(List<Team>? Teams)
+        private static void ValidateTeams(List<Team> teams)
         {
-            if (Teams != null)
+            foreach (var team in teams)
             {
-                foreach (var team in Teams)
+                if (string.IsNullOrWhiteSpace(team.Name) || string.IsNullOrWhiteSpace(team.City))
                 {
-                    if (string.IsNullOrWhiteSpace(team.Name) || string.IsNullOrWhiteSpace(team.City))
-                    {
-                        throw new InvalidOperationException("Team data is invalid.");
-                    }
+                    throw new InvalidOperationException("Team data is invalid.");
+                }
+
+                if (team.Players == null || !team.Players.Any())
+                {
+                    throw new InvalidOperationException("Team must have at least one player.");
+                }
+
+                foreach (var player in team.Players)
+                {
+                    ValidatePlayer(player);
                 }
             }
-            else
+        }
+
+        private static void ValidatePlayer(Player player)
+        {
+            if (string.IsNullOrWhiteSpace(player.Name))
             {
-                throw new InvalidOperationException("Deserialization resulted in null.");
+                throw new InvalidOperationException("Player name cannot be empty.");
             }
 
+            if (player.Age <= 0)
+            {
+                throw new InvalidOperationException("Player age must be greater than zero.");
+            }
+
+            if (player.Height <= 0)
+            {
+                throw new InvalidOperationException("Player height must be greater than zero.");
+            }
+
+            if (player.Weight <= 0)
+            {
+                throw new InvalidOperationException("Player weight must be greater than zero.");
+            }
+
+            if (string.IsNullOrWhiteSpace(player.Position))
+            {
+                throw new InvalidOperationException("Player position cannot be empty.");
+            }
         }
     }
 }

@@ -48,19 +48,21 @@ namespace TournamentManager.Frontend
 
                 MulticolorButton Team1 = new MulticolorButton
                 {
-
+                    BackgroundColor = team1.GetBackColor(),
+                    TopBorderColor = team1.GetTopColor(),
+                    BottomBorderColor = team1.GetBottomColor(),
                     Text = team1.Name,
                     Tag = team1,
                     Size = new Size(buttonWidth, buttonHeight),
                     Location = currentPosition
                     
                 };
-                MessageBox.Show(Team1.BackgroundColor.ToString());
-
                 currentPosition.Y += buttonHeight + spacing;
                 MulticolorButton Team2 = new MulticolorButton
                 {
-
+                    BackgroundColor = team2.GetBackColor(),
+                    TopBorderColor = team2.GetTopColor(),
+                    BottomBorderColor = team2.GetBottomColor(),
                     Text = team2.Name,
                     Tag = team2,
                     Size = new Size(buttonWidth, buttonHeight),
@@ -143,11 +145,11 @@ namespace TournamentManager.Frontend
 
         private void Button_Click(object sender, EventArgs e)
         {
-            Button clickedButton = sender as Button;
+            Button clickedButton = (sender as Button)!;
 
             if (clickedButton != null)
             {
-                if (clickedButton.Tag.ToString() == "Duel")
+                if (clickedButton.Tag!.ToString() == "Duel")
                 {
                     MessageBox.Show("Duel button clicked!");
                 }
@@ -157,7 +159,7 @@ namespace TournamentManager.Frontend
                 }
                 else
                 {
-                    Team team = clickedButton.Tag as Team;
+                    Team team = (clickedButton.Tag as Team)!;
                     if (team != null)
                     {
                         MessageBox.Show($"Team {team.Name} button clicked!");

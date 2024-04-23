@@ -1,20 +1,60 @@
-﻿namespace TournamentManager.Backend.Structures
+﻿using System.Drawing;
+using System.Text.Json.Serialization;
+
+namespace TournamentManager.Backend.Structures
 {
     public class Team
     {
-        public string Name { get; private set; }
-        public string City { get; private set; }
-        public List<Player> Players { get; private set; } = new List<Player>();
-        
+        public string Name { get; set; }
+        public string City { get; set; }
+        public Colors Colors { get; set; }
+        public List<Player> Players { get; set; } = new List<Player>();
+
+        private Color _backGroundColor = Color.SkyBlue; 
+        private Color _topColor = Color.SkyBlue;
+        private Color _bottomColor = Color.SkyBlue;
+
         private Tournament? _currentTournament = null;
 
         public bool CanBeManaged => this._currentTournament == null;
 
-        public Team(string name, string city, List<Player> players)
+        public Team(string name, string city, List<Player> players, Colors colors)
         {
+            this.Colors = colors;
             this.Name = name;
             this.City = city;
             this.Players = players;
+
+            ConvertArgbToColors();
+        }
+
+        public void ConvertArgbToColors()
+        {
+            if (Colors != null)
+            {
+                this._backGroundColor = ArgbArrayToColor(Colors.BackGroundColor);
+                this._topColor = ArgbArrayToColor(Colors.TopColor);
+                this._bottomColor = ArgbArrayToColor(Colors.BottomColor);
+            }
+        }
+
+        public Color GetBackColor()
+        {
+            return this._backGroundColor;
+        }
+
+        public Color GetTopColor()
+        {
+            return this._topColor;
+        }
+        public Color GetBottomColor()
+        {
+            return this._bottomColor;
+        }
+
+        private Color ArgbArrayToColor(int[] argb)
+        {
+            return Color.FromArgb(argb[0] == 255 ? argb[0] : 100, argb[1], argb[2], argb[3]);
         }
 
         public Tournament? GetTournament()
@@ -41,4 +81,5 @@
             this.Players.Remove(player);
         }
     }
+
 }

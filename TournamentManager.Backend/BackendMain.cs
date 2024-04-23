@@ -30,7 +30,7 @@ namespace TournamentManager.Backend
             {
                 if (team.Name == teamName && team.City == city) return team;
             }
-            return new Team("", "", []); // unreachable code
+            return new Team("", "", [], new Colors()); // unreachable code
         }
 
         public Team GetTeamByJoined(string joinedCityName)
@@ -39,7 +39,7 @@ namespace TournamentManager.Backend
             {
                 if (team.City + " " + team.Name == joinedCityName) return team;
             }
-            return new Team("", "", []); // unreachable code
+            return new Team("", "", [], new Colors()); // unreachable code
         }
 
         public bool RemoveTeam(Team team)
@@ -59,7 +59,7 @@ namespace TournamentManager.Backend
                 return true;
             }
             if (CheckNewTeamName(teamName)) return false;        
-            Team newTeam = new Team(teamName, teamCity, []);
+            Team newTeam = new Team(teamName, teamCity, [], new Colors()); //TODO: Add colors
 
             this._teams.Add(newTeam);
             return true;
