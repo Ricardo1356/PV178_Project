@@ -43,9 +43,9 @@
             // 
             // StartNewTournamentButton
             // 
-            StartNewTournamentButton.Location = new Point(596, 264);
+            StartNewTournamentButton.Location = new Point(624, 190);
             StartNewTournamentButton.Name = "StartNewTournamentButton";
-            StartNewTournamentButton.Size = new Size(172, 86);
+            StartNewTournamentButton.Size = new Size(309, 189);
             StartNewTournamentButton.TabIndex = 1;
             StartNewTournamentButton.Text = "Start New Tournament";
             StartNewTournamentButton.UseVisualStyleBackColor = true;
@@ -113,7 +113,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1025, 861);
+            ClientSize = new Size(1025, 677);
             Controls.Add(RegisterNewTeamButton);
             Controls.Add(TeamsView);
             Controls.Add(AppExitButton);
