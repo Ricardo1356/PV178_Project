@@ -16,6 +16,8 @@ namespace TournamentManager.Frontend
     public partial class NewTeamForm : Form
     {
         private BackendMain Backend;
+        private string _previewTeamName = "";
+        private string _previewTeamCity = "";
         public NewTeamForm(BackendMain backend)
         {
             this.Backend = backend;
@@ -34,7 +36,11 @@ namespace TournamentManager.Frontend
             }
             else
             {
-                bool success = this.Backend.RegisterNewTeam(teamName: NewTeamNameTextBox.Text, teamCity: NewTeamCityTextBox.Text);
+                Colors colors = new Colors();
+                colors.TopColor = new int[] { TopColorButton.BackColor.A, TopColorButton.BackColor.R, TopColorButton.BackColor.G, TopColorButton.BackColor.B };
+                colors.BackGroundColor = new int[] { BackColorButton.BackColor.A, BackColorButton.BackColor.R, BackColorButton.BackColor.G, BackColorButton.BackColor.B };
+                colors.BottomColor = new int[] { ButColorButton.BackColor.A, ButColorButton.BackColor.R, ButColorButton.BackColor.G, ButColorButton.BackColor.B };
+                bool success = this.Backend.RegisterNewTeam(teamName: NewTeamNameTextBox.Text, teamCity: NewTeamCityTextBox.Text, colors: colors);
                 if (!success)
                 {
                     MessageBox.Show("Team already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -74,7 +80,7 @@ namespace TournamentManager.Frontend
                             MessageBox.Show("Team already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
-                        { 
+                        {
                             this.Close();
                         }
                     }
@@ -85,10 +91,50 @@ namespace TournamentManager.Frontend
                 }
                 catch (Exception ex)
                 {
-                    // Handle potential errors, such as invalid JSON format
                     MessageBox.Show($"Failed to import team: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void TopColorButton_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                TopColorButton.BackColor = colorDialog.Color;
+                PreviewButton.TopBorderColor = colorDialog.Color;
+            }
+        }
+
+        private void BackColorButton_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                BackColorButton.BackColor = colorDialog.Color;
+                PreviewButton.BackgroundColor = colorDialog.Color;
+            }
+        }
+
+        private void ButColorButton_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                ButColorButton.BackColor = colorDialog.Color;
+                PreviewButton.BottomBorderColor = colorDialog.Color;
+            }
+        }
+
+        private void NewTeamNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            UpdatePreviewButtonText(name: NewTeamNameTextBox.Text);
+        }
+
+        private void UpdatePreviewButtonText(string name="", string city="")
+        {
+            this._previewTeamName = name == "" ? this._previewTeamName : name;
+            PreviewButton.Text = $"{this._previewTeamName}";
         }
     }
 }

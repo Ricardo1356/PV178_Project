@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 public class MulticolorButton : Button
 {
-    public Color BackgroundColor { get; set; } = Color.FromArgb(230, 230, 250);
-    public Color TopBorderColor { get; set; } = Color.FromArgb(147, 112, 219);
-    public Color BottomBorderColor { get; set; } = Color.FromArgb(75, 0, 130);
+    public Color BackgroundColor { get; set; } = Color.FromArgb(255, 255, 255);
+    public Color TopBorderColor { get; set; } = Color.FromArgb(255, 255, 255);
+    public Color BottomBorderColor { get; set; } = Color.FromArgb(255, 255, 255);
 
     public Color TextColor { get; set; } = Color.Black;
 
