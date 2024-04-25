@@ -61,7 +61,7 @@ namespace TournamentManager.Frontend
 
         private void FillMatch(object sender, EventArgs e)
         {
-            MessageBox.Show($"{matches[sender as Button].Item1.Name} vs {matches[sender as Button].Item2.Name}");
+            MessageBox.Show($"{matches[(sender as Button)!].Item1.Name} vs {matches[(sender as Button)!].Item2.Name}");
         }
 
 
