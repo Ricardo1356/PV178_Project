@@ -35,7 +35,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(323, 198);
+            ClientSize = new Size(218, 128);
             Name = "PlayOffTournamentForm";
             Text = "PlayOffTournamentForm";
             ResumeLayout(false);
