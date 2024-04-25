@@ -1,4 +1,6 @@
-﻿namespace TournamentManager.Backend.Structures
+﻿using System.Runtime.CompilerServices;
+
+namespace TournamentManager.Backend.Structures
 {
     public class Tournament
     {
@@ -10,6 +12,12 @@
             this.Type = type;
             this.TeamCount = teamCount;
             this.ParticipatingTeams = teams;
+        }
+
+        public void ShuffleTeams()
+        {
+            Random random = new Random();
+            this.ParticipatingTeams = this.ParticipatingTeams.OrderBy(item => random.Next()).ToList();
         }
     }
 }
