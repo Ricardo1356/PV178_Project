@@ -17,6 +17,7 @@ namespace TournamentManager.Frontend
         {
             this.Tournament = tournament;
             this.Backend = backend;
+            tournament.ShuffleTeams();
             InitializeComponent();
             GenerateTournamentLayout();
         }
@@ -68,11 +69,33 @@ namespace TournamentManager.Frontend
         {
             for (int i = 1; i <= Tournament.ParticipatingTeams.Count; i++)
             {
+                MulticolorButton VerticalTeam = new MulticolorButton
+                {
+                    BackgroundColor = Tournament.ParticipatingTeams[i - 1].GetBackColor(),
+                    TopBorderColor = Tournament.ParticipatingTeams[i - 1].GetTopColor(),
+                    BottomBorderColor = Tournament.ParticipatingTeams[i - 1].GetBottomColor(),
+                    Text = Tournament.ParticipatingTeams[i - 1].Name,
+                    Tag = Tournament.ParticipatingTeams[i - 1],
+                    Size = new Size(_rectangleWidht, _rectangleHeight),
+                    Location = new Point(10, 10 + i * (_rectangleHeight + _spacing))
+                };
+                this.Controls.Add(VerticalTeam);
+                MulticolorButton HorizontalTeam = new MulticolorButton
+                {
+                    BackgroundColor = Tournament.ParticipatingTeams[i - 1].GetBackColor(),
+                    TopBorderColor = Tournament.ParticipatingTeams[i - 1].GetTopColor(),
+                    BottomBorderColor = Tournament.ParticipatingTeams[i - 1].GetBottomColor(),
+                    Text = Tournament.ParticipatingTeams[i - 1].Name,
+                    Tag = Tournament.ParticipatingTeams[i - 1],
+                    Size = new Size(_rectangleWidht, _rectangleHeight),
+                    Location = new Point(10 + i * (_rectangleWidht + _spacing), 10)
+                };
+                this.Controls.Add(HorizontalTeam);
                 Panel HorizontalPanel = CreatePanel(Tournament.ParticipatingTeams[i - 1].Name, new Point(10, 10 + i * (_rectangleHeight + _spacing)));
-                this.Controls.Add(HorizontalPanel);
+              //  this.Controls.Add(HorizontalPanel);
 
                 Panel VerticalPanel = CreatePanel(Tournament.ParticipatingTeams[i - 1].Name, new Point(10 + i * (_rectangleWidht + _spacing), 10));
-                this.Controls.Add(VerticalPanel);      
+         //       this.Controls.Add(VerticalPanel);      
             }
         }
 
