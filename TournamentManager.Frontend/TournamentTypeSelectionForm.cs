@@ -43,7 +43,7 @@ namespace TournamentManager.Frontend
                 MessageBox.Show("Please select 2 - 8 teams", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (this.ExistingTeamsSelectionBox.CheckedItems.Count % 2 != 0)
+            if (this.ExistingTeamsSelectionBox.CheckedItems.Count % 2 != 0 || this.ExistingTeamsSelectionBox.CheckedItems.Count == 6)
             {
                 MessageBox.Show("Please select 2, 4 or 8 teams", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
