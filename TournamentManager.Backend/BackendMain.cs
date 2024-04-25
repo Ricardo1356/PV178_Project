@@ -49,7 +49,7 @@ namespace TournamentManager.Backend
             return true;
         }
 
-        public bool RegisterNewTeam(string teamName = "", string teamCity = "", Team? team = null, Colors? colors = null)
+        public bool RegisterNewTeam(string teamName = "", string teamCity = "", Team? team = null, Colors? colors = default)
         {
             if (teamName == "" && teamCity == "" && team == null) { return false; }
             if (team != null)
@@ -59,7 +59,7 @@ namespace TournamentManager.Backend
                 return true;
             }
             if (CheckNewTeamName(teamName)) return false;        
-            Team newTeam = new Team(teamName, teamCity, [], colors); //TODO: Add colors
+            Team newTeam = new Team(teamName, teamCity, [], colors!);
 
             this._teams.Add(newTeam);
             return true;

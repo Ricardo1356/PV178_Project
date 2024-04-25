@@ -69,7 +69,7 @@ namespace TournamentManager.Frontend
                 {
                     string filePath = openFileDialog.FileName;
                     string fileContent = File.ReadAllText(filePath);
-                    Team importedTeam = JsonSerializer.Deserialize<Team>(fileContent);
+                    Team importedTeam = JsonSerializer.Deserialize<Team>(fileContent)!;
                     MessageBox.Show($"{importedTeam.Players.Count()}");
 
                     if (importedTeam != null)

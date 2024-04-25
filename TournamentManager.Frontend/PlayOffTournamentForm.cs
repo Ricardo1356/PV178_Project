@@ -92,6 +92,11 @@ namespace TournamentManager.Frontend
                 Team2Button.Click += Button_Click!;
                 FirstDuelMB.Click += Button_Click!;
                 WinnerButton.Click += Button_Click!;
+                buttons.Add(Team1PO);
+                buttons.Add(Team2PO);
+                buttons.Add(FirstDuelPO);
+                buttons.Add(WinnerPO);
+
 
                 currentPosition.Y += margin;
                 duels[0].Add(FirstDuelPO);
@@ -147,6 +152,8 @@ namespace TournamentManager.Frontend
                     NextDuel.Click += Button_Click!;
                     Winner.Click += Button_Click!;
                     duels[round].Add(DuelPO);
+                    buttons.Add(DuelPO);
+                    buttons.Add(WinnerPO);
                     
                     linesToDraw.Add((new Point(DuelButton1.WinnerPO.Button.Right, DuelButton1.WinnerPO.Button.Location.Y + buttonHeight / 2),
                                      new Point(DuelButton1.WinnerPO.Button.Right + buttonWidth / 2 + margin, DuelButton1.WinnerPO.Button.Location.Y + buttonHeight / 2)));
@@ -175,21 +182,24 @@ namespace TournamentManager.Frontend
 
         private void Button_Click(object sender, EventArgs e)
         {
-         //   POButton clickedButton = GetClickedButton((Button)sender);
-          //  if (clickedButton.Team1 == null || clickedButton.Team1 == null) { return; }
-           // var winner = clickedButton.Team1; //TODO
+            POButton clickedButton = GetClickedButton((Button)sender);
+            if (clickedButton is DuelButton)
+            {
+
+            }
+            else if (clickedButton is TeamButton)
+            {
+
+            }
         }
 
         private POButton GetClickedButton(Button button)
         {
-            foreach (var inner in this.duels)
+            foreach (var inner in this.buttons)
             {
-                foreach (var duel in inner)
+                if (inner.Button == button)
                 {
-         //           if (duel.Duel == button)
-             //       {
-           //             return duel;
-               //     }
+                    return inner;
                 }
             }
             return null!;
