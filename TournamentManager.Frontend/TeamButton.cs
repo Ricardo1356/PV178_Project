@@ -10,10 +10,10 @@ namespace TournamentManager.Frontend
     public class TeamButton : POButton
     {
         public DuelButton? NextDuel { get; set; } = null;
-        public Team? AssignedTeam { get; set; }
-        public TeamButton(Button Button, Team? AssignedTeam = null) : base(Button)
+        public Team? Team { get; set; }
+        public TeamButton(Button Button, Team? Team = null) : base(Button)
         {
-            this.AssignedTeam = AssignedTeam;
+            this.Team = Team;
         }
     }
 }
