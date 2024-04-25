@@ -14,6 +14,7 @@ public class MulticolorButton : Button
     protected override void OnPaint(PaintEventArgs pevent)
     {
         base.OnPaint(pevent);
+        BorderThickness = this.Height / 3;
 
         pevent.Graphics.Clear(this.BackgroundColor);
 
