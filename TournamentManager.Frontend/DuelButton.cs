@@ -12,8 +12,9 @@ namespace TournamentManager.Frontend
         public Team? Team1 { get; set; }
         public Team? Team2 { get; set; }
         public Team? Winner { get; set; } = null;
-        public POButton WinnerPO { get; set; }
-        public DuelButton(Button Button, POButton winnerPO, Team? team1 = null, Team? team2 = null) : base(Button)
+        public TeamButton WinnerPO { get; set; }
+        public bool IsFinished { get; set; } = false;
+        public DuelButton(MulticolorButton Button, TeamButton winnerPO, Team? team1 = null, Team? team2 = null) : base(Button)
         {
             Team1 = team1;
             Team2 = team2;   

@@ -8,11 +8,15 @@ namespace TournamentManager.Frontend
 {
     public class POButton
     {
-        public Button Button { get; set; }
+        public MulticolorButton Button { get; set; }
 
-        public POButton(Button Button)
+        public POButton(MulticolorButton Button)
         {
             this.Button = Button;
+        }
+        protected void UpdateColorsByTeam(Backend.Structures.Team team)
+        {
+            Button.UpdateColorsByTeam(team);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using TournamentManager.Backend.Structures;
 
 public class MulticolorButton : Button
 {
@@ -10,6 +11,26 @@ public class MulticolorButton : Button
     public Color TextColor { get; set; } = Color.Black;
 
     public int BorderThickness { get; set; } = 25;
+
+    public void ShadeButton()
+    {
+        this.BackgroundColor = Color.LightGray;
+        this.TopBorderColor = Color.LightGray;
+        this.BottomBorderColor = Color.LightGray;
+     //   this.TopBorderColor = Color.FromArgb(150, this.TopBorderColor.R, this.TopBorderColor.G, this.TopBorderColor.B);
+     //   this.BottomBorderColor = Color.FromArgb(150, this.BottomBorderColor.R, this.BottomBorderColor.G, this.BottomBorderColor.B);
+     //   this.BackgroundColor = Color.FromArgb(150, this.BackgroundColor.R, this.BackgroundColor.G, this.BackgroundColor.B);
+        // Update the button colors here
+        this.Invalidate();
+    }
+
+    public void UpdateColorsByTeam(Team team)
+    {
+        this.TopBorderColor = team.GetTopColor();
+        this.BottomBorderColor = team.GetBottomColor();
+        this.BackgroundColor = team.GetBackColor();
+        this.Invalidate();
+    }
 
     protected override void OnPaint(PaintEventArgs pevent)
     {
@@ -33,7 +54,7 @@ public class MulticolorButton : Button
             pevent.Graphics.DrawRectangle(borderPen, 1, 1, this.Width - 2, this.Height - 2);
         }
 
-        Font boldFont = new Font(this.Font.FontFamily, 14, FontStyle.Bold);
+        Font boldFont = new Font(this.Font.FontFamily, 12, FontStyle.Bold);
 
 
         TextRenderer.DrawText(

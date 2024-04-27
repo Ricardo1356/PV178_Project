@@ -11,9 +11,21 @@ namespace TournamentManager.Frontend
     {
         public DuelButton? NextDuel { get; set; } = null;
         public Team? Team { get; set; }
-        public TeamButton(Button Button, Team? Team = null) : base(Button)
+        public TeamButton(MulticolorButton Button, Team? Team = null) : base(Button)
         {
             this.Team = Team;
+        }
+
+        public void FightLost()
+        {
+            base.Button.ShadeButton();
+        }
+
+        public void SetWinner(Team winner)
+        {
+            this.Team = winner;
+            base.Button.Text = winner.Name;
+            base.Button.UpdateColorsByTeam(winner);
         }
     }
 }

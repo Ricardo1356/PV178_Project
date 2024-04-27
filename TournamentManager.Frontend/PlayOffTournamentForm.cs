@@ -11,6 +11,7 @@ namespace TournamentManager.Frontend
         private PlayOffTournament Tournament;
         private List<List<POButton>> duels = new List<List<POButton>>();
         private List<POButton> buttons = new List<POButton>();
+        private List<TeamButton> teamButtons = new List<TeamButton>();
         private List<(Point Start, Point End)> linesToDraw = new List<(Point Start, Point End)>();
 
         public PlayOffTournamentForm(BackendMain Backend, Tournament tournament)
@@ -24,7 +25,7 @@ namespace TournamentManager.Frontend
 
         private void Generate()
         {
-            int margin = 30;
+            int margin = 100;
             int spacing = 20;
             int buttonWidth = 140; 
             int buttonHeight = 80;
@@ -68,9 +69,8 @@ namespace TournamentManager.Frontend
                     BackgroundColor = Color.FromArgb(255, 255, 255),
                     TopBorderColor = Color.FromArgb(255, 255, 255),
                     BottomBorderColor = Color.FromArgb(255, 255, 255),
-                    Text = "Duel",
+                    Text = $"{team1.Name}\nvs\n{team2.Name}",
                     Size = new Size(buttonWidth, buttonHeight),
-                    Location = new Point(Team2Button.Right + margin, Team1Button.Location.Y + buttonHeight / 2 - buttonHeight / 2)
                 };
 
                 MulticolorButton WinnerButton = new MulticolorButton
@@ -78,7 +78,7 @@ namespace TournamentManager.Frontend
                     BackgroundColor = Color.FromArgb(255, 255, 255),
                     TopBorderColor = Color.FromArgb(255, 255, 255),
                     BottomBorderColor = Color.FromArgb(255, 255, 255),
-                    Text = "Winner",
+                    Text = "TBA",
                     Size = new Size(buttonWidth, buttonHeight),
                     Location = new Point(FirstDuelMB.Right + spacing, FirstDuelMB.Location.Y)
                 };
@@ -96,9 +96,11 @@ namespace TournamentManager.Frontend
                 buttons.Add(Team2PO);
                 buttons.Add(FirstDuelPO);
                 buttons.Add(WinnerPO);
+                teamButtons.Add(Team1PO);
+                teamButtons.Add(Team2PO);
+                teamButtons.Add(WinnerPO);
 
-
-                currentPosition.Y += margin;
+                currentPosition.Y += margin/2;
                 duels[0].Add(FirstDuelPO);
                 FirstDuelPO.Button.Location = new Point(Team1Button.Right + margin, 
                     Team2Button.Location.Y - (2*buttonHeight + spacing) / 2 + buttonHeight / 2);
@@ -131,22 +133,24 @@ namespace TournamentManager.Frontend
                         BackgroundColor = Color.FromArgb(255, 255, 255),
                         TopBorderColor = Color.FromArgb(255, 255, 255),
                         BottomBorderColor = Color.FromArgb(255, 255, 255),
-                        Text = "Duel",
+                        Text = "TBA",
                         Size = new Size(buttonWidth, buttonHeight),
                         Location = new Point(DuelButton1.WinnerPO.Button.Right + margin,
                                                    (DuelButton1.WinnerPO.Button.Location.Y + DuelButton2.WinnerPO.Button.Location.Y + buttonHeight) / 2 - buttonHeight / 2)
-                    };
+                    };                   
                     MulticolorButton Winner = new MulticolorButton
                     {
                         BackgroundColor = Color.FromArgb(255, 255, 255),
                         TopBorderColor = Color.FromArgb(255, 255, 255),
                         BottomBorderColor = Color.FromArgb(255, 255, 255),
-                        Text = "Winner",
+                        Text = "TBA",
                         Size = new Size(buttonWidth, buttonHeight),
                         Location = new Point(NextDuel.Right + spacing, NextDuel.Location.Y)
                     };
                     TeamButton WinnerPO = new TeamButton(Winner);
                     DuelButton DuelPO = new DuelButton(NextDuel, WinnerPO, DuelButton1.Winner, DuelButton2.Winner);
+                    DuelButton1.WinnerPO.NextDuel = DuelPO;
+                    DuelButton2.WinnerPO.NextDuel = DuelPO;
                     this.Controls.Add(NextDuel);
                     this.Controls.Add(Winner);
                     NextDuel.Click += Button_Click!;
@@ -154,6 +158,7 @@ namespace TournamentManager.Frontend
                     duels[round].Add(DuelPO);
                     buttons.Add(DuelPO);
                     buttons.Add(WinnerPO);
+                    teamButtons.Add(WinnerPO);
                     
                     linesToDraw.Add((new Point(DuelButton1.WinnerPO.Button.Right, DuelButton1.WinnerPO.Button.Location.Y + buttonHeight / 2),
                                      new Point(DuelButton1.WinnerPO.Button.Right + buttonWidth / 2 + margin, DuelButton1.WinnerPO.Button.Location.Y + buttonHeight / 2)));
@@ -185,24 +190,79 @@ namespace TournamentManager.Frontend
             POButton clickedButton = GetClickedButton((Button)sender);
             if (clickedButton is DuelButton)
             {
-
+                DuelButton duel = (DuelButton) clickedButton;
+                if (duel.Team1 != null && duel.Team2 != null && duel.IsFinished == false)
+                {
+                    MessageBox.Show($"{duel.Team1.Name} - {duel.Team2.Name}");
+                    duel.IsFinished = true;
+                    (Team winner, Team loser) = GetWinner(duel.Team1, duel.Team2);
+                    duel.Winner = winner;
+                    ShadeALlTeamOccurences(loser);
+                    duel.WinnerPO.SetWinner(winner);
+                    duel.Button.Text = $"{duel.Team1.Abbreviation} 0 : 0 {duel.Team2.Abbreviation}";
+                    (DuelButton d, int index) = GetDuelButton(duel);
+                    if (duel.WinnerPO.NextDuel != null) 
+                    {
+                        if (index % 2 == 0)
+                        {
+                            duel.WinnerPO.NextDuel.Team1 = winner;
+                        }
+                        else
+                        {
+                            duel.WinnerPO.NextDuel.Team2 = winner;
+                        }
+                        if (duel.WinnerPO.NextDuel.Team1 != null && duel.WinnerPO.NextDuel.Team2 != null)
+                        {
+                            duel.WinnerPO.NextDuel.Button.Text = $"{duel.WinnerPO.NextDuel.Team1.Name}\nvs\n{duel.WinnerPO.NextDuel.Team2.Name}";
+                        }
+                    }                  
+                }
             }
-            else if (clickedButton is TeamButton)
+        }
+
+        private void ShadeALlTeamOccurences(Team team)
+        {
+            foreach (TeamButton tb in teamButtons)
             {
-
+                if (tb.Team != null && tb.Team == team)
+                {
+                    tb.FightLost();
+                }
             }
+        }
+
+        private (Team, Team) GetWinner(Team team1, Team team2)
+        {
+            Random random = new Random();
+            var x = random.Next(0, 2);
+            return x == 1 ? (team1, team2) : (team2, team1);
+        }
+
+        private (DuelButton, int) GetDuelButton(DuelButton duelButton)
+        {
+            foreach (var inner in this.duels)
+            {
+                for (int i = 0; i < inner.Count; i++)
+                {
+                    if (inner[i] == duelButton)
+                    {
+                        return (duelButton, i);
+                    }
+                }
+            }
+            return (null!, 0); // unreachable
         }
 
         private POButton GetClickedButton(Button button)
         {
-            foreach (var inner in this.buttons)
+            foreach (var b in this.buttons)
             {
-                if (inner.Button == button)
+                if (b.Button == button)
                 {
-                    return inner;
+                    return b;
                 }
             }
-            return null!;
+            return null!; // unreachable
         }
     }
 }

@@ -45,7 +45,7 @@ namespace TournamentManager.Frontend
                         continue;
                     }
 
-                    Button button = new Button
+                    MulticolorButton button = new MulticolorButton
                     {
                         Text = $"{teams[i-1].Name}\nvs\n{teams[j-1].Name}",
                         Location = new Point(10 + j * (_rectangleWidht + _spacing), 10 + i * (_rectangleHeight + _spacing)),
@@ -53,13 +53,13 @@ namespace TournamentManager.Frontend
                         Tag = $"{teams[i-1].Name} vs {teams[j-1].Name}"
                     };
                     this.Controls.Add(button);
-                    button.Click += FillMatch!;
+                    button.Click += MatchClick!;
                     matches.Add(button, (teams[i-1], teams[j-1]));
                 }
             }
         }
 
-        private void FillMatch(object sender, EventArgs e)
+        private void MatchClick(object sender, EventArgs e)
         {
             MessageBox.Show($"{matches[(sender as Button)!].Item1.Name} vs {matches[(sender as Button)!].Item2.Name}");
         }
@@ -91,36 +91,7 @@ namespace TournamentManager.Frontend
                     Location = new Point(10 + i * (_rectangleWidht + _spacing), 10)
                 };
                 this.Controls.Add(HorizontalTeam);
-                Panel HorizontalPanel = CreatePanel(Tournament.ParticipatingTeams[i - 1].Name, new Point(10, 10 + i * (_rectangleHeight + _spacing)));
-              //  this.Controls.Add(HorizontalPanel);
-
-                Panel VerticalPanel = CreatePanel(Tournament.ParticipatingTeams[i - 1].Name, new Point(10 + i * (_rectangleWidht + _spacing), 10));
-         //       this.Controls.Add(VerticalPanel);      
             }
-        }
-
-        private Panel CreatePanel(string text, Point location)
-        {
-            Panel matchPanel = new Panel
-            {
-                Size = new Size(_rectangleWidht, _rectangleHeight),
-                Location = location,
-                BorderStyle = BorderStyle.FixedSingle,
-                BackColor = Color.LightGray
-            };
-
-
-            Label lbl = new Label
-            {
-                Text = text,
-                Dock = DockStyle.Fill,
-                TextAlign = ContentAlignment.MiddleCenter,
-                AutoSize = false
-            };
-            matchPanel.Controls.Add(lbl);
-
-
-            return matchPanel;
         }
     }
 }
