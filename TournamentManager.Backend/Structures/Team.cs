@@ -8,6 +8,7 @@ namespace TournamentManager.Backend.Structures
         public string Name { get; set; }
         public string City { get; set; }
         public Colors Colors { get; set; }
+        public string Abbreviation { get; set; } = "TBD";
         public List<Player> Players { get; set; } = new List<Player>();
 
         private Color _backGroundColor = Color.SkyBlue; 
