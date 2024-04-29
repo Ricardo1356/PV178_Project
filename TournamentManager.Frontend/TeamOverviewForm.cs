@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TournamentManager.Backend;
+﻿using TournamentManager.Backend;
 using TournamentManager.Backend.Structures;
 
 namespace TournamentManager.Frontend
@@ -46,7 +37,7 @@ namespace TournamentManager.Frontend
         {
             this.PlayersListView.DataSource = null;
             this.PlayersListView.DataSource = this.team.Players;
-        }   
+        }
 
         private Player GetPlayer(int index)
         {
@@ -69,7 +60,9 @@ namespace TournamentManager.Frontend
 
         private void AddPlayerButton_Click(object sender, EventArgs e)
         {
-            
+            NewPlayerForm newPlayerForm = new NewPlayerForm(this.Backend, this.team);
+            newPlayerForm.ShowDialog();
+            RefreshPlayersView();
         }
     }
 }
