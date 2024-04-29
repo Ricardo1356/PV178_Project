@@ -25,14 +25,22 @@ namespace TournamentManager.Backend
             {
                 PropertyNameCaseInsensitive = true,
             };
-
             var jsonString = File.ReadAllText("teams.json");
-            var teams = JsonSerializer.Deserialize<List<Team>>(jsonString, options);
+            var teams = new List<Team>();
+            try
+            {
+                teams = JsonSerializer.Deserialize<List<Team>>(jsonString, options);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Failed to load teams: {e.Message}");
+            }
 
             if (teams == null)
             {
                 throw new InvalidOperationException("Deserialization resulted in null.");
             }
+            
 
             try
             {
@@ -42,6 +50,10 @@ namespace TournamentManager.Backend
             {
                 Console.WriteLine($"Failed to load teams: {e.Message}");
                 Environment.Exit(1);
+            }
+            foreach (var team in teams)
+            {
+                team.ConvertArgbToColors();
             }
 
             return teams;
