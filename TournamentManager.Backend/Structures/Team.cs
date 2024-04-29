@@ -10,14 +10,13 @@ namespace TournamentManager.Backend.Structures
         public Colors Colors { get; set; } = new Colors();
         public string Abbreviation { get; set; } = "TBD";
         public List<Player> Players { get; set; } = new List<Player>();
+        [JsonIgnore]
+        public bool CanBeManaged => this._currentTournament == null;
 
         private Color _backGroundColor = Color.SkyBlue; 
         private Color _topColor = Color.SkyBlue;
         private Color _bottomColor = Color.SkyBlue;
-
         private Tournament? _currentTournament = null;
-        [JsonIgnore]
-        public bool CanBeManaged => this._currentTournament == null;
 
         public Team()
         {
