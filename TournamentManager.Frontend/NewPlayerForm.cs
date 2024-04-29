@@ -5,9 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TournamentManager.Backend;
+using TournamentManager.Backend.DTOs;
 using TournamentManager.Backend.Structures;
 
 namespace TournamentManager.Frontend
@@ -23,15 +25,14 @@ namespace TournamentManager.Frontend
             InitializeComponent();
         }
 
-        private void OKButton_Click(object sender, EventArgs e)
+        private void SaveAndExitButton_Click(object sender, EventArgs e)
         {
-            this.AddPlayer();
-            this.Close();   
+            this.AddPlayer(false);
         }
 
         private void AddNotherPlayerButton_Click(object sender, EventArgs e)
         {
-            this.AddPlayer();     
+            this.AddPlayer(true);
             this.Clear();
         }
 
@@ -42,7 +43,7 @@ namespace TournamentManager.Frontend
 
         private void GenerateStatsButton_Click(object sender, EventArgs e)
         {
-            PlayerStatsDto stats = Backend.GeneratePlayerStats();
+            PlayerDataDto stats = Backend.GeneratePlayerStats();
 
             this.PlayerNameTextBox.Text = stats.Name;
             this.PlayerAgeTextBox.Text = stats.Age;
@@ -51,21 +52,32 @@ namespace TournamentManager.Frontend
             this.PlayerPositionComboBox.SelectedIndex = stats.Position;
         }
 
-        private void AddPlayer()
+        private void AddPlayer(bool another)
         {
-            PlayerStatsDto stats = new PlayerStatsDto
+            try
             {
-                Age = this.PlayerAgeTextBox.Text,
-                Height = this.PlayerHeightTextBox.Text,
-                Name = this.PlayerNameTextBox.Text,
-                Position = this.PlayerPositionComboBox.SelectedIndex,
-                Weight = this.PlayerWeightTextBox.Text
-            };
-            var returnCode = Backend.AddPlayerToTeam(this.team, stats);
-            if (returnCode > 0)
+                Player player = new Player(this.PlayerNameTextBox.Text,
+                                           int.Parse(this.PlayerAgeTextBox.Text),
+                                           int.Parse(this.PlayerHeightTextBox.Text),
+                                           int.Parse(this.PlayerWeightTextBox.Text),
+                                           this.PlayerPositionComboBox.SelectedItem.ToString());
+                Backend.AddPlayerToTeam(this.team, player);
+                if (!another)
+                {
+                    this.Close();
+                }
+            }
+            catch (NullReferenceException)
             {
-                var message = Backend.ResolveErrorCode(returnCode);
-                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please fill in all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please fill in all fields correctly", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -75,7 +87,49 @@ namespace TournamentManager.Frontend
             this.PlayerAgeTextBox.Text = "";
             this.PlayerHeightTextBox.Text = "";
             this.PlayerWeightTextBox.Text = "";
-            this.PlayerPositionComboBox.SelectedIndex = 0;
+            this.PlayerPositionComboBox.SelectedItem = null;
+        }
+
+        private void ImportMultiplePlayersButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JSON Files (*.json)|*.json|All files (*.*)|*.*";
+            openFileDialog.Title = "Import Players";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string filePath = openFileDialog.FileName;
+                    string fileContent = File.ReadAllText(filePath);
+                    List<Player>? players = JsonSerializer.Deserialize<List<Player>>(fileContent);
+
+                    if (players != null)
+                    {
+                        foreach (var player in players)
+                        {
+                            try
+                            {
+                                Backend.AddPlayerToTeam(this.team, player);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"Failed to import players: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("The file is not a valid team JSON.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show($"Failed to parse the file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
