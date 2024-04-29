@@ -17,10 +17,6 @@ public class MulticolorButton : Button
         this.BackgroundColor = Color.LightGray;
         this.TopBorderColor = Color.LightGray;
         this.BottomBorderColor = Color.LightGray;
-     //   this.TopBorderColor = Color.FromArgb(150, this.TopBorderColor.R, this.TopBorderColor.G, this.TopBorderColor.B);
-     //   this.BottomBorderColor = Color.FromArgb(150, this.BottomBorderColor.R, this.BottomBorderColor.G, this.BottomBorderColor.B);
-     //   this.BackgroundColor = Color.FromArgb(150, this.BackgroundColor.R, this.BackgroundColor.G, this.BackgroundColor.B);
-        // Update the button colors here
         this.Invalidate();
     }
 

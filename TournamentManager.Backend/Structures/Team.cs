@@ -5,9 +5,9 @@ namespace TournamentManager.Backend.Structures
 {
     public class Team
     {
-        public string Name { get; set; }
-        public string City { get; set; }
-        public Colors Colors { get; set; }
+        public string Name { get; set; } = "";
+        public string City { get; set; } = "";
+        public Colors Colors { get; set; } = new Colors();
         public string Abbreviation { get; set; } = "TBD";
         public List<Player> Players { get; set; } = new List<Player>();
 
@@ -16,16 +16,20 @@ namespace TournamentManager.Backend.Structures
         private Color _bottomColor = Color.SkyBlue;
 
         private Tournament? _currentTournament = null;
-
+        [JsonIgnore]
         public bool CanBeManaged => this._currentTournament == null;
 
-        public Team(string name, string city, List<Player> players, Colors colors)
+        public Team()
+        {
+        }
+        
+        public Team(string name, string city, string abbrevation, List<Player> players, Colors colors)
         {
             this.Colors = colors;
             this.Name = name;
+            this.Abbreviation = abbrevation;
             this.City = city;
             this.Players = players;
-
             ConvertArgbToColors();
         }
 

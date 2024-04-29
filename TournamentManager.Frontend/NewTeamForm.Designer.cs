@@ -41,6 +41,8 @@
             ButColorButton = new Button();
             PreviewButton = new MulticolorButton();
             label4 = new Label();
+            label5 = new Label();
+            TeamAbbrevationTextBox = new TextBox();
             SuspendLayout();
             // 
             // OKButton
@@ -73,7 +75,7 @@
             // 
             // NewTeamCityTextBox
             // 
-            NewTeamCityTextBox.Location = new Point(134, 94);
+            NewTeamCityTextBox.Location = new Point(134, 90);
             NewTeamCityTextBox.Name = "NewTeamCityTextBox";
             NewTeamCityTextBox.Size = new Size(144, 23);
             NewTeamCityTextBox.TabIndex = 3;
@@ -91,7 +93,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(55, 61);
+            label1.Location = new Point(55, 64);
             label1.Name = "label1";
             label1.Size = new Size(73, 15);
             label1.TabIndex = 5;
@@ -100,7 +102,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(66, 94);
+            label2.Location = new Point(68, 93);
             label2.Name = "label2";
             label2.Size = new Size(62, 15);
             label2.TabIndex = 6;
@@ -109,7 +111,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(55, 131);
+            label3.Location = new Point(55, 123);
             label3.Name = "label3";
             label3.Size = new Size(75, 15);
             label3.TabIndex = 7;
@@ -117,7 +119,7 @@
             // 
             // TopColorButton
             // 
-            TopColorButton.Location = new Point(134, 131);
+            TopColorButton.Location = new Point(134, 119);
             TopColorButton.Name = "TopColorButton";
             TopColorButton.Size = new Size(44, 23);
             TopColorButton.TabIndex = 8;
@@ -126,7 +128,7 @@
             // 
             // BackColorButton
             // 
-            BackColorButton.Location = new Point(184, 131);
+            BackColorButton.Location = new Point(184, 119);
             BackColorButton.Name = "BackColorButton";
             BackColorButton.Size = new Size(44, 23);
             BackColorButton.TabIndex = 9;
@@ -135,7 +137,7 @@
             // 
             // ButColorButton
             // 
-            ButColorButton.Location = new Point(234, 131);
+            ButColorButton.Location = new Point(234, 119);
             ButColorButton.Name = "ButColorButton";
             ButColorButton.Size = new Size(44, 23);
             ButColorButton.TabIndex = 10;
@@ -145,9 +147,9 @@
             // PreviewButton
             // 
             PreviewButton.BackgroundColor = Color.FromArgb(255, 255, 255);
-            PreviewButton.BorderThickness = 25;
+            PreviewButton.BorderThickness = 24;
             PreviewButton.BottomBorderColor = Color.FromArgb(255, 255, 255);
-            PreviewButton.Location = new Point(134, 193);
+            PreviewButton.Location = new Point(134, 177);
             PreviewButton.Name = "PreviewButton";
             PreviewButton.Size = new Size(144, 74);
             PreviewButton.TabIndex = 11;
@@ -158,17 +160,35 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(66, 223);
+            label4.Location = new Point(77, 207);
             label4.Name = "label4";
             label4.Size = new Size(51, 15);
             label4.TabIndex = 12;
             label4.Text = "Preview:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(22, 151);
+            label5.Name = "label5";
+            label5.Size = new Size(106, 15);
+            label5.TabIndex = 13;
+            label5.Text = "Team Abbrevation:";
+            // 
+            // TeamAbbrevationTextBox
+            // 
+            TeamAbbrevationTextBox.Location = new Point(134, 148);
+            TeamAbbrevationTextBox.Name = "TeamAbbrevationTextBox";
+            TeamAbbrevationTextBox.Size = new Size(56, 23);
+            TeamAbbrevationTextBox.TabIndex = 14;
             // 
             // NewTeamForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(297, 360);
+            Controls.Add(TeamAbbrevationTextBox);
+            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(PreviewButton);
             Controls.Add(ButColorButton);
@@ -203,5 +223,7 @@
         private Button ButColorButton;
         private MulticolorButton PreviewButton;
         private Label label4;
+        private Label label5;
+        private TextBox TeamAbbrevationTextBox;
     }
 }

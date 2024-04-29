@@ -17,7 +17,6 @@ namespace TournamentManager.Frontend
     {
         private BackendMain Backend;
         private string _previewTeamName = "";
-        private string _previewTeamCity = "";
         public NewTeamForm(BackendMain backend)
         {
             this.Backend = backend;
@@ -34,13 +33,17 @@ namespace TournamentManager.Frontend
             {
                 MessageBox.Show("City cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else if (TeamAbbrevationTextBox.Text.Length != 3)
+            {
+                MessageBox.Show("Abbrevation must be 3 characters long", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 Colors colors = new Colors();
                 colors.TopColor = new int[] { TopColorButton.BackColor.A, TopColorButton.BackColor.R, TopColorButton.BackColor.G, TopColorButton.BackColor.B };
                 colors.BackGroundColor = new int[] { BackColorButton.BackColor.A, BackColorButton.BackColor.R, BackColorButton.BackColor.G, BackColorButton.BackColor.B };
                 colors.BottomColor = new int[] { ButColorButton.BackColor.A, ButColorButton.BackColor.R, ButColorButton.BackColor.G, ButColorButton.BackColor.B };
-                bool success = this.Backend.RegisterNewTeam(teamName: NewTeamNameTextBox.Text, teamCity: NewTeamCityTextBox.Text, colors: colors);
+                bool success = this.Backend.RegisterNewTeam(teamName: NewTeamNameTextBox.Text, teamCity: NewTeamCityTextBox.Text, colors: colors, abbrevation: TeamAbbrevationTextBox.Text);
                 if (!success)
                 {
                     MessageBox.Show("Team already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -131,7 +134,7 @@ namespace TournamentManager.Frontend
             UpdatePreviewButtonText(name: NewTeamNameTextBox.Text);
         }
 
-        private void UpdatePreviewButtonText(string name="", string city="")
+        private void UpdatePreviewButtonText(string name = "", string city = "")
         {
             this._previewTeamName = name == "" ? this._previewTeamName : name;
             PreviewButton.Text = $"{this._previewTeamName}";
