@@ -2,11 +2,11 @@
 {
     public class Player
     {
-        public string Name { get; private set; }
-        public int Age { get; private set; }
-        public int Height { get; private set; }
-        public int Weight { get; private set; }
-        public string Position { get; private set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public int Height { get; set; }
+        public int Weight { get; set; }
+        public string Position { get; set; }
         
         public Player(string name, int age, int height, int weight, string position)
         {
