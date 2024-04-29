@@ -1,0 +1,97 @@
+{
+    "Name": "Jets",
+    "City": "Winnipeg",
+    "Colors": {
+        "TopColor": [
+            255,
+            4,
+            30,
+            66
+        ],
+        "BackGroundColor": [
+            255,
+            0,
+            76,
+            151
+        ],
+        "BottomColor": [
+            255,
+            255,
+            255,
+            255
+        ]
+    },
+    "Abbreviation": "WPG",
+    "Players": [
+        {
+            "Name": "David Ramirez",
+            "Age": 30,
+            "Height": 168,
+            "Weight": 95,
+            "Position": "RW"
+        },
+        {
+            "Name": "Thomas Griffin",
+            "Age": 40,
+            "Height": 185,
+            "Weight": 118,
+            "Position": "RW"
+        },
+        {
+            "Name": "William Davis",
+            "Age": 36,
+            "Height": 183,
+            "Weight": 66,
+            "Position": "D"
+        },
+        {
+            "Name": "Patrick Kim",
+            "Age": 23,
+            "Height": 167,
+            "Weight": 117,
+            "Position": "C"
+        },
+        {
+            "Name": "Brandon Adams",
+            "Age": 18,
+            "Height": 161,
+            "Weight": 89,
+            "Position": "D"
+        },
+        {
+            "Name": "James Hernandez",
+            "Age": 29,
+            "Height": 164,
+            "Weight": 119,
+            "Position": "C"
+        },
+        {
+            "Name": "Michael Brown",
+            "Age": 29,
+            "Height": 166,
+            "Weight": 100,
+            "Position": "LW"
+        },
+        {
+            "Name": "Patrick Johnson",
+            "Age": 18,
+            "Height": 195,
+            "Weight": 83,
+            "Position": "D"
+        },
+        {
+            "Name": "Mark Clayton",
+            "Age": 35,
+            "Height": 166,
+            "Weight": 72,
+            "Position": "LW"
+        },
+        {
+            "Name": "John Russell",
+            "Age": 25,
+            "Height": 192,
+            "Weight": 102,
+            "Position": "RW"
+        }
+    ]
+}

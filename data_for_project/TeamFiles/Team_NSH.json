@@ -1,0 +1,97 @@
+{
+    "Name": "Predators",
+    "City": "Nashville",
+    "Colors": {
+        "TopColor": [
+            255,
+            24,
+            30,
+            66
+        ],
+        "BackGroundColor": [
+            255,
+            255,
+            184,
+            28
+        ],
+        "BottomColor": [
+            255,
+            255,
+            255,
+            255
+        ]
+    },
+    "Abbreviation": "NSH",
+    "Players": [
+        {
+            "Name": "Joseph Wallace",
+            "Age": 19,
+            "Height": 195,
+            "Weight": 65,
+            "Position": "D"
+        },
+        {
+            "Name": "Mark Griffin",
+            "Age": 29,
+            "Height": 187,
+            "Weight": 70,
+            "Position": "C"
+        },
+        {
+            "Name": "Charles Adams",
+            "Age": 36,
+            "Height": 151,
+            "Weight": 99,
+            "Position": "LW"
+        },
+        {
+            "Name": "Brandon Hart",
+            "Age": 29,
+            "Height": 174,
+            "Weight": 118,
+            "Position": "RW"
+        },
+        {
+            "Name": "Kevin Russell",
+            "Age": 29,
+            "Height": 164,
+            "Weight": 115,
+            "Position": "LW"
+        },
+        {
+            "Name": "Gary Hernandez",
+            "Age": 37,
+            "Height": 179,
+            "Weight": 102,
+            "Position": "C"
+        },
+        {
+            "Name": "Brandon Baker",
+            "Age": 26,
+            "Height": 157,
+            "Weight": 81,
+            "Position": "C"
+        },
+        {
+            "Name": "Jacob Moore",
+            "Age": 25,
+            "Height": 183,
+            "Weight": 62,
+            "Position": "RW"
+        },
+        {
+            "Name": "Brian Baker",
+            "Age": 18,
+            "Height": 167,
+            "Weight": 74,
+            "Position": "RW"
+        },
+        {
+            "Name": "Brian Gray",
+            "Age": 23,
+            "Height": 188,
+            "Weight": 73,
+            "Position": "LW"
+        }
+    ]
+}

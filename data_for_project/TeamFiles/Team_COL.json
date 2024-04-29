@@ -1,0 +1,97 @@
+{
+    "Name": "Avalanche",
+    "City": "Colorado",
+    "Colors": {
+        "TopColor": [
+            255,
+            111,
+            38,
+            61
+        ],
+        "BackGroundColor": [
+            255,
+            35,
+            97,
+            146
+        ],
+        "BottomColor": [
+            255,
+            162,
+            170,
+            173
+        ]
+    },
+    "Abbreviation": "COL",
+    "Players": [
+        {
+            "Name": "Raymond Clayton",
+            "Age": 30,
+            "Height": 198,
+            "Weight": 65,
+            "Position": "C"
+        },
+        {
+            "Name": "Joseph Scott",
+            "Age": 38,
+            "Height": 186,
+            "Weight": 109,
+            "Position": "RW"
+        },
+        {
+            "Name": "Robert Hart",
+            "Age": 40,
+            "Height": 198,
+            "Weight": 98,
+            "Position": "C"
+        },
+        {
+            "Name": "Kevin Bryant",
+            "Age": 30,
+            "Height": 193,
+            "Weight": 86,
+            "Position": "D"
+        },
+        {
+            "Name": "Daniel Nelson",
+            "Age": 37,
+            "Height": 195,
+            "Weight": 104,
+            "Position": "RW"
+        },
+        {
+            "Name": "Patrick Bryant",
+            "Age": 36,
+            "Height": 175,
+            "Weight": 107,
+            "Position": "C"
+        },
+        {
+            "Name": "Samuel Baker",
+            "Age": 37,
+            "Height": 167,
+            "Weight": 114,
+            "Position": "C"
+        },
+        {
+            "Name": "Brandon Gibson",
+            "Age": 22,
+            "Height": 198,
+            "Weight": 85,
+            "Position": "LW"
+        },
+        {
+            "Name": "Mark Hayes",
+            "Age": 27,
+            "Height": 185,
+            "Weight": 76,
+            "Position": "LW"
+        },
+        {
+            "Name": "Thomas Hawkins",
+            "Age": 25,
+            "Height": 157,
+            "Weight": 93,
+            "Position": "RW"
+        }
+    ]
+}

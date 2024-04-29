@@ -1,0 +1,97 @@
+{
+    "Name": "Kings",
+    "City": "Los Angeles",
+    "Colors": {
+        "TopColor": [
+            255,
+            17,
+            17,
+            17
+        ],
+        "BackGroundColor": [
+            255,
+            162,
+            170,
+            173
+        ],
+        "BottomColor": [
+            255,
+            255,
+            255,
+            255
+        ]
+    },
+    "Abbreviation": "LAK",
+    "Players": [
+        {
+            "Name": "Joshua Hart",
+            "Age": 31,
+            "Height": 194,
+            "Weight": 94,
+            "Position": "LW"
+        },
+        {
+            "Name": "Jacob Hamilton",
+            "Age": 19,
+            "Height": 157,
+            "Weight": 87,
+            "Position": "RW"
+        },
+        {
+            "Name": "Benjamin Ramirez",
+            "Age": 35,
+            "Height": 167,
+            "Weight": 108,
+            "Position": "D"
+        },
+        {
+            "Name": "Patrick Ramirez",
+            "Age": 32,
+            "Height": 184,
+            "Weight": 71,
+            "Position": "LW"
+        },
+        {
+            "Name": "Anthony Jones",
+            "Age": 29,
+            "Height": 173,
+            "Weight": 71,
+            "Position": "D"
+        },
+        {
+            "Name": "Paul Johnson",
+            "Age": 23,
+            "Height": 162,
+            "Weight": 97,
+            "Position": "RW"
+        },
+        {
+            "Name": "Brian Miller",
+            "Age": 25,
+            "Height": 154,
+            "Weight": 94,
+            "Position": "C"
+        },
+        {
+            "Name": "Ronald Murphy",
+            "Age": 29,
+            "Height": 161,
+            "Weight": 76,
+            "Position": "D"
+        },
+        {
+            "Name": "Nicholas Cook",
+            "Age": 40,
+            "Height": 159,
+            "Weight": 90,
+            "Position": "D"
+        },
+        {
+            "Name": "Thomas Baker",
+            "Age": 33,
+            "Height": 153,
+            "Weight": 95,
+            "Position": "RW"
+        }
+    ]
+}

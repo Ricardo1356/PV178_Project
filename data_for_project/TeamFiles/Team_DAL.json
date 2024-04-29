@@ -1,0 +1,97 @@
+{
+    "Name": "Stars",
+    "City": "Dallas",
+    "Colors": {
+        "TopColor": [
+            255,
+            0,
+            104,
+            71
+        ],
+        "BackGroundColor": [
+            255,
+            143,
+            143,
+            140
+        ],
+        "BottomColor": [
+            255,
+            17,
+            17,
+            17
+        ]
+    },
+    "Abbreviation": "DAL",
+    "Players": [
+        {
+            "Name": "Jack Hamilton",
+            "Age": 34,
+            "Height": 192,
+            "Weight": 91,
+            "Position": "C"
+        },
+        {
+            "Name": "Kevin Morgan",
+            "Age": 29,
+            "Height": 165,
+            "Weight": 72,
+            "Position": "LW"
+        },
+        {
+            "Name": "Eric Bryant",
+            "Age": 22,
+            "Height": 182,
+            "Weight": 71,
+            "Position": "D"
+        },
+        {
+            "Name": "Stephen Smith",
+            "Age": 30,
+            "Height": 193,
+            "Weight": 63,
+            "Position": "D"
+        },
+        {
+            "Name": "Edward Graham",
+            "Age": 30,
+            "Height": 163,
+            "Weight": 70,
+            "Position": "D"
+        },
+        {
+            "Name": "Stephen Wallace",
+            "Age": 28,
+            "Height": 165,
+            "Weight": 97,
+            "Position": "RW"
+        },
+        {
+            "Name": "Brandon Bailey",
+            "Age": 18,
+            "Height": 191,
+            "Weight": 93,
+            "Position": "RW"
+        },
+        {
+            "Name": "Raymond Ford",
+            "Age": 28,
+            "Height": 193,
+            "Weight": 81,
+            "Position": "D"
+        },
+        {
+            "Name": "Nicholas Griffin",
+            "Age": 30,
+            "Height": 160,
+            "Weight": 63,
+            "Position": "LW"
+        },
+        {
+            "Name": "Robert Rivera",
+            "Age": 38,
+            "Height": 158,
+            "Weight": 113,
+            "Position": "LW"
+        }
+    ]
+}

@@ -1,0 +1,97 @@
+{
+    "Name": "Oilers",
+    "City": "Edmonton",
+    "Colors": {
+        "TopColor": [
+            255,
+            4,
+            30,
+            66
+        ],
+        "BackGroundColor": [
+            255,
+            252,
+            76,
+            2
+        ],
+        "BottomColor": [
+            255,
+            4,
+            30,
+            66
+        ]
+    },
+    "Abbreviation": "EDM",
+    "Players": [
+        {
+            "Name": "Thomas Peterson",
+            "Age": 25,
+            "Height": 194,
+            "Weight": 68,
+            "Position": "LW"
+        },
+        {
+            "Name": "Ronald Clayton",
+            "Age": 26,
+            "Height": 162,
+            "Weight": 117,
+            "Position": "C"
+        },
+        {
+            "Name": "Thomas Bell",
+            "Age": 33,
+            "Height": 164,
+            "Weight": 85,
+            "Position": "D"
+        },
+        {
+            "Name": "Matthew McDonald",
+            "Age": 26,
+            "Height": 155,
+            "Weight": 61,
+            "Position": "D"
+        },
+        {
+            "Name": "Paul McDonald",
+            "Age": 34,
+            "Height": 164,
+            "Weight": 99,
+            "Position": "RW"
+        },
+        {
+            "Name": "Stephen Rogers",
+            "Age": 34,
+            "Height": 199,
+            "Weight": 84,
+            "Position": "LW"
+        },
+        {
+            "Name": "Kevin Gray",
+            "Age": 22,
+            "Height": 156,
+            "Weight": 101,
+            "Position": "C"
+        },
+        {
+            "Name": "Patrick Wallace",
+            "Age": 39,
+            "Height": 168,
+            "Weight": 76,
+            "Position": "C"
+        },
+        {
+            "Name": "Edward Bryant",
+            "Age": 18,
+            "Height": 159,
+            "Weight": 61,
+            "Position": "LW"
+        },
+        {
+            "Name": "Brian Myers",
+            "Age": 31,
+            "Height": 159,
+            "Weight": 63,
+            "Position": "C"
+        }
+    ]
+}

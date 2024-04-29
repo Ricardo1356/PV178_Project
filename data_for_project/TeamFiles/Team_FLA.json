@@ -1,0 +1,97 @@
+{
+    "Name": "Panthers",
+    "City": "Florida",
+    "Colors": {
+        "TopColor": [
+            255,
+            4,
+            30,
+            66
+        ],
+        "BackGroundColor": [
+            255,
+            200,
+            16,
+            46
+        ],
+        "BottomColor": [
+            255,
+            185,
+            151,
+            91
+        ]
+    },
+    "Abbreviation": "FLA",
+    "Players": [
+        {
+            "Name": "Kenneth Johnson",
+            "Age": 37,
+            "Height": 182,
+            "Weight": 115,
+            "Position": "RW"
+        },
+        {
+            "Name": "Brian Lewis",
+            "Age": 34,
+            "Height": 169,
+            "Weight": 77,
+            "Position": "C"
+        },
+        {
+            "Name": "Samuel Spencer",
+            "Age": 35,
+            "Height": 162,
+            "Weight": 79,
+            "Position": "RW"
+        },
+        {
+            "Name": "Gregory Davis",
+            "Age": 23,
+            "Height": 170,
+            "Weight": 65,
+            "Position": "RW"
+        },
+        {
+            "Name": "Brian Bell",
+            "Age": 25,
+            "Height": 188,
+            "Weight": 109,
+            "Position": "RW"
+        },
+        {
+            "Name": "Justin Cook",
+            "Age": 34,
+            "Height": 175,
+            "Weight": 105,
+            "Position": "LW"
+        },
+        {
+            "Name": "Samuel Bell",
+            "Age": 35,
+            "Height": 192,
+            "Weight": 96,
+            "Position": "LW"
+        },
+        {
+            "Name": "William McDonald",
+            "Age": 22,
+            "Height": 174,
+            "Weight": 82,
+            "Position": "RW"
+        },
+        {
+            "Name": "Gregory Wilson",
+            "Age": 29,
+            "Height": 153,
+            "Weight": 74,
+            "Position": "LW"
+        },
+        {
+            "Name": "Jeffrey Moore",
+            "Age": 20,
+            "Height": 191,
+            "Weight": 90,
+            "Position": "LW"
+        }
+    ]
+}

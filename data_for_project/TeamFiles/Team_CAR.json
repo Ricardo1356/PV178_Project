@@ -1,0 +1,97 @@
+{
+    "Name": "Hurricanes",
+    "City": "Carolina",
+    "Colors": {
+        "TopColor": [
+            255,
+            206,
+            17,
+            38
+        ],
+        "BackGroundColor": [
+            255,
+            255,
+            255,
+            255
+        ],
+        "BottomColor": [
+            255,
+            164,
+            169,
+            173
+        ]
+    },
+    "Abbreviation": "CAR",
+    "Players": [
+        {
+            "Name": "Kevin Murphy",
+            "Age": 27,
+            "Height": 151,
+            "Weight": 75,
+            "Position": "C"
+        },
+        {
+            "Name": "Eric Richardson",
+            "Age": 32,
+            "Height": 177,
+            "Weight": 107,
+            "Position": "LW"
+        },
+        {
+            "Name": "Thomas Russell",
+            "Age": 21,
+            "Height": 194,
+            "Weight": 100,
+            "Position": "C"
+        },
+        {
+            "Name": "Daniel Scott",
+            "Age": 30,
+            "Height": 162,
+            "Weight": 101,
+            "Position": "C"
+        },
+        {
+            "Name": "Nicholas Clayton",
+            "Age": 32,
+            "Height": 171,
+            "Weight": 81,
+            "Position": "RW"
+        },
+        {
+            "Name": "Charles Griffin",
+            "Age": 23,
+            "Height": 185,
+            "Weight": 78,
+            "Position": "C"
+        },
+        {
+            "Name": "Andrew Peterson",
+            "Age": 33,
+            "Height": 158,
+            "Weight": 69,
+            "Position": "RW"
+        },
+        {
+            "Name": "Benjamin Ford",
+            "Age": 29,
+            "Height": 184,
+            "Weight": 70,
+            "Position": "RW"
+        },
+        {
+            "Name": "Jacob Rogers",
+            "Age": 24,
+            "Height": 160,
+            "Weight": 100,
+            "Position": "LW"
+        },
+        {
+            "Name": "Andrew Taylor",
+            "Age": 23,
+            "Height": 198,
+            "Weight": 80,
+            "Position": "RW"
+        }
+    ]
+}

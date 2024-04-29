@@ -1,0 +1,97 @@
+{
+    "Name": "Capitals",
+    "City": "Washington",
+    "Colors": {
+        "TopColor": [
+            255,
+            4,
+            30,
+            66
+        ],
+        "BackGroundColor": [
+            255,
+            200,
+            16,
+            46
+        ],
+        "BottomColor": [
+            255,
+            255,
+            255,
+            255
+        ]
+    },
+    "Abbreviation": "WSH",
+    "Players": [
+        {
+            "Name": "Frank Lewis",
+            "Age": 22,
+            "Height": 180,
+            "Weight": 87,
+            "Position": "C"
+        },
+        {
+            "Name": "Patrick Green",
+            "Age": 36,
+            "Height": 198,
+            "Weight": 66,
+            "Position": "LW"
+        },
+        {
+            "Name": "Edward Lewis",
+            "Age": 34,
+            "Height": 156,
+            "Weight": 91,
+            "Position": "LW"
+        },
+        {
+            "Name": "Paul Ford",
+            "Age": 21,
+            "Height": 154,
+            "Weight": 90,
+            "Position": "D"
+        },
+        {
+            "Name": "Brian Scott",
+            "Age": 20,
+            "Height": 170,
+            "Weight": 66,
+            "Position": "D"
+        },
+        {
+            "Name": "Brian Griffin",
+            "Age": 32,
+            "Height": 164,
+            "Weight": 78,
+            "Position": "D"
+        },
+        {
+            "Name": "Timothy Ramirez",
+            "Age": 28,
+            "Height": 195,
+            "Weight": 106,
+            "Position": "D"
+        },
+        {
+            "Name": "Edward Johnson",
+            "Age": 39,
+            "Height": 151,
+            "Weight": 115,
+            "Position": "C"
+        },
+        {
+            "Name": "Andrew Baker",
+            "Age": 36,
+            "Height": 174,
+            "Weight": 95,
+            "Position": "LW"
+        },
+        {
+            "Name": "Matthew Morgan",
+            "Age": 28,
+            "Height": 169,
+            "Weight": 105,
+            "Position": "LW"
+        }
+    ]
+}

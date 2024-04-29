@@ -1,0 +1,97 @@
+{
+    "Name": "Red Wings",
+    "City": "Detroit",
+    "Colors": {
+        "TopColor": [
+            255,
+            206,
+            17,
+            38
+        ],
+        "BackGroundColor": [
+            255,
+            255,
+            255,
+            255
+        ],
+        "BottomColor": [
+            255,
+            206,
+            17,
+            38
+        ]
+    },
+    "Abbreviation": "DET",
+    "Players": [
+        {
+            "Name": "Kenneth Gibson",
+            "Age": 23,
+            "Height": 167,
+            "Weight": 104,
+            "Position": "LW"
+        },
+        {
+            "Name": "John Hamilton",
+            "Age": 35,
+            "Height": 176,
+            "Weight": 111,
+            "Position": "D"
+        },
+        {
+            "Name": "Charles Griffin",
+            "Age": 24,
+            "Height": 170,
+            "Weight": 87,
+            "Position": "C"
+        },
+        {
+            "Name": "Brian Harris",
+            "Age": 20,
+            "Height": 174,
+            "Weight": 94,
+            "Position": "RW"
+        },
+        {
+            "Name": "Jeffrey Russell",
+            "Age": 27,
+            "Height": 183,
+            "Weight": 113,
+            "Position": "LW"
+        },
+        {
+            "Name": "Justin Myers",
+            "Age": 31,
+            "Height": 173,
+            "Weight": 96,
+            "Position": "LW"
+        },
+        {
+            "Name": "Jason Richardson",
+            "Age": 19,
+            "Height": 160,
+            "Weight": 91,
+            "Position": "RW"
+        },
+        {
+            "Name": "Daniel Murphy",
+            "Age": 32,
+            "Height": 158,
+            "Weight": 105,
+            "Position": "LW"
+        },
+        {
+            "Name": "Scott Adams",
+            "Age": 28,
+            "Height": 158,
+            "Weight": 114,
+            "Position": "RW"
+        },
+        {
+            "Name": "Michael Ford",
+            "Age": 26,
+            "Height": 164,
+            "Weight": 76,
+            "Position": "RW"
+        }
+    ]
+}

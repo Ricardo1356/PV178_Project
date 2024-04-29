@@ -1,0 +1,97 @@
+{
+    "Name": "Rangers",
+    "City": "New York",
+    "Colors": {
+        "TopColor": [
+            255,
+            0,
+            56,
+            168
+        ],
+        "BackGroundColor": [
+            255,
+            206,
+            17,
+            38
+        ],
+        "BottomColor": [
+            255,
+            255,
+            255,
+            255
+        ]
+    },
+    "Abbreviation": "NYR",
+    "Players": [
+        {
+            "Name": "William Clayton",
+            "Age": 21,
+            "Height": 151,
+            "Weight": 105,
+            "Position": "C"
+        },
+        {
+            "Name": "Samuel Miller",
+            "Age": 38,
+            "Height": 164,
+            "Weight": 100,
+            "Position": "RW"
+        },
+        {
+            "Name": "William Kim",
+            "Age": 27,
+            "Height": 156,
+            "Weight": 88,
+            "Position": "RW"
+        },
+        {
+            "Name": "Brian Wallace",
+            "Age": 18,
+            "Height": 177,
+            "Weight": 87,
+            "Position": "D"
+        },
+        {
+            "Name": "Gary Miller",
+            "Age": 40,
+            "Height": 199,
+            "Weight": 102,
+            "Position": "LW"
+        },
+        {
+            "Name": "Jeffrey Graham",
+            "Age": 32,
+            "Height": 196,
+            "Weight": 90,
+            "Position": "LW"
+        },
+        {
+            "Name": "Samuel Spencer",
+            "Age": 40,
+            "Height": 197,
+            "Weight": 93,
+            "Position": "D"
+        },
+        {
+            "Name": "Robert Baker",
+            "Age": 31,
+            "Height": 151,
+            "Weight": 102,
+            "Position": "LW"
+        },
+        {
+            "Name": "Larry Russell",
+            "Age": 39,
+            "Height": 192,
+            "Weight": 94,
+            "Position": "C"
+        },
+        {
+            "Name": "Eric Hayes",
+            "Age": 26,
+            "Height": 188,
+            "Weight": 65,
+            "Position": "D"
+        }
+    ]
+}

@@ -1,0 +1,97 @@
+{
+    "Name": "Devils",
+    "City": "New Jersey",
+    "Colors": {
+        "TopColor": [
+            255,
+            0,
+            0,
+            0
+        ],
+        "BackGroundColor": [
+            255,
+            206,
+            17,
+            38
+        ],
+        "BottomColor": [
+            255,
+            255,
+            255,
+            255
+        ]
+    },
+    "Abbreviation": "NJD",
+    "Players": [
+        {
+            "Name": "Brandon Bell",
+            "Age": 30,
+            "Height": 166,
+            "Weight": 110,
+            "Position": "C"
+        },
+        {
+            "Name": "Nicholas Clark",
+            "Age": 21,
+            "Height": 152,
+            "Weight": 72,
+            "Position": "C"
+        },
+        {
+            "Name": "Gregory Adams",
+            "Age": 38,
+            "Height": 164,
+            "Weight": 77,
+            "Position": "LW"
+        },
+        {
+            "Name": "Edward Hayes",
+            "Age": 34,
+            "Height": 171,
+            "Weight": 75,
+            "Position": "D"
+        },
+        {
+            "Name": "Kevin Rivera",
+            "Age": 40,
+            "Height": 200,
+            "Weight": 118,
+            "Position": "RW"
+        },
+        {
+            "Name": "Matthew Graham",
+            "Age": 39,
+            "Height": 182,
+            "Weight": 92,
+            "Position": "D"
+        },
+        {
+            "Name": "Kenneth Ramirez",
+            "Age": 22,
+            "Height": 167,
+            "Weight": 63,
+            "Position": "LW"
+        },
+        {
+            "Name": "Joshua Harris",
+            "Age": 22,
+            "Height": 188,
+            "Weight": 87,
+            "Position": "LW"
+        },
+        {
+            "Name": "Ryan Gibson",
+            "Age": 29,
+            "Height": 183,
+            "Weight": 64,
+            "Position": "D"
+        },
+        {
+            "Name": "Samuel Morgan",
+            "Age": 26,
+            "Height": 177,
+            "Weight": 76,
+            "Position": "D"
+        }
+    ]
+}

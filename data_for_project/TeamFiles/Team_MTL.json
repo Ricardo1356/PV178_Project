@@ -1,0 +1,97 @@
+{
+    "Name": "Canadiens",
+    "City": "Montreal",
+    "Colors": {
+        "TopColor": [
+            255,
+            175,
+            30,
+            45
+        ],
+        "BackGroundColor": [
+            255,
+            25,
+            33,
+            104
+        ],
+        "BottomColor": [
+            255,
+            175,
+            30,
+            45
+        ]
+    },
+    "Abbreviation": "MTL",
+    "Players": [
+        {
+            "Name": "Justin Wilson",
+            "Age": 23,
+            "Height": 171,
+            "Weight": 82,
+            "Position": "D"
+        },
+        {
+            "Name": "Timothy Clayton",
+            "Age": 37,
+            "Height": 193,
+            "Weight": 81,
+            "Position": "RW"
+        },
+        {
+            "Name": "Brian Cook",
+            "Age": 32,
+            "Height": 180,
+            "Weight": 79,
+            "Position": "LW"
+        },
+        {
+            "Name": "Matthew Harris",
+            "Age": 32,
+            "Height": 168,
+            "Weight": 96,
+            "Position": "C"
+        },
+        {
+            "Name": "Jack Hill",
+            "Age": 18,
+            "Height": 185,
+            "Weight": 110,
+            "Position": "RW"
+        },
+        {
+            "Name": "Jack Diaz",
+            "Age": 24,
+            "Height": 155,
+            "Weight": 102,
+            "Position": "D"
+        },
+        {
+            "Name": "Jack Wilson",
+            "Age": 24,
+            "Height": 183,
+            "Weight": 105,
+            "Position": "LW"
+        },
+        {
+            "Name": "Ronald Griffin",
+            "Age": 35,
+            "Height": 187,
+            "Weight": 80,
+            "Position": "RW"
+        },
+        {
+            "Name": "Gary Johnson",
+            "Age": 22,
+            "Height": 170,
+            "Weight": 62,
+            "Position": "D"
+        },
+        {
+            "Name": "Ronald Miller",
+            "Age": 30,
+            "Height": 196,
+            "Weight": 102,
+            "Position": "LW"
+        }
+    ]
+}

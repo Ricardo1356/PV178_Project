@@ -1,0 +1,97 @@
+{
+    "Name": "Blackhawks",
+    "City": "Chicago",
+    "Colors": {
+        "TopColor": [
+            255,
+            207,
+            10,
+            44
+        ],
+        "BackGroundColor": [
+            255,
+            255,
+            255,
+            255
+        ],
+        "BottomColor": [
+            255,
+            0,
+            0,
+            0
+        ]
+    },
+    "Abbreviation": "CHI",
+    "Players": [
+        {
+            "Name": "Larry Kim",
+            "Age": 35,
+            "Height": 177,
+            "Weight": 81,
+            "Position": "D"
+        },
+        {
+            "Name": "Richard Myers",
+            "Age": 21,
+            "Height": 188,
+            "Weight": 115,
+            "Position": "D"
+        },
+        {
+            "Name": "Raymond Hayes",
+            "Age": 22,
+            "Height": 188,
+            "Weight": 92,
+            "Position": "RW"
+        },
+        {
+            "Name": "Jason Adams",
+            "Age": 38,
+            "Height": 172,
+            "Weight": 109,
+            "Position": "C"
+        },
+        {
+            "Name": "Michael Williams",
+            "Age": 38,
+            "Height": 187,
+            "Weight": 101,
+            "Position": "LW"
+        },
+        {
+            "Name": "Gary Moore",
+            "Age": 21,
+            "Height": 197,
+            "Weight": 83,
+            "Position": "C"
+        },
+        {
+            "Name": "Anthony Bailey",
+            "Age": 19,
+            "Height": 164,
+            "Weight": 82,
+            "Position": "C"
+        },
+        {
+            "Name": "Charles Taylor",
+            "Age": 33,
+            "Height": 200,
+            "Weight": 84,
+            "Position": "D"
+        },
+        {
+            "Name": "Kenneth Lewis",
+            "Age": 40,
+            "Height": 160,
+            "Weight": 92,
+            "Position": "C"
+        },
+        {
+            "Name": "Gregory Hamilton",
+            "Age": 36,
+            "Height": 182,
+            "Weight": 64,
+            "Position": "D"
+        }
+    ]
+}

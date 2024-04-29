@@ -1,0 +1,97 @@
+{
+    "Name": "Canucks",
+    "City": "Vancouver",
+    "Colors": {
+        "TopColor": [
+            255,
+            0,
+            32,
+            91
+        ],
+        "BackGroundColor": [
+            255,
+            10,
+            134,
+            61
+        ],
+        "BottomColor": [
+            255,
+            4,
+            28,
+            44
+        ]
+    },
+    "Abbreviation": "VAN",
+    "Players": [
+        {
+            "Name": "Samuel Hawkins",
+            "Age": 19,
+            "Height": 185,
+            "Weight": 119,
+            "Position": "RW"
+        },
+        {
+            "Name": "Daniel Bailey",
+            "Age": 23,
+            "Height": 165,
+            "Weight": 61,
+            "Position": "RW"
+        },
+        {
+            "Name": "Larry Reed",
+            "Age": 39,
+            "Height": 175,
+            "Weight": 109,
+            "Position": "D"
+        },
+        {
+            "Name": "Anthony Gray",
+            "Age": 21,
+            "Height": 199,
+            "Weight": 86,
+            "Position": "LW"
+        },
+        {
+            "Name": "Frank Lewis",
+            "Age": 21,
+            "Height": 189,
+            "Weight": 120,
+            "Position": "C"
+        },
+        {
+            "Name": "Brian Brown",
+            "Age": 31,
+            "Height": 193,
+            "Weight": 117,
+            "Position": "RW"
+        },
+        {
+            "Name": "Stephen Hernandez",
+            "Age": 31,
+            "Height": 182,
+            "Weight": 76,
+            "Position": "RW"
+        },
+        {
+            "Name": "Edward Ford",
+            "Age": 31,
+            "Height": 178,
+            "Weight": 82,
+            "Position": "C"
+        },
+        {
+            "Name": "Gary Jones",
+            "Age": 18,
+            "Height": 153,
+            "Weight": 80,
+            "Position": "LW"
+        },
+        {
+            "Name": "Kevin Cook",
+            "Age": 36,
+            "Height": 169,
+            "Weight": 63,
+            "Position": "D"
+        }
+    ]
+}

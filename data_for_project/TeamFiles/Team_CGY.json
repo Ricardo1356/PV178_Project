@@ -1,0 +1,97 @@
+{
+    "Name": "Flames",
+    "City": "Calgary",
+    "Colors": {
+        "TopColor": [
+            255,
+            210,
+            0,
+            28
+        ],
+        "BackGroundColor": [
+            255,
+            250,
+            175,
+            25
+        ],
+        "BottomColor": [
+            255,
+            255,
+            255,
+            255
+        ]
+    },
+    "Abbreviation": "CGY",
+    "Players": [
+        {
+            "Name": "Michael Jones",
+            "Age": 39,
+            "Height": 185,
+            "Weight": 93,
+            "Position": "D"
+        },
+        {
+            "Name": "Andrew Myers",
+            "Age": 21,
+            "Height": 172,
+            "Weight": 95,
+            "Position": "LW"
+        },
+        {
+            "Name": "Daniel Myers",
+            "Age": 22,
+            "Height": 196,
+            "Weight": 79,
+            "Position": "D"
+        },
+        {
+            "Name": "Edward Murphy",
+            "Age": 34,
+            "Height": 173,
+            "Weight": 120,
+            "Position": "C"
+        },
+        {
+            "Name": "William Clark",
+            "Age": 26,
+            "Height": 171,
+            "Weight": 120,
+            "Position": "D"
+        },
+        {
+            "Name": "William King",
+            "Age": 39,
+            "Height": 151,
+            "Weight": 91,
+            "Position": "C"
+        },
+        {
+            "Name": "Justin Gray",
+            "Age": 26,
+            "Height": 176,
+            "Weight": 78,
+            "Position": "C"
+        },
+        {
+            "Name": "Jacob Richardson",
+            "Age": 27,
+            "Height": 166,
+            "Weight": 91,
+            "Position": "LW"
+        },
+        {
+            "Name": "Brandon Hawkins",
+            "Age": 34,
+            "Height": 193,
+            "Weight": 91,
+            "Position": "D"
+        },
+        {
+            "Name": "Patrick Young",
+            "Age": 32,
+            "Height": 156,
+            "Weight": 76,
+            "Position": "LW"
+        }
+    ]
+}
