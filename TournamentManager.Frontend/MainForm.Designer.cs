@@ -103,7 +103,7 @@
             // 
             RegisterNewTeamButton.Location = new Point(51, 130);
             RegisterNewTeamButton.Name = "RegisterNewTeamButton";
-            RegisterNewTeamButton.Size = new Size(157, 42);
+            RegisterNewTeamButton.Size = new Size(147, 42);
             RegisterNewTeamButton.TabIndex = 4;
             RegisterNewTeamButton.Text = "Register New Team";
             RegisterNewTeamButton.UseVisualStyleBackColor = true;
