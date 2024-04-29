@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using TournamentManager.Backend.DTOs;
 using TournamentManager.Backend.Structures;
 
 namespace TournamentManager.Backend
@@ -6,8 +7,10 @@ namespace TournamentManager.Backend
     public class BackendMain
     {
         private List<Team> _teams;
+        private DataValidationService _dataValidator;
         public BackendMain()
         {
+            this._dataValidator = new DataValidationService();
             this._teams = DataAccess.LoadSavedTeams();
         }
 
@@ -16,13 +19,12 @@ namespace TournamentManager.Backend
             return this._teams;
         }
 
-        public bool CheckNewTeamName(string teamName)
+        public void CheckNewTeamName(string teamName)
         {
             foreach(var team in this._teams)
             {
-                if (team.Name == teamName) return true;
+                if (team.Name == teamName) throw new InvalidEnumArgumentException("Team name already exists.");
             }
-            return false;
         }
 
         public Team GetExistingTeam(string teamName, string city)
@@ -50,20 +52,23 @@ namespace TournamentManager.Backend
             return true;
         }
 
-        public bool RegisterNewTeam(string teamName = "", string teamCity = "", Team? team = null, Colors? colors = default, string abbrevation="")
+        public void RegisterNewTeam(TeamDataDto? teamDataDto=null, Team? team=null)
         {
-            if (teamName == "" && teamCity == "" && team == null) { return false; }
             if (team != null)
             {
-                if (CheckNewTeamName(team.Name)) return false;
+                _dataValidator.ValidateTeamData(team);
+                this.CheckNewTeamName(team.Name);
                 this._teams.Add(team);
-                return true;
+                return;
             }
-            if (CheckNewTeamName(teamName)) return false;        
-            Team newTeam = new Team(teamName, teamCity, abbrevation, [], colors!);
-
-            this._teams.Add(newTeam);
-            return true;
+            if (teamDataDto != null)
+            {
+                var teamD = (TeamDataDto)teamDataDto;
+                _dataValidator.ValidateTeamDataDto(teamD);
+                this.CheckNewTeamName(teamD.Name);
+                Team newTeam = new Team(teamD.Name, teamD.City, teamD.Abbrevation, [], teamD.Colors!);
+                this._teams.Add(newTeam);
+            }
         }
 
         public Tournament CreateNewTournament(TournamentType type, List<Team> teams)
@@ -83,11 +88,11 @@ namespace TournamentManager.Backend
             return NameGenerator.GenerateName();
         }
 
-        public PlayerStatsDto GeneratePlayerStats()
+        public PlayerDataDto GeneratePlayerStats()
         {
             Random random = new Random();
 
-            return new PlayerStatsDto
+            return new PlayerDataDto
             {
                 Name = GeneratePlayerName(), 
                 Age = random.Next(18, 40).ToString(),
@@ -96,42 +101,11 @@ namespace TournamentManager.Backend
                 Position = random.Next(0, 4)
             };
         }
-        public int AddPlayerToTeam(Team team, PlayerStatsDto playerStats)
+        public void AddPlayerToTeam(Team team, Player player)
         {
-            if (!team.CanBeManaged) return 1;
-            var validation = ValidatePlayerStats(playerStats);
-            if (validation != 0) return validation;
-            team.AddPlayer(new Player(playerStats.Name, int.Parse(playerStats.Age), int.Parse(playerStats.Height), int.Parse(playerStats.Weight), ((PlayerPosition)playerStats.Position).ToString()));
-            return 0;
-        }
-
-        private int ValidatePlayerStats(PlayerStatsDto playerStats)
-        {
-            if (string.IsNullOrWhiteSpace(playerStats.Name)) return 101;
-            if (string.IsNullOrWhiteSpace(playerStats.Age)) return 102;
-            if (string.IsNullOrWhiteSpace(playerStats.Height)) return 103;
-            if (string.IsNullOrWhiteSpace(playerStats.Weight)) return 104;
-            if (playerStats.Position < 0 || playerStats.Position > 4) return 800;
-
-            bool success = int.TryParse(playerStats.Age, out int age);
-            if (!success) return 201;
-
-            success = int.TryParse(playerStats.Height, out int height);
-            if (!success) return 202;
-
-            success = int.TryParse(playerStats.Weight, out int weight);
-            if (!success) return 203;
-
-            if (age < 18 || age > 40) return 301;
-            if (height < 160 || height > 210) return 302;
-            if (weight < 50 || weight > 150) return 303;
-
-            return 0;
-        }
-
-        public string ResolveErrorCode(int code)
-        {
-            return "";
+            if (!team.CanBeManaged) throw new InvalidOperationException("Team cannot be managed.");
+            _dataValidator.ValidatePlayerdata(player);
+            team.AddPlayer(player);
         }
     }
 }
