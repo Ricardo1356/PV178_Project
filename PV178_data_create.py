@@ -220,16 +220,13 @@ def generate_team_data():
 
 def save_data(all_teams_data):
     """Saves all generated data to files."""
-    # Directories for the files
     os.makedirs(path, exist_ok=True)
 
     # Directories for the files
     team_files_path = os.path.join(path, 'TeamFiles')
     players_files_path = os.path.join(path, 'PlayerFiles')
-    player_files_path = os.path.join(path, 'DeepPlayerFiles')
     os.makedirs(team_files_path, exist_ok=True)
     os.makedirs(players_files_path, exist_ok=True)
-    os.makedirs(player_files_path, exist_ok=True)
 
     # Save the SampleTeams.json
     with open(os.path.join(path, 'SampleTeams.json'), 'w') as f:
@@ -246,17 +243,8 @@ def save_data(all_teams_data):
         with open(os.path.join(players_files_path, f'Players_{i}.json'), 'w') as f:
             json.dump(players_batch, f, indent=4)
 
-    # Save 50 individual players
-    for i in range(50):
-        player_data = [team["Players"][i % 10] for team in all_teams_data]
-        with open(os.path.join(player_files_path, f'Player_{i}.json'), 'w') as f:
-            json.dump(player_data, f, indent=4)
-
 
 def main():
-    if not os.path.exists(path):
-        os.makedirs(path)
-
     teams_data = generate_team_data()
     save_data(teams_data)
 
