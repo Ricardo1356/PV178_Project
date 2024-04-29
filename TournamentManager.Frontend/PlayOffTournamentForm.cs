@@ -193,13 +193,14 @@ namespace TournamentManager.Frontend
                 DuelButton duel = (DuelButton) clickedButton;
                 if (duel.Team1 != null && duel.Team2 != null && duel.IsFinished == false)
                 {
-                    MessageBox.Show($"{duel.Team1.Name} - {duel.Team2.Name}");
                     duel.IsFinished = true;
-                    (Team winner, Team loser) = GetWinner(duel.Team1, duel.Team2);
+                    (Team winner, Team loser, int team1Score, int team2Score) = GetWinner(duel.Team1, duel.Team2);
                     duel.Winner = winner;
                     ShadeALlTeamOccurences(loser);
                     duel.WinnerPO.SetWinner(winner);
-                    duel.Button.Text = $"{duel.Team1.Abbreviation} 0 : 0 {duel.Team2.Abbreviation}";
+                    duel.Button.UpdateColorsByTeam(winner);
+                    duel.Button.DimmButton(0.8);
+                    duel.Button.Text = $"{duel.Team1.Abbreviation} {team1Score} : {team2Score} {duel.Team2.Abbreviation}";
                     (DuelButton d, int index) = GetDuelButton(duel);
                     if (duel.WinnerPO.NextDuel != null) 
                     {
@@ -211,6 +212,7 @@ namespace TournamentManager.Frontend
                         {
                             duel.WinnerPO.NextDuel.Team2 = winner;
                         }
+
                         if (duel.WinnerPO.NextDuel.Team1 != null && duel.WinnerPO.NextDuel.Team2 != null)
                         {
                             duel.WinnerPO.NextDuel.Button.Text = $"{duel.WinnerPO.NextDuel.Team1.Name}\nvs\n{duel.WinnerPO.NextDuel.Team2.Name}";
@@ -231,13 +233,19 @@ namespace TournamentManager.Frontend
             }
         }
 
-        private (Team, Team) GetWinner(Team team1, Team team2)
+        private (Team, Team, int, int) GetWinner(Team team1, Team team2)
         {
             MatchForm matchForm = new MatchForm(Backend, team1, team2);
             matchForm.ShowDialog();
-            Team winner = matchForm.Winner;
-            Team loser = winner == team1 ? team2 : team1;
-            return (winner, loser);
+
+            if (matchForm.Team1Score > matchForm.Team2Score)
+            {
+                return (team1, team2, (int)matchForm.Team1Score, (int)matchForm.Team2Score);
+            }
+            else
+            {
+                return (team2, team1, (int)matchForm.Team1Score, (int)matchForm.Team2Score);
+            }
         }
 
         private (DuelButton, int) GetDuelButton(DuelButton duelButton)

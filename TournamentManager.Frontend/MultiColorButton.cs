@@ -20,6 +20,26 @@ public class MulticolorButton : Button
         this.Invalidate();
     }
 
+    public void DimmButton(double dimFactor)
+    {
+        int r = (int)(BackgroundColor.R * dimFactor);
+        int g = (int)(BackgroundColor.G * dimFactor);
+        int b = (int)(BackgroundColor.B * dimFactor);
+        this.BackgroundColor = Color.FromArgb(255, r, g, b);
+
+        r = (int)(TopBorderColor.R * dimFactor);
+        g = (int)(TopBorderColor.G * dimFactor);
+        b = (int)(TopBorderColor.B * dimFactor);
+        this.TopBorderColor = Color.FromArgb(255, r, g, b);
+
+        r = (int)(BottomBorderColor.R * dimFactor);
+        g = (int)(BottomBorderColor.G * dimFactor);
+        b = (int)(BottomBorderColor.B * dimFactor);
+        this.BottomBorderColor = Color.FromArgb(255, r, g, b);
+
+        this.Invalidate();
+    }
+
     public void UpdateColorsByTeam(Team team)
     {
         this.TopBorderColor = team.GetTopColor();

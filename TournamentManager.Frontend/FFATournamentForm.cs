@@ -12,7 +12,7 @@ namespace TournamentManager.Frontend
         private int _rectangleHeight = 100;
         private int _spacing = 10;
 
-        private Dictionary<Button, (Team, Team)> matches = new Dictionary<Button, (Team, Team)>();
+        private Dictionary<Button, (Team, Team, bool)> matches = new Dictionary<Button, (Team, Team, bool)>();
         public FFATournamentForm(BackendMain backend, Tournament tournament)
         {
             this.Tournament = tournament;
@@ -44,7 +44,7 @@ namespace TournamentManager.Frontend
                         this.Controls.Add(panel);
                         continue;
                     }
-
+                    
                     MulticolorButton button = new MulticolorButton
                     {
                         Text = $"{teams[i-1].Name}\nvs\n{teams[j-1].Name}",
@@ -54,14 +54,23 @@ namespace TournamentManager.Frontend
                     };
                     this.Controls.Add(button);
                     button.Click += MatchClick!;
-                    matches.Add(button, (teams[i-1], teams[j-1]));
+                    matches.Add(button, (teams[i-1], teams[j-1], false));
                 }
             }
         }
 
         private void MatchClick(object sender, EventArgs e)
         {
-            MessageBox.Show($"{matches[(sender as Button)!].Item1.Name} vs {matches[(sender as Button)!].Item2.Name}");
+            MulticolorButton button = (sender as MulticolorButton)!;
+            Team team1 = matches[(sender as Button)!].Item1;
+            Team team2 = matches[(sender as Button)!].Item2;
+            MatchForm matchForm = new MatchForm(Backend, team1, team2);
+            matchForm.ShowDialog();
+            button.Text = $"{team1.Abbreviation} {matchForm.Team1Score} : {matchForm.Team2Score} {team2.Abbreviation}";
+            Team winner = matchForm.Team1Score > matchForm.Team2Score ? team1 : team2;
+            button.UpdateColorsByTeam(winner);
+            button.DimmButton(0.8);
+            matches[button] = (team1, team2, true);
         }
 
 
