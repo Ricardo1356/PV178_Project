@@ -38,7 +38,7 @@
             // 
             // CloseButton
             // 
-            CloseButton.Location = new Point(549, 180);
+            CloseButton.Location = new Point(545, 264);
             CloseButton.Name = "CloseButton";
             CloseButton.Size = new Size(75, 23);
             CloseButton.TabIndex = 0;
@@ -48,7 +48,7 @@
             // 
             // RemoveTeamButton
             // 
-            RemoveTeamButton.Location = new Point(266, 168);
+            RemoveTeamButton.Location = new Point(262, 252);
             RemoveTeamButton.Name = "RemoveTeamButton";
             RemoveTeamButton.Size = new Size(121, 47);
             RemoveTeamButton.TabIndex = 1;
@@ -68,12 +68,12 @@
             PlayersListView.Name = "PlayersListView";
             PlayersListView.ReadOnly = true;
             PlayersListView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            PlayersListView.Size = new Size(612, 150);
+            PlayersListView.Size = new Size(612, 234);
             PlayersListView.TabIndex = 2;
             // 
             // RemovePlayerButton
             // 
-            RemovePlayerButton.Location = new Point(139, 168);
+            RemovePlayerButton.Location = new Point(135, 252);
             RemovePlayerButton.Name = "RemovePlayerButton";
             RemovePlayerButton.Size = new Size(121, 47);
             RemovePlayerButton.TabIndex = 3;
@@ -83,11 +83,11 @@
             // 
             // AddPlayerButton
             // 
-            AddPlayerButton.Location = new Point(12, 168);
+            AddPlayerButton.Location = new Point(8, 252);
             AddPlayerButton.Name = "AddPlayerButton";
             AddPlayerButton.Size = new Size(121, 47);
             AddPlayerButton.TabIndex = 4;
-            AddPlayerButton.Text = "Add Player";
+            AddPlayerButton.Text = "Add Players";
             AddPlayerButton.UseVisualStyleBackColor = true;
             AddPlayerButton.Click += AddPlayerButton_Click;
             // 
@@ -95,12 +95,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(655, 227);
+            ClientSize = new Size(637, 314);
             Controls.Add(AddPlayerButton);
             Controls.Add(RemovePlayerButton);
             Controls.Add(PlayersListView);
             Controls.Add(RemoveTeamButton);
             Controls.Add(CloseButton);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "TeamOverviewForm";
             Text = "TeamOverviewForm";
             ((System.ComponentModel.ISupportInitialize)PlayersListView).EndInit();
