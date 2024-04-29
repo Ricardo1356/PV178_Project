@@ -43,6 +43,7 @@
             label4 = new Label();
             label5 = new Label();
             TeamAbbrevationTextBox = new TextBox();
+            MultipleTeamImportButton = new Button();
             SuspendLayout();
             // 
             // OKButton
@@ -82,11 +83,11 @@
             // 
             // ImportTeamButton
             // 
-            ImportTeamButton.Location = new Point(184, 32);
+            ImportTeamButton.Location = new Point(52, 12);
             ImportTeamButton.Name = "ImportTeamButton";
-            ImportTeamButton.Size = new Size(94, 23);
+            ImportTeamButton.Size = new Size(110, 33);
             ImportTeamButton.TabIndex = 4;
-            ImportTeamButton.Text = "Import";
+            ImportTeamButton.Text = "Import Team";
             ImportTeamButton.UseVisualStyleBackColor = true;
             ImportTeamButton.Click += ImportTeamButton_Click;
             // 
@@ -182,11 +183,22 @@
             TeamAbbrevationTextBox.Size = new Size(56, 23);
             TeamAbbrevationTextBox.TabIndex = 14;
             // 
+            // MultipleTeamImportButton
+            // 
+            MultipleTeamImportButton.Location = new Point(168, 12);
+            MultipleTeamImportButton.Name = "MultipleTeamImportButton";
+            MultipleTeamImportButton.Size = new Size(110, 33);
+            MultipleTeamImportButton.TabIndex = 15;
+            MultipleTeamImportButton.Text = "Import Teams";
+            MultipleTeamImportButton.UseVisualStyleBackColor = true;
+            MultipleTeamImportButton.Click += MultipleTeamImportButton_Click;
+            // 
             // NewTeamForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(297, 360);
+            Controls.Add(MultipleTeamImportButton);
             Controls.Add(TeamAbbrevationTextBox);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -225,5 +237,6 @@
         private Label label4;
         private Label label5;
         private TextBox TeamAbbrevationTextBox;
+        private Button MultipleTeamImportButton;
     }
 }

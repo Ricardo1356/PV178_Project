@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TournamentManager.Backend;
+using TournamentManager.Backend.DTOs;
 using TournamentManager.Backend.Structures;
 
 namespace TournamentManager.Frontend
@@ -25,33 +27,27 @@ namespace TournamentManager.Frontend
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            if (NewTeamNameTextBox.Text == "")
+            try
             {
-                MessageBox.Show("Name cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (NewTeamCityTextBox.Text == "")
-            {
-                MessageBox.Show("City cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (TeamAbbrevationTextBox.Text.Length != 3)
-            {
-                MessageBox.Show("Abbrevation must be 3 characters long", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                Colors colors = new Colors();
-                colors.TopColor = new int[] { TopColorButton.BackColor.A, TopColorButton.BackColor.R, TopColorButton.BackColor.G, TopColorButton.BackColor.B };
-                colors.BackGroundColor = new int[] { BackColorButton.BackColor.A, BackColorButton.BackColor.R, BackColorButton.BackColor.G, BackColorButton.BackColor.B };
-                colors.BottomColor = new int[] { ButColorButton.BackColor.A, ButColorButton.BackColor.R, ButColorButton.BackColor.G, ButColorButton.BackColor.B };
-                bool success = this.Backend.RegisterNewTeam(teamName: NewTeamNameTextBox.Text, teamCity: NewTeamCityTextBox.Text, colors: colors, abbrevation: TeamAbbrevationTextBox.Text);
-                if (!success)
+                TeamDataDto newTeamDto = new TeamDataDto
                 {
-                    MessageBox.Show("Team already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    this.Close();
-                }
+                    Name = NewTeamNameTextBox.Text,
+                    City = NewTeamCityTextBox.Text,
+                    Colors = new Colors
+                    {
+                        TopColor = new int[] { TopColorButton.BackColor.A, TopColorButton.BackColor.R, TopColorButton.BackColor.G, TopColorButton.BackColor.B },
+                        BackGroundColor = new int[] { BackColorButton.BackColor.A, BackColorButton.BackColor.R, BackColorButton.BackColor.G, BackColorButton.BackColor.B },
+                        BottomColor = new int[] { ButColorButton.BackColor.A, ButColorButton.BackColor.R, ButColorButton.BackColor.G, ButColorButton.BackColor.B }
+                    },
+                    Abbrevation = TeamAbbrevationTextBox.Text,
+                    Players = new List<Player>()
+                };
+                Backend.RegisterNewTeam(newTeamDto);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to create team: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -72,19 +68,19 @@ namespace TournamentManager.Frontend
                 {
                     string filePath = openFileDialog.FileName;
                     string fileContent = File.ReadAllText(filePath);
-                    Team importedTeam = JsonSerializer.Deserialize<Team>(fileContent)!;
-                    MessageBox.Show($"{importedTeam.Players.Count()}");
-
+                    Team? importedTeam = JsonSerializer.Deserialize<Team>(fileContent);
                     if (importedTeam != null)
                     {
-                        bool success = Backend.RegisterNewTeam(team: importedTeam);
-                        if (!success)
+                        try
                         {
-                            MessageBox.Show("Team already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
+                            Backend.RegisterNewTeam(team: importedTeam);
+                            importedTeam.ConvertArgbToColors();
                             this.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Failed to import team: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                     }
                     else
@@ -92,9 +88,26 @@ namespace TournamentManager.Frontend
                         MessageBox.Show("The file is not a valid team JSON.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show($"Failed to import team: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Failed to parse the file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void AddImportedTeams(List<Team> teams)
+        {
+            
+            foreach (var team in teams)
+            {
+                try
+                {
+                    Backend.RegisterNewTeam(team: team);
+                    team.ConvertArgbToColors();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"Failed to import team: {e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -138,6 +151,37 @@ namespace TournamentManager.Frontend
         {
             this._previewTeamName = name == "" ? this._previewTeamName : name;
             PreviewButton.Text = $"{this._previewTeamName}";
+        }
+
+        private void MultipleTeamImportButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JSON Files (*.json)|*.json|All files (*.*)|*.*";
+            openFileDialog.Title = "Import Teams";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string filePath = openFileDialog.FileName;
+                    string fileContent = File.ReadAllText(filePath);
+                    List<Team>? importedTeams = JsonSerializer.Deserialize<List<Team>>(fileContent);
+
+                    if (importedTeams != null)
+                    {
+                        AddImportedTeams(importedTeams);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("The file is not a valid team JSON.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show($"Failed to parse the file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
