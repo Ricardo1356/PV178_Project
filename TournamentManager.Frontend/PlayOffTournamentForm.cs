@@ -25,10 +25,10 @@ namespace TournamentManager.Frontend
 
         private void Generate()
         {
-            int margin = 100;
-            int spacing = 20;
-            int buttonWidth = 140; 
-            int buttonHeight = 80;
+            int margin = 30;
+            int spacing = 30;
+            int buttonWidth = 120; 
+            int buttonHeight = 70;
             int roundCount = (int)Math.Log2(this.Tournament.ParticipatingTeams.Count);
             Point currentPosition = new Point(margin, margin);
             duels.Add(new List<POButton>());
@@ -233,9 +233,11 @@ namespace TournamentManager.Frontend
 
         private (Team, Team) GetWinner(Team team1, Team team2)
         {
-            Random random = new Random();
-            var x = random.Next(0, 2);
-            return x == 1 ? (team1, team2) : (team2, team1);
+            MatchForm matchForm = new MatchForm(Backend, team1, team2);
+            matchForm.ShowDialog();
+            Team winner = matchForm.Winner;
+            Team loser = winner == team1 ? team2 : team1;
+            return (winner, loser);
         }
 
         private (DuelButton, int) GetDuelButton(DuelButton duelButton)
