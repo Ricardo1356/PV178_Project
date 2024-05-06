@@ -40,6 +40,14 @@ public class MulticolorButton : Button
         this.Invalidate();
     }
 
+    public void SetButtonColors(Color backgroundColor, Color topBorderColor, Color bottomBorderColor)
+    {
+        this.BackgroundColor = backgroundColor;
+        this.TopBorderColor = topBorderColor;
+        this.BottomBorderColor = bottomBorderColor;
+        this.Invalidate();
+    }
+
     public void UpdateColorsByTeam(Team team)
     {
         this.TopBorderColor = team.GetTopColor();

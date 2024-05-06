@@ -8,10 +8,17 @@ namespace TournamentManager.Backend
     {
         private List<Team> _teams;
         private DataValidationService _dataValidator;
+        public string LoadStatus { get; set; } = "";
         public BackendMain()
         {
             this._dataValidator = new DataValidationService();
-            this._teams = DataAccess.LoadSavedTeams();
+
+            try { this._teams = DataAccess.LoadSavedTeams(); }
+            catch (Exception e)
+            {
+                LoadStatus = e.Message;
+                this._teams = new List<Team>();
+            }
         }
 
         public List<Team> GetTeams()
@@ -19,11 +26,11 @@ namespace TournamentManager.Backend
             return this._teams;
         }
 
-        public void CheckNewTeamName(string teamName)
+        public void CheckNewTeamName(string teamName, string allowed = "")
         {
             foreach(var team in this._teams)
             {
-                if (team.Name == teamName) throw new InvalidEnumArgumentException("Team name already exists.");
+                if (team.Name == teamName && team.Name != allowed) throw new InvalidEnumArgumentException("Team name already exists.");
             }
         }
 
@@ -32,6 +39,15 @@ namespace TournamentManager.Backend
             foreach(var team in this._teams)
             {
                 if (team.Name == teamName && team.City == city) return team;
+            }
+            return new Team("", "", "", [], new Colors()); // unreachable code
+        }
+
+        public Team GetTeamByName(string teamName)
+        {
+            foreach (var team in this._teams)
+            {
+                if (team.Name == teamName) return team;
             }
             return new Team("", "", "", [], new Colors()); // unreachable code
         }
@@ -101,6 +117,18 @@ namespace TournamentManager.Backend
                 Position = random.Next(0, 4)
             };
         }
+
+        public void UpdateTeamInfo(TeamDataDto teamDataDto, Team team)
+        {
+            _dataValidator.ValidateTeamDataDto(teamDataDto);
+            CheckNewTeamName(teamDataDto.Name, allowed: team.Name);
+            team.Name = teamDataDto.Name;
+            team.City = teamDataDto.City;
+            team.Abbreviation = teamDataDto.Abbrevation;
+            team.Colors = teamDataDto.Colors;
+            team.ConvertArgbToColors();
+        }
+
         public void AddPlayerToTeam(Team team, Player player)
         {
             if (!team.CanBeManaged) throw new InvalidOperationException("Team cannot be managed.");

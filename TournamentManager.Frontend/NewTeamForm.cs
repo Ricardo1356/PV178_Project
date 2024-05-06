@@ -23,6 +23,10 @@ namespace TournamentManager.Frontend
         {
             this.Backend = backend;
             InitializeComponent();
+            this.ShowIcon = false;
+            this.Text = "Add New Team";
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void OKButton_Click(object sender, EventArgs e)
@@ -39,7 +43,7 @@ namespace TournamentManager.Frontend
                         BackGroundColor = new int[] { BackColorButton.BackColor.A, BackColorButton.BackColor.R, BackColorButton.BackColor.G, BackColorButton.BackColor.B },
                         BottomColor = new int[] { ButColorButton.BackColor.A, ButColorButton.BackColor.R, ButColorButton.BackColor.G, ButColorButton.BackColor.B }
                     },
-                    Abbrevation = TeamAbbrevationTextBox.Text,
+                    Abbrevation = TeamAbbrevationTextBox.Text.ToUpper(),
                     Players = new List<Player>()
                 };
                 Backend.RegisterNewTeam(newTeamDto);
@@ -97,7 +101,7 @@ namespace TournamentManager.Frontend
 
         private void AddImportedTeams(List<Team> teams)
         {
-            
+
             foreach (var team in teams)
             {
                 try
