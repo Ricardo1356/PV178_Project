@@ -8,6 +8,6 @@ namespace TournamentManager.Backend.DTOs
         public required string City { get; set; }
         public required Colors Colors { get; set; }
         public required string Abbrevation { get; set; }
-        public required List<Player> Players { get; set; }
+        public List<Player> Players { get; set; }
     }
 }
