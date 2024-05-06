@@ -12,13 +12,8 @@ namespace TournamentManager.Backend
         public BackendMain()
         {
             this._dataValidator = new DataValidationService();
-
-            try { this._teams = DataAccess.LoadSavedTeams(); }
-            catch (Exception e)
-            {
-                LoadStatus = e.Message;
-                this._teams = new List<Team>();
-            }
+            this._teams = DataAccess.LoadSavedTeams(out string status);
+            LoadStatus = status;
         }
 
         public List<Team> GetTeams()
@@ -75,6 +70,7 @@ namespace TournamentManager.Backend
                 _dataValidator.ValidateTeamData(team);
                 this.CheckNewTeamName(team.Name);
                 this._teams.Add(team);
+                SaveTeams();
                 return;
             }
             if (teamDataDto != null)
@@ -84,6 +80,7 @@ namespace TournamentManager.Backend
                 this.CheckNewTeamName(teamD.Name);
                 Team newTeam = new Team(teamD.Name, teamD.City, teamD.Abbrevation, [], teamD.Colors!);
                 this._teams.Add(newTeam);
+                SaveTeams();
             }
         }
 
@@ -96,9 +93,8 @@ namespace TournamentManager.Backend
 
         public async Task SaveTeams()
         {
-            if (type == TournamentType.FFA) return new FFATournament(teams.Count, teams);
-            else return new PlayOffTournament(teams.Count, teams);
-        }
+            DataAccess.SaveTeams(this._teams);
+        }      
 
         public void EndProgram()
         {
@@ -134,6 +130,7 @@ namespace TournamentManager.Backend
             team.Abbreviation = teamDataDto.Abbrevation;
             team.Colors = teamDataDto.Colors;
             team.ConvertArgbToColors();
+            SaveTeams();
         }
 
         public void AddPlayerToTeam(Team team, Player player)
@@ -141,6 +138,7 @@ namespace TournamentManager.Backend
             if (!team.CanBeManaged) throw new InvalidOperationException("Team cannot be managed.");
             _dataValidator.ValidatePlayerdata(player);
             team.AddPlayer(player);
+            SaveTeams();
         }
     }
 }

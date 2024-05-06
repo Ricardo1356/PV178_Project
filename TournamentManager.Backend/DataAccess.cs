@@ -6,60 +6,43 @@ namespace TournamentManager.Backend
 {
     public static class DataAccess
     {
-        public static void SaveTeams(List<Team> Teams)
+        public static void SaveTeams(List<Team> teams)
         {
-            var options = new JsonSerializerOptions
+            try
             {
-                WriteIndented = true
-            };
-            File.WriteAllText("teams.json", JsonSerializer.Serialize(Teams, options));
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                File.WriteAllText("teams.json", JsonSerializer.Serialize(teams, options));
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Failed to save teams: " + e.Message);
+            }
         }
 
-        public static List<Team> LoadSavedTeams()
+        public static List<Team> LoadSavedTeams(out string loadStatus)
         {
+            loadStatus = "";
             if (!File.Exists("teams.json"))
             {
                 return new List<Team>();
             }
 
-            List<Team> teams;
-            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-
             try
             {
                 var jsonString = File.ReadAllText("teams.json");
-                teams = JsonSerializer.Deserialize<List<Team>>(jsonString, options);
-                if (teams == null)
-                {
-                    throw new InvalidOperationException("Deserialization resulted in null. The file might be empty or corrupted.");
-                }
-            }
-            catch (JsonException je)
-            {
-                throw new InvalidOperationException($"Failed to deserialize teams: {je.Message}");
-            }
-            catch (Exception e)
-            {
-                throw new Exception($"An error occurred while reading the file: {e.Message}");
-            }
-
-            try
-            {
+                var teams = JsonSerializer.Deserialize<List<Team>>(jsonString, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                if (teams == null) throw new InvalidOperationException("Deserialization resulted in null.");
                 ValidateTeams(teams);
+                foreach (var team in teams)
+                    team.ConvertArgbToColors();
+                return teams;
             }
             catch (Exception e)
             {
-                throw new InvalidOperationException($"Validation failed for teams: {e.Message}");
+                loadStatus = "Failed to load teams: " + e.Message;
+                return new List<Team>();
             }
-
-            foreach (var team in teams)
-            {
-                team.ConvertArgbToColors();
-            }
-
-            return teams;
         }
-
 
         private static void ValidateTeams(List<Team> teams)
         {

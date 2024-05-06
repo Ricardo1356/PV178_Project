@@ -10,8 +10,6 @@ namespace TournamentManager.Backend.Structures
         public Colors Colors { get; set; } = new Colors();
         public string Abbreviation { get; set; } = "TBD";
         public List<Player> Players { get; set; } = new List<Player>();
-        [JsonIgnore]
-        public bool CanBeManaged => this._currentTournament == null;
 
         private Color _backGroundColor = Color.SkyBlue; 
         private Color _topColor = Color.SkyBlue;
@@ -61,13 +59,14 @@ namespace TournamentManager.Backend.Structures
             return Color.FromArgb(argb[0] == 255 ? argb[0] : 100, argb[1], argb[2], argb[3]);
         }
 
-        public Tournament? GetTournament()
+        public bool CanBeManaged
         {
-            return this._currentTournament;
-        }   
-        public void SetTournament(Tournament tournament)
+            get { return _currentTournament == null; }
+        }
+
+        public void SetTournament(Tournament? tournament)
         {
-            this._currentTournament = tournament;
+            _currentTournament = tournament;
         }
 
         public void AddPlayer(Player player)
