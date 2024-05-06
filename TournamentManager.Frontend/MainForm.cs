@@ -8,6 +8,10 @@ namespace TournamentManager.Frontend
         public MainForm()
         {
             this.Backend = new BackendMain();
+            if (Backend.LoadStatus != "")
+            MessageBox.Show(Backend.LoadStatus, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            
             InitializeComponent();
             this.TeamsView.DataSource = this.Backend.GetTeams();
 

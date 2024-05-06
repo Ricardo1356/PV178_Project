@@ -21,26 +21,27 @@ namespace TournamentManager.Backend
             {
                 return new List<Team>();
             }
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true,
-            };
-            var jsonString = File.ReadAllText("teams.json");
-            var teams = new List<Team>();
+
+            List<Team> teams;
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+
             try
             {
+                var jsonString = File.ReadAllText("teams.json");
                 teams = JsonSerializer.Deserialize<List<Team>>(jsonString, options);
+                if (teams == null)
+                {
+                    throw new InvalidOperationException("Deserialization resulted in null. The file might be empty or corrupted.");
+                }
+            }
+            catch (JsonException je)
+            {
+                throw new InvalidOperationException($"Failed to deserialize teams: {je.Message}");
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Failed to load teams: {e.Message}");
+                throw new Exception($"An error occurred while reading the file: {e.Message}");
             }
-
-            if (teams == null)
-            {
-                throw new InvalidOperationException("Deserialization resulted in null.");
-            }
-            
 
             try
             {
@@ -48,9 +49,9 @@ namespace TournamentManager.Backend
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Failed to load teams: {e.Message}");
-                Environment.Exit(1);
+                throw new InvalidOperationException($"Validation failed for teams: {e.Message}");
             }
+
             foreach (var team in teams)
             {
                 team.ConvertArgbToColors();
@@ -58,6 +59,7 @@ namespace TournamentManager.Backend
 
             return teams;
         }
+
 
         private static void ValidateTeams(List<Team> teams)
         {
@@ -68,9 +70,14 @@ namespace TournamentManager.Backend
                     throw new InvalidOperationException("Team data is invalid.");
                 }
 
-                if (team.Players == null || !team.Players.Any())
+                if (string.IsNullOrEmpty(team.Abbreviation) || team.Abbreviation.Length != 3)
                 {
-                    throw new InvalidOperationException("Team must have at least one player.");
+                    throw new InvalidOperationException("Team abbreviation must be exactly 3 characters long.");
+                }
+
+                if (team.Abbreviation != team.Abbreviation.ToUpper())
+                {
+                    throw new InvalidOperationException("Team abbreviation must be uppercase.");
                 }
 
                 foreach (var player in team.Players)
