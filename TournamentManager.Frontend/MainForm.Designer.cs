@@ -40,11 +40,11 @@
             StartNewTournamentButton.BackgroundColor = Color.FromArgb(255, 255, 255);
             StartNewTournamentButton.BorderThickness = 32;
             StartNewTournamentButton.BottomBorderColor = Color.FromArgb(255, 255, 255);
-            StartNewTournamentButton.Location = new Point(209, 325);
+            StartNewTournamentButton.Location = new Point(341, 325);
             StartNewTournamentButton.Name = "StartNewTournamentButton";
-            StartNewTournamentButton.Size = new Size(316, 96);
+            StartNewTournamentButton.Size = new Size(184, 96);
             StartNewTournamentButton.TabIndex = 1;
-            StartNewTournamentButton.Text = "Start New Tournament";
+            StartNewTournamentButton.Text = "Start Tournament";
             StartNewTournamentButton.TextColor = Color.Black;
             StartNewTournamentButton.TopBorderColor = Color.FromArgb(255, 255, 255);
             StartNewTournamentButton.UseVisualStyleBackColor = true;
@@ -72,7 +72,7 @@
             RegisterNewTeamButton.BottomBorderColor = Color.FromArgb(255, 255, 255);
             RegisterNewTeamButton.Location = new Point(12, 325);
             RegisterNewTeamButton.Name = "RegisterNewTeamButton";
-            RegisterNewTeamButton.Size = new Size(191, 96);
+            RegisterNewTeamButton.Size = new Size(323, 96);
             RegisterNewTeamButton.TabIndex = 4;
             RegisterNewTeamButton.Text = "Add New Team";
             RegisterNewTeamButton.TextColor = Color.Black;

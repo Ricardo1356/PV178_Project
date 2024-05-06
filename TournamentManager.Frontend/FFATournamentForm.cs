@@ -22,6 +22,9 @@ namespace TournamentManager.Frontend
             GenerateTournamentLayout();
             this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.Text = tournament.Name;
+            this.ShowIcon = false;
+            FormClosing += FFATournamentForm_FormClosing;
         }
 
         private void GenerateTournamentLayout()

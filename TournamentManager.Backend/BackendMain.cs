@@ -30,7 +30,7 @@ namespace TournamentManager.Backend
         {
             foreach(var team in this._teams)
             {
-                if (team.Name == teamName && team.Name != allowed) throw new InvalidEnumArgumentException("Team name already exists.");
+                if (team.Name == teamName && team.Name != allowed) throw new InvalidEnumArgumentException($"Team {teamName} already exists.");
             }
         }
 
@@ -87,7 +87,14 @@ namespace TournamentManager.Backend
             }
         }
 
-        public Tournament CreateNewTournament(TournamentType type, List<Team> teams)
+        public Tournament CreateNewTournament(TournamentType type, List<Team> teams, string name)
+        {
+            if (type == TournamentType.FFA) return new FFATournament(teams.Count, teams, name);
+            else return new PlayOffTournament(teams.Count, teams, name);
+
+        }
+
+        public async Task SaveTeams()
         {
             if (type == TournamentType.FFA) return new FFATournament(teams.Count, teams);
             else return new PlayOffTournament(teams.Count, teams);

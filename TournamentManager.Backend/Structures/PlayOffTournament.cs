@@ -8,7 +8,7 @@ namespace TournamentManager.Backend.Structures
 {
     public class PlayOffTournament : Tournament
     {
-        public PlayOffTournament(int teamCount, List<Team> teams) : base(TournamentType.PlayOff, teamCount, teams)
+        public PlayOffTournament(int teamCount, List<Team> teams, string name) : base(TournamentType.PlayOff, teamCount, teams, name)
         {
 
         }

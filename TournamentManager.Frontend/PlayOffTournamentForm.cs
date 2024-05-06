@@ -24,6 +24,9 @@ namespace TournamentManager.Frontend
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             Generate();
+            this.Text = tournament.Name;
+            this.ShowIcon = false;
+            this.FormClosing += FormClosed;
         }
 
         private void Generate()
