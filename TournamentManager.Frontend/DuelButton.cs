@@ -21,7 +21,7 @@ namespace TournamentManager.Frontend
             WinnerPO = winnerPO;
         }
 
-        public void FightLost()
+        public void ShadeButton()
         {
             base.Button.ShadeButton();
         }

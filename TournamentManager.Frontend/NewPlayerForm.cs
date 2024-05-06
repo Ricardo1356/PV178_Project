@@ -23,6 +23,11 @@ namespace TournamentManager.Frontend
             this.team = team;
             this.Backend = backend;
             InitializeComponent();
+            Init();
+        }
+
+        public void Init()
+        {
             this.ShowIcon = false;
             this.Text = "Add New Player";
             this.MaximizeBox = false;
@@ -65,6 +70,7 @@ namespace TournamentManager.Frontend
                                            int.Parse(this.PlayerHeightTextBox.Text),
                                            int.Parse(this.PlayerWeightTextBox.Text),
                                            this.PlayerPositionComboBox.SelectedItem.ToString());
+
                 Backend.AddPlayerToTeam(this.team, player);
                 if (!another)
                 {

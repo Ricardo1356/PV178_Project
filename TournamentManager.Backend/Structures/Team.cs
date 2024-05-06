@@ -27,7 +27,6 @@ namespace TournamentManager.Backend.Structures
             this.Abbreviation = abbrevation;
             this.City = city;
             this.Players = players;
-            ConvertArgbToColors();
         }
 
         public void ConvertArgbToColors()
@@ -58,7 +57,7 @@ namespace TournamentManager.Backend.Structures
         {
             return Color.FromArgb(argb[0] == 255 ? argb[0] : 100, argb[1], argb[2], argb[3]);
         }
-
+        [JsonIgnore]
         public bool CanBeManaged
         {
             get { return _currentTournament == null; }
@@ -72,11 +71,6 @@ namespace TournamentManager.Backend.Structures
         public void AddPlayer(Player player)
         {
             this.Players.Add(player);           
-        }
-
-        public void AddPlayers(List<Player> players)
-        {
-            this.Players.AddRange(players);
         }
 
         public void RemovePlayer(Player player)

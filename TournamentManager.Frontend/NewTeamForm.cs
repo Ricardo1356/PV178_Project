@@ -23,6 +23,11 @@ namespace TournamentManager.Frontend
         {
             this.Backend = backend;
             InitializeComponent();
+            Init();
+        }
+
+        private void Init()
+        {
             this.ShowIcon = false;
             this.Text = "Add New Team";
             this.MaximizeBox = false;
@@ -46,7 +51,7 @@ namespace TournamentManager.Frontend
                     Abbrevation = TeamAbbrevationTextBox.Text.ToUpper(),
                     Players = new List<Player>()
                 };
-                Backend.RegisterNewTeam(newTeamDto);
+                Backend.RegisterTeam(teamDataDto: newTeamDto);
                 this.Close();
             }
             catch (Exception ex)
@@ -62,6 +67,16 @@ namespace TournamentManager.Frontend
 
         private void ImportTeamButton_Click(object sender, EventArgs e)
         {
+            ImportDialog<Team>();
+        }
+
+        private void MultipleTeamImportButton_Click(object sender, EventArgs e)
+        {
+            ImportDialog<List<Team>>();
+        }
+
+        private void ImportDialog<T>()
+        {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "JSON Files (*.json)|*.json|All files (*.*)|*.*";
             openFileDialog.Title = "Import Team";
@@ -72,25 +87,30 @@ namespace TournamentManager.Frontend
                 {
                     string filePath = openFileDialog.FileName;
                     string fileContent = File.ReadAllText(filePath);
-                    Team? importedTeam = JsonSerializer.Deserialize<Team>(fileContent);
-                    if (importedTeam != null)
+                    T? imported = JsonSerializer.Deserialize<T>(fileContent);
+                    if (imported != null)
                     {
-                        try
+                        List<Team> teams = new List<Team>();
+                        if (imported is Team team)
                         {
-                            Backend.RegisterNewTeam(team: importedTeam);
-                            importedTeam.ConvertArgbToColors();
-                            this.Close();
+                            teams.Add(team);
                         }
-                        catch (Exception ex)
+                        else if (imported is List<Team> teamList)
                         {
-                            MessageBox.Show($"Failed to import team: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            teams = teamList;
                         }
+                        else
+                        {
+                            throw new Exception();
+                        }
+
+                        AddImportedTeams(teams);
+                        this.Close();
                     }
                     else
                     {
                         MessageBox.Show("The file is not a valid team JSON.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    }                  
                 }
                 catch (Exception)
                 {
@@ -101,12 +121,11 @@ namespace TournamentManager.Frontend
 
         private void AddImportedTeams(List<Team> teams)
         {
-
             foreach (var team in teams)
             {
                 try
                 {
-                    Backend.RegisterNewTeam(team: team);
+                    Backend.RegisterTeam(team: team);
                     team.ConvertArgbToColors();
                 }
                 catch (Exception e)
@@ -155,37 +174,6 @@ namespace TournamentManager.Frontend
         {
             this._previewTeamName = name == "" ? this._previewTeamName : name;
             PreviewButton.Text = $"{this._previewTeamName}";
-        }
-
-        private void MultipleTeamImportButton_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JSON Files (*.json)|*.json|All files (*.*)|*.*";
-            openFileDialog.Title = "Import Teams";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    string filePath = openFileDialog.FileName;
-                    string fileContent = File.ReadAllText(filePath);
-                    List<Team>? importedTeams = JsonSerializer.Deserialize<List<Team>>(fileContent);
-
-                    if (importedTeams != null)
-                    {
-                        AddImportedTeams(importedTeams);
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("The file is not a valid team JSON.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show($"Failed to parse the file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
         }
     }
 }

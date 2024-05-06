@@ -9,19 +9,22 @@ namespace TournamentManager.Frontend
     public partial class MainForm : Form
     {
         private BackendMain Backend;
-        private Color defaultButtonColor = Color.LightSteelBlue;
         public MainForm()
         {
             this.Backend = new BackendMain();
-            if (Backend.LoadStatus != "")
-            MessageBox.Show(Backend.LoadStatus, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            
             InitializeComponent();
+            Init();
+        }
+
+        private void Init()
+        {
+            if (this.Backend.LoadStatus != "")
+                MessageBox.Show(this.Backend.LoadStatus, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             this.Text = "Tournament Manager";
-            InitializeListView();
             this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            InitializeListView();
             LoadTeamsIntoListView();
         }
 
@@ -38,13 +41,13 @@ namespace TournamentManager.Frontend
             TeamsListView.Columns.Add("Players", 80);
 
             TeamsListView.OwnerDraw = true;
-            TeamsListView.DrawColumnHeader += ListView1_DrawColumnHeader;
-            TeamsListView.DrawItem += ListView1_DrawItem;
-            TeamsListView.DrawSubItem += ListView1_DrawSubItem;
+            TeamsListView.DrawColumnHeader += TeamsListView_DrawColumnHeader;
+            TeamsListView.DrawItem += TeamsListView_DrawItem;
+            TeamsListView.DrawSubItem += TeamsListView_DrawSubItem;
 
         }
 
-        private void ListView1_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+        private void TeamsListView_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
             using (Font headerFont = new Font("Segoe UI", 12, FontStyle.Bold))
             {
@@ -53,12 +56,12 @@ namespace TournamentManager.Frontend
             }
         }
 
-        private void ListView1_DrawItem(object sender, DrawListViewItemEventArgs e)
+        private void TeamsListView_DrawItem(object sender, DrawListViewItemEventArgs e)
         {
             e.DrawDefault = true;
         }
 
-        private void ListView1_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        private void TeamsListView_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
             e.DrawDefault = true;
             using (Pen gridLinePen = new Pen(Color.Black))
@@ -67,12 +70,10 @@ namespace TournamentManager.Frontend
             }
         }
 
-
         private void LoadTeamsIntoListView()
         {
             TeamsListView.Items.Clear();
-            var teams = Backend.GetTeams();
-            foreach (var team in teams)
+            foreach (var team in this.Backend.GetTeams())
             {
                 ListViewItem item = new ListViewItem(team.Name);
                 item.SubItems.Add(team.City);
@@ -95,13 +96,12 @@ namespace TournamentManager.Frontend
             tournamentTypeSelectionForm.ShowDialog();
         }
 
-
         private void AppExitButton_Click(object sender, EventArgs e)
         {
             Backend.EndProgram();
         }
 
-        private void listView1_DoubleClick(object sender, EventArgs e)
+        private void TeamListView_DoubleClick(object sender, EventArgs e)
         {
             if (TeamsListView.SelectedItems.Count > 0)
             {

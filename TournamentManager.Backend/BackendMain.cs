@@ -7,12 +7,10 @@ namespace TournamentManager.Backend
     public class BackendMain
     {
         private List<Team> _teams;
-        private DataValidationService _dataValidator;
-        public string LoadStatus { get; set; } = "";
+        public string LoadStatus { get; set; }
         public BackendMain()
         {
-            this._dataValidator = new DataValidationService();
-            this._teams = DataAccess.LoadSavedTeams(out string status);
+            this._teams = FileWriter.LoadSavedTeams(out string status);
             LoadStatus = status;
         }
 
@@ -29,45 +27,37 @@ namespace TournamentManager.Backend
             }
         }
 
-        public Team GetExistingTeam(string teamName, string city)
-        {
-            foreach(var team in this._teams)
-            {
-                if (team.Name == teamName && team.City == city) return team;
-            }
-            return new Team("", "", "", [], new Colors()); // unreachable code
-        }
-
         public Team GetTeamByName(string teamName)
         {
             foreach (var team in this._teams)
             {
                 if (team.Name == teamName) return team;
             }
-            return new Team("", "", "", [], new Colors()); // unreachable code
+            return null!;
         }
 
-        public Team GetTeamByJoined(string joinedCityName)
+        public Team GetTeamByNameAndCity(string nameAndCity)
         {
             foreach (var team in this._teams)
             {
-                if (team.City + " " + team.Name == joinedCityName) return team;
+                if (team.City + " " + team.Name == nameAndCity) return team;
             }
-            return new Team("", "", "", [], new Colors()); // unreachable code
+            return null!;
         }
 
         public bool RemoveTeam(Team team)
         {
             if (!team.CanBeManaged) return false;
             this._teams.Remove(team);
+            SaveTeams();
             return true;
         }
 
-        public void RegisterNewTeam(TeamDataDto? teamDataDto=null, Team? team=null)
+        public void RegisterTeam(TeamDataDto? teamDataDto=null, Team? team=null)
         {
             if (team != null)
             {
-                _dataValidator.ValidateTeamData(team);
+                DataValidationService.ValidateTeamData(team);
                 this.CheckNewTeamName(team.Name);
                 this._teams.Add(team);
                 SaveTeams();
@@ -76,7 +66,7 @@ namespace TournamentManager.Backend
             if (teamDataDto != null)
             {
                 var teamD = (TeamDataDto)teamDataDto;
-                _dataValidator.ValidateTeamDataDto(teamD);
+                DataValidationService.ValidateTeamDataDto(teamD);
                 this.CheckNewTeamName(teamD.Name);
                 Team newTeam = new Team(teamD.Name, teamD.City, teamD.Abbrevation, [], teamD.Colors!);
                 this._teams.Add(newTeam);
@@ -86,19 +76,21 @@ namespace TournamentManager.Backend
 
         public Tournament CreateNewTournament(TournamentType type, List<Team> teams, string name)
         {
-            if (type == TournamentType.FFA) return new FFATournament(teams.Count, teams, name);
-            else return new PlayOffTournament(teams.Count, teams, name);
+            if (type == TournamentType.FFA) 
+                return new FFATournament(teams.Count, teams, name);
+
+            return new PlayOffTournament(teams.Count, teams, name);
 
         }
 
         public async Task SaveTeams()
         {
-            DataAccess.SaveTeams(this._teams);
+            FileWriter.SaveTeams(this._teams);
         }      
 
         public void EndProgram()
         {
-            DataAccess.SaveTeams(this._teams);
+            FileWriter.SaveTeams(this._teams);
             Environment.Exit(0);
         }
 
@@ -123,7 +115,7 @@ namespace TournamentManager.Backend
 
         public void UpdateTeamInfo(TeamDataDto teamDataDto, Team team)
         {
-            _dataValidator.ValidateTeamDataDto(teamDataDto);
+            DataValidationService.ValidateTeamDataDto(teamDataDto);
             CheckNewTeamName(teamDataDto.Name, allowed: team.Name);
             team.Name = teamDataDto.Name;
             team.City = teamDataDto.City;
@@ -136,7 +128,7 @@ namespace TournamentManager.Backend
         public void AddPlayerToTeam(Team team, Player player)
         {
             if (!team.CanBeManaged) throw new InvalidOperationException("Team cannot be managed.");
-            _dataValidator.ValidatePlayerdata(player);
+            DataValidationService.ValidatePlayerdata(player);
             team.AddPlayer(player);
             SaveTeams();
         }

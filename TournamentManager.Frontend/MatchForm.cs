@@ -15,18 +15,18 @@ namespace TournamentManager.Frontend
 {
     public partial class MatchForm : Form
     {
-        private BackendMain Backend;
-        private Team _team1;
-        private Team _team2;
+
         public decimal Team1Score = 0;
         public decimal Team2Score = 0;
         public bool Ended = false;
-        public MatchForm(BackendMain backend, Team team1, Team team2)
+        public MatchForm(Team team1, Team team2)
         {
             InitializeComponent();
-            Backend = backend;
-            _team1 = team1;
-            _team2 = team2;
+            Init(team1, team2);
+        }
+
+        private void Init(Team team1, Team team2)
+        {
             Team1Label.Text = $"{team1.City} {team1.Name}";
             Team2Label.Text = $"{team2.City} {team2.Name}";
             Team1ScoreLabel.Text = 0.ToString();
@@ -35,7 +35,6 @@ namespace TournamentManager.Frontend
             this.MaximizeBox = false;
             this.ShowIcon = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-
         }
 
         private void PositionLabels()
@@ -54,6 +53,7 @@ namespace TournamentManager.Frontend
             Team1ScoreLabel.Left = label7.Left - Team1ScoreLabel.Width - 10;
             Team1ScoreLabel.Top = label7.Top;
         }
+
         private void ChangeScoreTeam2()
         {
             Team2Score = Team2ScoreNumericUpDown1.Value + Team2ScoreNumericUpDown2.Value + Team2ScoreNumericUpDown3.Value;

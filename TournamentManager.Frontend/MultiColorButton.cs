@@ -80,7 +80,6 @@ public class MulticolorButton : Button
 
         Font boldFont = new Font(this.Font.FontFamily, 12, FontStyle.Bold);
 
-
         TextRenderer.DrawText(
             pevent.Graphics,
             this.Text,

@@ -7,17 +7,22 @@ namespace TournamentManager.Frontend
     {
         private BackendMain Backend;
         private Team team;
+        public bool Removed = false;
         public TeamOverviewForm(BackendMain Backend, Team team)
         {
             this.Backend = Backend;
             this.team = team;
             InitializeComponent();
-            this.Text = $"{team.City} {team.Name} Team Edit";
+            Init();
+        }
+
+        private void Init()
+        {
+            this.Text = $"{this.team.City} {this.team.Name} Team Edit";
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             InitializeTeamOverview();
             RefreshPlayersView();
-            this.MaximizeBox = false;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void InitializeTeamOverview()
@@ -25,24 +30,24 @@ namespace TournamentManager.Frontend
             this.PlayersTeamView.View = View.Details;
             this.PlayersTeamView.FullRowSelect = true;
             this.PlayersTeamView.GridLines = true;
-            this.PlayersTeamView.Font = new Font("Segoe UI", 11, System.Drawing.FontStyle.Regular);
+            this.PlayersTeamView.Font = new Font("Segoe UI", 11, FontStyle.Regular);
             this.PlayersTeamView.Columns.Add("Name", 150);
             this.PlayersTeamView.Columns.Add("Position", 100);
             this.PlayersTeamView.Columns.Add("Age", 50);
             this.PlayersTeamView.Columns.Add("Height", 80);
             this.PlayersTeamView.Columns.Add("Weight", 80);
             this.PlayersTeamView.OwnerDraw = true;
-            this.PlayersTeamView.DrawColumnHeader += PlayersTeamView_DrawColumnHeader;
-            this.PlayersTeamView.DrawItem += PlayersTeamView_DrawItem;
-            this.PlayersTeamView.DrawSubItem += PlayersTeamView_DrawSubItem;
+            this.PlayersTeamView.DrawColumnHeader += PlayersTeamView_DrawColumnHeader!;
+            this.PlayersTeamView.DrawItem += PlayersTeamView_DrawItem!;
+            this.PlayersTeamView.DrawSubItem += PlayersTeamView_DrawSubItem!;
         }
 
         private void PlayersTeamView_DrawColumnHeader(object sender, System.Windows.Forms.DrawListViewColumnHeaderEventArgs e)
         {
-            using (Font headerFont = new Font("Segoe UI", 12, System.Drawing.FontStyle.Bold))
+            using (Font headerFont = new Font("Segoe UI", 12, FontStyle.Bold))
             {
-                e.Graphics.FillRectangle(System.Drawing.Brushes.LightGray, e.Bounds);
-                TextRenderer.DrawText(e.Graphics, e.Header.Text, headerFont, e.Bounds, System.Drawing.Color.Black, TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+                e.Graphics.FillRectangle(Brushes.LightGray, e.Bounds);
+                TextRenderer.DrawText(e.Graphics, e.Header.Text, headerFont, e.Bounds, Color.Black, TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
             }
         }
 
@@ -54,7 +59,7 @@ namespace TournamentManager.Frontend
         private void PlayersTeamView_DrawSubItem(object sender, System.Windows.Forms.DrawListViewSubItemEventArgs e)
         {
             e.DrawDefault = true;
-            using (Pen gridLinePen = new Pen(System.Drawing.Color.Black))
+            using (Pen gridLinePen = new Pen(Color.Black))
             {
                 e.Graphics.DrawLine(gridLinePen, e.Bounds.Left, e.Bounds.Bottom - 1, e.Bounds.Right, e.Bounds.Bottom - 1);
             }
@@ -109,6 +114,7 @@ namespace TournamentManager.Frontend
         {
             if (this.Backend.RemoveTeam(this.team))
             {
+                Removed = true;
                 this.Close();
             }
             else
@@ -116,11 +122,11 @@ namespace TournamentManager.Frontend
                 MessageBox.Show("Team is still registered in a tournament", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
         private Player GetPlayer(int index)
         {
             return this.team.Players[index];
         }
-
 
         private void AddPlayerButton_Click(object sender, EventArgs e)
         {
@@ -129,7 +135,7 @@ namespace TournamentManager.Frontend
                 NewPlayerForm newPlayerForm = new NewPlayerForm(this.Backend, this.team);
                 newPlayerForm.ShowDialog();
                 RefreshPlayersView();
-            }     
+            }
         }
 
         private void EditTeamButton_Click(object sender, EventArgs e)

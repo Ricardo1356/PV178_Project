@@ -90,7 +90,7 @@
             TeamsListView.Size = new Size(513, 200);
             TeamsListView.TabIndex = 7;
             TeamsListView.UseCompatibleStateImageBehavior = false;
-            TeamsListView.DoubleClick += listView1_DoubleClick;
+            TeamsListView.DoubleClick += TeamListView_DoubleClick;
             // 
             // MainForm
             // 

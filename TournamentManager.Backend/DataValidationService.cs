@@ -10,7 +10,7 @@ namespace TournamentManager.Backend
 {
     public class DataValidationService
     {
-        public void ValidatePlayerdata(Player player)
+        public static void ValidatePlayerdata(Player player)
         {
             if (string.IsNullOrWhiteSpace(player.Name)) throw new ArgumentException("Player name is empty");
             if (string.IsNullOrWhiteSpace(player.Position)) throw new ArgumentException("Player position is empty");
@@ -19,12 +19,13 @@ namespace TournamentManager.Backend
             if (player.Weight < 50 || player.Weight > 150) throw new ArgumentException("Player weight must be between 50 and 150");
         }
 
-        public void ValidateTeamDataDto(TeamDataDto team)
+        public static void ValidateTeamDataDto(TeamDataDto team)
         {
             if (string.IsNullOrWhiteSpace(team.Name)) throw new ArgumentException("Team name is empty");
             if (string.IsNullOrWhiteSpace(team.City)) throw new ArgumentException("Team city is empty");
             if (string.IsNullOrWhiteSpace(team.Abbrevation)) throw new ArgumentException("Team abbreviation is empty");
             if (team.Abbrevation.Length != 3) throw new ArgumentException("Team abbreviation must be 3 characters long");
+            if (team.Abbrevation.Any(char.IsLower)) throw new ArgumentException("Team abbreviation must be uppercase");
             if (team.Colors == null) throw new ArgumentException("Team colors are empty");
             if (team.Colors.TopColor[0] < 0 || team.Colors.TopColor[0] > 255 ||
                 team.Colors.TopColor[1] < 0 || team.Colors.TopColor[1] > 255 ||
@@ -45,7 +46,7 @@ namespace TournamentManager.Backend
             }
         }
 
-        public void ValidateTeamData(Team team)
+        public static void ValidateTeamData(Team team)
         {
             ValidateTeamDataDto(new TeamDataDto
             {

@@ -81,7 +81,7 @@ namespace TournamentManager.Frontend
             var participatingTeams = new List<Team>();
             foreach (var item in this.ExistingTeamsSelectionBox.CheckedItems)
             {
-                participatingTeams.Add(this.Backend.GetTeamByJoined(item.ToString()!));
+                participatingTeams.Add(this.Backend.GetTeamByNameAndCity(item.ToString()!));
             }
             return participatingTeams;
         }
@@ -92,7 +92,7 @@ namespace TournamentManager.Frontend
             {
                 var participatingTeams = GetSelectedTeams();
                 Tournament t = this.Backend.CreateNewTournament(TournamentType.PlayOff, participatingTeams, textBox1.Text);
-                PlayOffTournamentForm newTournament = new PlayOffTournamentForm(this.Backend, t);
+                PlayOffTournamentForm newTournament = new PlayOffTournamentForm(t);
                 UpdateTeams(participatingTeams, t);
                 textBox1.Text = "";
                 newTournament.FormClosed += (s, args) => UpdateTeams(participatingTeams, null);
@@ -106,7 +106,7 @@ namespace TournamentManager.Frontend
             {
                 var participatingTeams = GetSelectedTeams();
                 Tournament t = this.Backend.CreateNewTournament(TournamentType.FFA, participatingTeams, textBox1.Text);
-                FFATournamentForm newTournament = new FFATournamentForm(this.Backend, t);
+                FFATournamentForm newTournament = new FFATournamentForm(t);
                 UpdateTeams(participatingTeams, t);
                 textBox1.Text = "";
                 newTournament.FormClosed += (s, args) => UpdateTeams(participatingTeams, null);
