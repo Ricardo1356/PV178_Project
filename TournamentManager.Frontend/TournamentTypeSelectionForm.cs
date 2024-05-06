@@ -19,6 +19,8 @@ namespace TournamentManager.Frontend
         {
             this.Backend = Backend;
             InitializeComponent();
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             ListAllTeams();
         }
 

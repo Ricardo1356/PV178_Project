@@ -28,92 +28,130 @@
         /// </summary>
         private void InitializeComponent()
         {
-            CloseButton = new Button();
-            RemoveTeamButton = new Button();
-            PlayersListView = new DataGridView();
-            RemovePlayerButton = new Button();
-            AddPlayerButton = new Button();
-            ((System.ComponentModel.ISupportInitialize)PlayersListView).BeginInit();
+            CloseButton = new MulticolorButton();
+            RemoveTeamButton = new MulticolorButton();
+            RemovePlayerButton = new MulticolorButton();
+            AddPlayerButton = new MulticolorButton();
+            PlayersTeamView = new ListView();
+            EditTeamButton = new MulticolorButton();
             SuspendLayout();
             // 
             // CloseButton
             // 
-            CloseButton.Location = new Point(545, 264);
+            CloseButton.BackgroundColor = Color.FromArgb(255, 255, 255);
+            CloseButton.BorderThickness = 17;
+            CloseButton.BottomBorderColor = Color.FromArgb(255, 255, 255);
+            CloseButton.Location = new Point(482, 241);
             CloseButton.Name = "CloseButton";
-            CloseButton.Size = new Size(75, 23);
+            CloseButton.Size = new Size(153, 51);
             CloseButton.TabIndex = 0;
             CloseButton.Text = "Close";
+            CloseButton.TextColor = Color.Black;
+            CloseButton.TopBorderColor = Color.FromArgb(255, 255, 255);
             CloseButton.UseVisualStyleBackColor = true;
             CloseButton.Click += CloseButton_Click;
             // 
             // RemoveTeamButton
             // 
-            RemoveTeamButton.Location = new Point(262, 252);
+            RemoveTeamButton.BackgroundColor = Color.FromArgb(255, 255, 255);
+            RemoveTeamButton.BorderThickness = 17;
+            RemoveTeamButton.BottomBorderColor = Color.FromArgb(255, 255, 255);
+            RemoveTeamButton.Location = new Point(482, 13);
             RemoveTeamButton.Name = "RemoveTeamButton";
-            RemoveTeamButton.Size = new Size(121, 47);
+            RemoveTeamButton.Size = new Size(153, 51);
             RemoveTeamButton.TabIndex = 1;
             RemoveTeamButton.Text = "Remove this team";
+            RemoveTeamButton.TextColor = Color.Black;
+            RemoveTeamButton.TopBorderColor = Color.FromArgb(255, 255, 255);
             RemoveTeamButton.UseVisualStyleBackColor = true;
             RemoveTeamButton.Click += RemoveTeamButton_Click;
             // 
-            // PlayersListView
-            // 
-            PlayersListView.AllowUserToAddRows = false;
-            PlayersListView.AllowUserToDeleteRows = false;
-            PlayersListView.AllowUserToResizeRows = false;
-            PlayersListView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            PlayersListView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            PlayersListView.Location = new Point(12, 12);
-            PlayersListView.MultiSelect = false;
-            PlayersListView.Name = "PlayersListView";
-            PlayersListView.ReadOnly = true;
-            PlayersListView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            PlayersListView.Size = new Size(612, 234);
-            PlayersListView.TabIndex = 2;
-            // 
             // RemovePlayerButton
             // 
-            RemovePlayerButton.Location = new Point(135, 252);
+            RemovePlayerButton.BackgroundColor = Color.FromArgb(255, 255, 255);
+            RemovePlayerButton.BorderThickness = 17;
+            RemovePlayerButton.BottomBorderColor = Color.FromArgb(255, 255, 255);
+            RemovePlayerButton.Location = new Point(482, 70);
             RemovePlayerButton.Name = "RemovePlayerButton";
-            RemovePlayerButton.Size = new Size(121, 47);
+            RemovePlayerButton.Size = new Size(153, 51);
             RemovePlayerButton.TabIndex = 3;
             RemovePlayerButton.Text = "Remove Player";
+            RemovePlayerButton.TextColor = Color.Black;
+            RemovePlayerButton.TopBorderColor = Color.FromArgb(255, 255, 255);
             RemovePlayerButton.UseVisualStyleBackColor = true;
             RemovePlayerButton.Click += RemovePlayerButton_Click;
             // 
             // AddPlayerButton
             // 
-            AddPlayerButton.Location = new Point(8, 252);
+            AddPlayerButton.BackgroundColor = Color.FromArgb(255, 255, 255);
+            AddPlayerButton.BorderThickness = 17;
+            AddPlayerButton.BottomBorderColor = Color.FromArgb(255, 255, 255);
+            AddPlayerButton.Location = new Point(482, 127);
             AddPlayerButton.Name = "AddPlayerButton";
-            AddPlayerButton.Size = new Size(121, 47);
+            AddPlayerButton.Size = new Size(153, 51);
             AddPlayerButton.TabIndex = 4;
             AddPlayerButton.Text = "Add Players";
+            AddPlayerButton.TextColor = Color.Black;
+            AddPlayerButton.TopBorderColor = Color.FromArgb(255, 255, 255);
             AddPlayerButton.UseVisualStyleBackColor = true;
             AddPlayerButton.Click += AddPlayerButton_Click;
+            // 
+            // PlayersTeamView
+            // 
+            PlayersTeamView.FullRowSelect = true;
+            PlayersTeamView.GridLines = true;
+            PlayersTeamView.LabelWrap = false;
+            PlayersTeamView.Location = new Point(10, 13);
+            PlayersTeamView.MultiSelect = false;
+            PlayersTeamView.Name = "PlayersTeamView";
+            PlayersTeamView.RightToLeft = RightToLeft.No;
+            PlayersTeamView.Size = new Size(462, 279);
+            PlayersTeamView.TabIndex = 5;
+            PlayersTeamView.UseCompatibleStateImageBehavior = false;
+            // 
+            // EditTeamButton
+            // 
+            EditTeamButton.BackgroundColor = Color.FromArgb(255, 255, 255);
+            EditTeamButton.BorderThickness = 17;
+            EditTeamButton.BottomBorderColor = Color.FromArgb(255, 255, 255);
+            EditTeamButton.Location = new Point(482, 184);
+            EditTeamButton.Name = "EditTeamButton";
+            EditTeamButton.Size = new Size(153, 51);
+            EditTeamButton.TabIndex = 6;
+            EditTeamButton.Text = "Edit Team";
+            EditTeamButton.TextColor = Color.Black;
+            EditTeamButton.TopBorderColor = Color.FromArgb(255, 255, 255);
+            EditTeamButton.UseVisualStyleBackColor = true;
+            EditTeamButton.Click += EditTeamButton_Click;
             // 
             // TeamOverviewForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(637, 314);
+            AutoSize = true;
+            BackColor = Color.LightSteelBlue;
+            ClientSize = new Size(644, 298);
+            Controls.Add(EditTeamButton);
+            Controls.Add(PlayersTeamView);
             Controls.Add(AddPlayerButton);
             Controls.Add(RemovePlayerButton);
-            Controls.Add(PlayersListView);
             Controls.Add(RemoveTeamButton);
             Controls.Add(CloseButton);
-            FormBorderStyle = FormBorderStyle.Fixed3D;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "TeamOverviewForm";
+            ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "TeamOverviewForm";
-            ((System.ComponentModel.ISupportInitialize)PlayersListView).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button CloseButton;
-        private Button RemoveTeamButton;
-        private DataGridView PlayersListView;
-        private Button RemovePlayerButton;
-        private Button AddPlayerButton;
+        private MulticolorButton CloseButton;
+        private MulticolorButton RemoveTeamButton;
+        private MulticolorButton RemovePlayerButton;
+        private MulticolorButton AddPlayerButton;
+        private ListView PlayersTeamView;
+        private MulticolorButton EditTeamButton;
     }
 }

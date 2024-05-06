@@ -20,6 +20,9 @@ namespace TournamentManager.Frontend
             this.Tournament = (PlayOffTournament)tournament;
             this.Tournament.ShuffleTeams();
             InitializeComponent();
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             Generate();
         }
 

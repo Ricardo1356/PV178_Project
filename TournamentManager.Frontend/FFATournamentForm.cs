@@ -20,6 +20,8 @@ namespace TournamentManager.Frontend
             tournament.ShuffleTeams();
             InitializeComponent();
             GenerateTournamentLayout();
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void GenerateTournamentLayout()

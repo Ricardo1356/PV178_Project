@@ -35,8 +35,11 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
+            BackgroundImage = Properties.Resources.nhl_logo_picture_large_2012948312_4139725519;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(218, 128);
             Name = "PlayOffTournamentForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "PlayOffTournamentForm";
             ResumeLayout(false);
         }

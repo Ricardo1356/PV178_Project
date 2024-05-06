@@ -32,6 +32,8 @@ namespace TournamentManager.Frontend
             Team1ScoreLabel.Text = 0.ToString();
             Team2ScoreLabel.Text = 0.ToString();
             PositionLabels();
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void PositionLabels()

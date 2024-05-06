@@ -28,73 +28,91 @@
         /// </summary>
         private void InitializeComponent()
         {
-            PlayOffTounamentTypeButton = new Button();
-            FreeForAllTournamentTypeButton = new Button();
-            TouramentTypeSelectionCancellButton = new Button();
+            PlayOffTounamentTypeButton = new MulticolorButton();
+            FreeForAllTournamentTypeButton = new MulticolorButton();
+            TouramentTypeSelectionCancellButton = new MulticolorButton();
             ExistingTeamsSelectionBox = new CheckedListBox();
             SuspendLayout();
             // 
             // PlayOffTounamentTypeButton
             // 
-            PlayOffTounamentTypeButton.Font = new Font("Microsoft Sans Serif", 15F);
-            PlayOffTounamentTypeButton.Location = new Point(12, 406);
+            PlayOffTounamentTypeButton.BackgroundColor = Color.FromArgb(255, 255, 255);
+            PlayOffTounamentTypeButton.BorderThickness = 37;
+            PlayOffTounamentTypeButton.BottomBorderColor = Color.FromArgb(255, 255, 255);
+            PlayOffTounamentTypeButton.Location = new Point(304, 8);
             PlayOffTounamentTypeButton.Name = "PlayOffTounamentTypeButton";
-            PlayOffTounamentTypeButton.Size = new Size(183, 96);
+            PlayOffTounamentTypeButton.Size = new Size(205, 112);
             PlayOffTounamentTypeButton.TabIndex = 0;
             PlayOffTounamentTypeButton.Text = "Play Off";
+            PlayOffTounamentTypeButton.TextColor = Color.Black;
+            PlayOffTounamentTypeButton.TopBorderColor = Color.FromArgb(255, 255, 255);
             PlayOffTounamentTypeButton.UseVisualStyleBackColor = true;
             PlayOffTounamentTypeButton.Click += PlayOffTounamentTypeButton_Click;
             // 
             // FreeForAllTournamentTypeButton
             // 
-            FreeForAllTournamentTypeButton.Font = new Font("Microsoft Sans Serif", 15F);
-            FreeForAllTournamentTypeButton.Location = new Point(201, 406);
+            FreeForAllTournamentTypeButton.BackgroundColor = Color.FromArgb(255, 255, 255);
+            FreeForAllTournamentTypeButton.BorderThickness = 37;
+            FreeForAllTournamentTypeButton.BottomBorderColor = Color.FromArgb(255, 255, 255);
+            FreeForAllTournamentTypeButton.Location = new Point(304, 126);
             FreeForAllTournamentTypeButton.Name = "FreeForAllTournamentTypeButton";
-            FreeForAllTournamentTypeButton.Size = new Size(177, 96);
+            FreeForAllTournamentTypeButton.Size = new Size(205, 111);
             FreeForAllTournamentTypeButton.TabIndex = 1;
             FreeForAllTournamentTypeButton.Text = "Free For All";
+            FreeForAllTournamentTypeButton.TextColor = Color.Black;
+            FreeForAllTournamentTypeButton.TopBorderColor = Color.FromArgb(255, 255, 255);
             FreeForAllTournamentTypeButton.UseVisualStyleBackColor = true;
             FreeForAllTournamentTypeButton.Click += FreeForAllTournamentTypeButton_Click;
             // 
             // TouramentTypeSelectionCancellButton
             // 
-            TouramentTypeSelectionCancellButton.Font = new Font("Microsoft Sans Serif", 15F);
-            TouramentTypeSelectionCancellButton.Location = new Point(511, 459);
+            TouramentTypeSelectionCancellButton.BackgroundColor = Color.FromArgb(255, 255, 255);
+            TouramentTypeSelectionCancellButton.BorderThickness = 14;
+            TouramentTypeSelectionCancellButton.BottomBorderColor = Color.FromArgb(255, 255, 255);
+            TouramentTypeSelectionCancellButton.Location = new Point(398, 269);
             TouramentTypeSelectionCancellButton.Name = "TouramentTypeSelectionCancellButton";
             TouramentTypeSelectionCancellButton.Size = new Size(111, 43);
             TouramentTypeSelectionCancellButton.TabIndex = 2;
             TouramentTypeSelectionCancellButton.Text = "Cancel";
+            TouramentTypeSelectionCancellButton.TextColor = Color.Black;
+            TouramentTypeSelectionCancellButton.TopBorderColor = Color.FromArgb(255, 255, 255);
             TouramentTypeSelectionCancellButton.UseVisualStyleBackColor = true;
             TouramentTypeSelectionCancellButton.Click += TouramentTypeSelectionCancellButton_Click;
             // 
             // ExistingTeamsSelectionBox
             // 
+            ExistingTeamsSelectionBox.BackColor = SystemColors.GradientInactiveCaption;
+            ExistingTeamsSelectionBox.BorderStyle = BorderStyle.None;
             ExistingTeamsSelectionBox.Font = new Font("Microsoft Sans Serif", 15F);
             ExistingTeamsSelectionBox.FormattingEnabled = true;
-            ExistingTeamsSelectionBox.Location = new Point(12, 47);
+            ExistingTeamsSelectionBox.Location = new Point(12, 12);
             ExistingTeamsSelectionBox.Name = "ExistingTeamsSelectionBox";
-            ExistingTeamsSelectionBox.Size = new Size(318, 229);
+            ExistingTeamsSelectionBox.Size = new Size(253, 225);
             ExistingTeamsSelectionBox.TabIndex = 3;
             // 
             // TournamentTypeSelectionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(669, 561);
+            BackgroundImage = Properties.Resources._0Sb75t1_2394455732;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(532, 336);
             Controls.Add(ExistingTeamsSelectionBox);
             Controls.Add(TouramentTypeSelectionCancellButton);
             Controls.Add(FreeForAllTournamentTypeButton);
             Controls.Add(PlayOffTounamentTypeButton);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "TournamentTypeSelectionForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "TournamentTypeSelectionForm";
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button PlayOffTounamentTypeButton;
-        private Button FreeForAllTournamentTypeButton;
-        private Button TouramentTypeSelectionCancellButton;
+        private MulticolorButton PlayOffTounamentTypeButton;
+        private MulticolorButton FreeForAllTournamentTypeButton;
+        private MulticolorButton TouramentTypeSelectionCancellButton;
         private CheckedListBox ExistingTeamsSelectionBox;
     }
 }

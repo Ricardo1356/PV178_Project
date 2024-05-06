@@ -23,6 +23,10 @@ namespace TournamentManager.Frontend
             this.team = team;
             this.Backend = backend;
             InitializeComponent();
+            this.ShowIcon = false;
+            this.Text = "Add New Player";
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void SaveAndExitButton_Click(object sender, EventArgs e)

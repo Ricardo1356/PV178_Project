@@ -44,7 +44,7 @@
             Team1ScoreLabel = new Label();
             label7 = new Label();
             Team2ScoreLabel = new Label();
-            EndMatchButton = new Button();
+            EndMatchButton = new MulticolorButton();
             ((System.ComponentModel.ISupportInitialize)Team1ScoreNumericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Team2ScoreNumericUpDown3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Team2ScoreNumericUpDown1).BeginInit();
@@ -56,30 +56,33 @@
             // Team1Label
             // 
             Team1Label.AutoSize = true;
-            Team1Label.Font = new Font("Segoe UI", 20F);
-            Team1Label.Location = new Point(199, 23);
+            Team1Label.BackColor = Color.Transparent;
+            Team1Label.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
+            Team1Label.Location = new Point(154, 26);
             Team1Label.Name = "Team1Label";
-            Team1Label.Size = new Size(90, 37);
+            Team1Label.Size = new Size(96, 37);
             Team1Label.TabIndex = 0;
             Team1Label.Text = "label1";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 20F);
-            label2.Location = new Point(364, 23);
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
+            label2.Location = new Point(319, 26);
             label2.Name = "label2";
-            label2.Size = new Size(41, 37);
+            label2.Size = new Size(44, 37);
             label2.TabIndex = 1;
             label2.Text = "vs";
             // 
             // Team2Label
             // 
             Team2Label.AutoSize = true;
-            Team2Label.Font = new Font("Segoe UI", 20F);
-            Team2Label.Location = new Point(399, 23);
+            Team2Label.BackColor = Color.Transparent;
+            Team2Label.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
+            Team2Label.Location = new Point(354, 26);
             Team2Label.Name = "Team2Label";
-            Team2Label.Size = new Size(90, 37);
+            Team2Label.Size = new Size(96, 37);
             Team2Label.TabIndex = 2;
             Team2Label.Text = "label3";
             // 
@@ -140,80 +143,92 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 20F);
-            label1.Location = new Point(90, 101);
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
+            label1.Location = new Point(74, 104);
             label1.Name = "label1";
-            label1.Size = new Size(155, 37);
+            label1.Size = new Size(171, 37);
             label1.TabIndex = 9;
             label1.Text = "First Period:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 20F);
-            label3.Location = new Point(58, 169);
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
+            label3.Location = new Point(42, 172);
             label3.Name = "label3";
-            label3.Size = new Size(193, 37);
+            label3.Size = new Size(208, 37);
             label3.TabIndex = 10;
             label3.Text = "Second Period:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 20F);
-            label4.Location = new Point(78, 234);
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
+            label4.Location = new Point(62, 237);
             label4.Name = "label4";
-            label4.Size = new Size(167, 37);
+            label4.Size = new Size(183, 37);
             label4.TabIndex = 11;
             label4.Text = "Third Period:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 25F);
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Segoe UI", 24.75F, FontStyle.Bold);
             label5.Location = new Point(79, 352);
             label5.Name = "label5";
-            label5.Size = new Size(221, 46);
+            label5.Size = new Size(233, 45);
             label5.TabIndex = 12;
             label5.Text = "Match Result:";
             // 
             // Team1ScoreLabel
             // 
             Team1ScoreLabel.AutoSize = true;
-            Team1ScoreLabel.Font = new Font("Segoe UI", 25F);
+            Team1ScoreLabel.BackColor = Color.Transparent;
+            Team1ScoreLabel.Font = new Font("Segoe UI", 24.75F, FontStyle.Bold);
             Team1ScoreLabel.Location = new Point(344, 352);
             Team1ScoreLabel.Name = "Team1ScoreLabel";
-            Team1ScoreLabel.Size = new Size(109, 46);
+            Team1ScoreLabel.Size = new Size(113, 45);
             Team1ScoreLabel.TabIndex = 13;
             Team1ScoreLabel.Text = "label6";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 25F);
+            label7.BackColor = Color.Transparent;
+            label7.Font = new Font("Segoe UI", 24.75F, FontStyle.Bold);
             label7.Location = new Point(378, 352);
             label7.Name = "label7";
-            label7.Size = new Size(27, 46);
+            label7.Size = new Size(29, 45);
             label7.TabIndex = 14;
             label7.Text = ":";
             // 
             // Team2ScoreLabel
             // 
             Team2ScoreLabel.AutoSize = true;
-            Team2ScoreLabel.Font = new Font("Segoe UI", 25F);
+            Team2ScoreLabel.BackColor = Color.Transparent;
+            Team2ScoreLabel.Font = new Font("Segoe UI", 24.75F, FontStyle.Bold);
             Team2ScoreLabel.Location = new Point(399, 352);
             Team2ScoreLabel.Name = "Team2ScoreLabel";
-            Team2ScoreLabel.Size = new Size(109, 46);
+            Team2ScoreLabel.Size = new Size(113, 45);
             Team2ScoreLabel.TabIndex = 15;
             Team2ScoreLabel.Text = "label8";
             // 
             // EndMatchButton
             // 
-            EndMatchButton.Location = new Point(265, 413);
+            EndMatchButton.BackgroundColor = Color.FromArgb(255, 255, 255);
+            EndMatchButton.BorderThickness = 14;
+            EndMatchButton.BottomBorderColor = Color.FromArgb(255, 255, 255);
+            EndMatchButton.Location = new Point(364, 415);
             EndMatchButton.Name = "EndMatchButton";
             EndMatchButton.Size = new Size(220, 44);
             EndMatchButton.TabIndex = 16;
             EndMatchButton.Text = "End Match";
+            EndMatchButton.TextColor = Color.Black;
+            EndMatchButton.TopBorderColor = Color.FromArgb(255, 255, 255);
             EndMatchButton.UseVisualStyleBackColor = true;
             EndMatchButton.Click += EndMatchButton_Click;
             // 
@@ -222,7 +237,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(616, 471);
+            BackgroundImage = Properties.Resources.Firefly_Light_blue_color_of_ice_scratched_from_hockey_as_background_955__1_1;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(597, 471);
             Controls.Add(EndMatchButton);
             Controls.Add(Team2ScoreLabel);
             Controls.Add(label7);
@@ -241,6 +258,7 @@
             Controls.Add(label2);
             Controls.Add(Team1Label);
             Name = "MatchForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "MatchForm";
             ((System.ComponentModel.ISupportInitialize)Team1ScoreNumericUpDown1).EndInit();
             ((System.ComponentModel.ISupportInitialize)Team2ScoreNumericUpDown3).EndInit();
@@ -270,6 +288,6 @@
         private Label Team1ScoreLabel;
         private Label label7;
         private Label Team2ScoreLabel;
-        private Button EndMatchButton;
+        private MulticolorButton EndMatchButton;
     }
 }
