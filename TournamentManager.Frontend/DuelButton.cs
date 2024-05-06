@@ -20,5 +20,10 @@ namespace TournamentManager.Frontend
             Team2 = team2;   
             WinnerPO = winnerPO;
         }
+
+        public void FightLost()
+        {
+            base.Button.ShadeButton();
+        }
     }
 }

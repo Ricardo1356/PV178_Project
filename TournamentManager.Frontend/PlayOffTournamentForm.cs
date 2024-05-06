@@ -9,7 +9,8 @@ namespace TournamentManager.Frontend
     {
         private BackendMain Backend;
         private PlayOffTournament Tournament;
-        private List<List<POButton>> duels = new List<List<POButton>>();
+        private TeamButton? lastWinner = null;
+        private List<List<DuelButton>> duels = new List<List<DuelButton>>();
         private List<POButton> buttons = new List<POButton>();
         private List<TeamButton> teamButtons = new List<TeamButton>();
         private List<(Point Start, Point End)> linesToDraw = new List<(Point Start, Point End)>();
@@ -21,7 +22,6 @@ namespace TournamentManager.Frontend
             this.Tournament.ShuffleTeams();
             InitializeComponent();
             this.MaximizeBox = false;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             Generate();
             this.Text = tournament.Name;
@@ -31,13 +31,14 @@ namespace TournamentManager.Frontend
 
         private void Generate()
         {
+            Point last = new Point(0, 0);
             int margin = 30;
             int spacing = 30;
             int buttonWidth = 120; 
             int buttonHeight = 70;
             int roundCount = (int)Math.Log2(this.Tournament.ParticipatingTeams.Count);
             Point currentPosition = new Point(margin, margin);
-            duels.Add(new List<POButton>());
+            duels.Add(new List<DuelButton>());
             for (int i = 0; i < this.Tournament.ParticipatingTeams.Count; i += 2)
             {
                 Team team1 = this.Tournament.ParticipatingTeams[i];
@@ -125,11 +126,14 @@ namespace TournamentManager.Frontend
 
                 linesToDraw.Add((new Point(FirstDuelPO.Button.Right, FirstDuelPO.Button.Location.Y + buttonHeight / 2),
                                  new Point(FirstDuelPO.Button.Right + margin + buttonWidth / 2, FirstDuelPO.Button.Location.Y + buttonHeight / 2)));
+                last.Y = Team2Button.Bottom; 
+                last.X = WinnerButton.Right;
+                lastWinner = WinnerPO;
             }
             
             for (int round = 1; round < roundCount; round++)
             {
-                duels.Add(new List<POButton>());
+                duels.Add(new List<DuelButton>());
                 for (int i = 0; i < duels[round - 1].Count; i += 2)
                 {
                     DuelButton DuelButton1 = (DuelButton)duels[round - 1][i];
@@ -176,9 +180,40 @@ namespace TournamentManager.Frontend
                                      new Point(DuelButton2.WinnerPO.Button.Right + buttonWidth / 2 + margin, NextDuel.Bottom)));
                     linesToDraw.Add((new Point(NextDuel.Right, NextDuel.Location.Y + buttonHeight / 2),
                                      new Point(NextDuel.Right + buttonWidth / 2 + margin, NextDuel.Location.Y + buttonHeight / 2)));
+                    last.X = Winner.Right;
+                    lastWinner = WinnerPO;
 
                 }
-            }            
+            }
+            MulticolorButton end = new MulticolorButton
+            {
+                Text = "End Tournament",
+                Size = new Size(buttonWidth + 50, buttonHeight),
+                Location = new Point(last.X + margin, last.Y + margin)
+            };
+            end.Click += EndTournament!;
+            this.Controls.Add(end);
+        }
+
+        private void EndTournament(object sender, EventArgs e)
+        {
+            if (lastWinner.Team == null)
+            {
+                MessageBox.Show("The tournament is not finished yet", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                this.Close();
+            }
+        }
+
+        private void FormClosed(object sender, FormClosingEventArgs e)
+        {
+            if (lastWinner.Team == null)
+            {
+                MessageBox.Show("The tournament is not finished yet", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true;
+            }          
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -200,7 +235,12 @@ namespace TournamentManager.Frontend
                 if (duel.Team1 != null && duel.Team2 != null && duel.IsFinished == false)
                 {
                     duel.IsFinished = true;
-                    (Team winner, Team loser, int team1Score, int team2Score) = GetWinner(duel.Team1, duel.Team2);
+                    (bool ended, Team winner, Team loser, int team1Score, int team2Score) = GetWinner(duel.Team1, duel.Team2);
+                    if (ended == false)
+                    {
+                        duel.IsFinished = false;
+                        return;
+                    }
                     duel.Winner = winner;
                     ShadeALlTeamOccurences(loser);
                     duel.WinnerPO.SetWinner(winner);
@@ -223,34 +263,51 @@ namespace TournamentManager.Frontend
                         {
                             duel.WinnerPO.NextDuel.Button.Text = $"{duel.WinnerPO.NextDuel.Team1.Name}\nvs\n{duel.WinnerPO.NextDuel.Team2.Name}";
                         }
-                    }                  
+                    } 
                 }
             }
         }
 
         private void ShadeALlTeamOccurences(Team team)
         {
-            foreach (TeamButton tb in teamButtons)
+            foreach (POButton b in buttons)
             {
-                if (tb.Team != null && tb.Team == team)
+                if (b is TeamButton)
                 {
-                    tb.FightLost();
+                    TeamButton tb = (TeamButton) b;
+                    if (tb.Team != null && tb.Team == team)
+                    {
+                        tb.FightLost();
+                    }
                 }
+                else
+                {
+                    DuelButton d = (DuelButton) b;
+                    if (d.Team1 == team || d.Team2 == team)
+                    {
+                        d.FightLost();
+                    }
+                }
+
             }
         }
 
-        private (Team, Team, int, int) GetWinner(Team team1, Team team2)
+        private (bool, Team, Team, int, int) GetWinner(Team team1, Team team2)
         {
             MatchForm matchForm = new MatchForm(Backend, team1, team2);
             matchForm.ShowDialog();
+            if (matchForm.Ended == false)
+            {
+                return (false, team1, team2, 0, 0);
+            }
 
             if (matchForm.Team1Score > matchForm.Team2Score)
             {
-                return (team1, team2, (int)matchForm.Team1Score, (int)matchForm.Team2Score);
+                return (true, team1, team2, (int)matchForm.Team1Score, (int)matchForm.Team2Score);
             }
             else
             {
-                return (team2, team1, (int)matchForm.Team1Score, (int)matchForm.Team2Score);
+                return (true, team2, team1, (int)matchForm.Team1Score, (int)matchForm.Team2Score);
             }
         }
 

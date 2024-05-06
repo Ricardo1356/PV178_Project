@@ -63,6 +63,8 @@
             // 
             // PlayerNameTextBox
             // 
+            PlayerNameTextBox.BackColor = Color.FromArgb(224, 224, 224);
+            PlayerNameTextBox.BorderStyle = BorderStyle.FixedSingle;
             PlayerNameTextBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
             PlayerNameTextBox.Location = new Point(188, 127);
             PlayerNameTextBox.Name = "PlayerNameTextBox";
@@ -71,24 +73,30 @@
             // 
             // PlayerWeightTextBox
             // 
+            PlayerWeightTextBox.BackColor = Color.FromArgb(224, 224, 224);
+            PlayerWeightTextBox.BorderStyle = BorderStyle.FixedSingle;
             PlayerWeightTextBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            PlayerWeightTextBox.Location = new Point(190, 243);
+            PlayerWeightTextBox.Location = new Point(188, 226);
             PlayerWeightTextBox.Name = "PlayerWeightTextBox";
             PlayerWeightTextBox.Size = new Size(68, 27);
             PlayerWeightTextBox.TabIndex = 4;
             // 
             // PlayerHeightTextBox
             // 
+            PlayerHeightTextBox.BackColor = Color.FromArgb(224, 224, 224);
+            PlayerHeightTextBox.BorderStyle = BorderStyle.FixedSingle;
             PlayerHeightTextBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            PlayerHeightTextBox.Location = new Point(190, 204);
+            PlayerHeightTextBox.Location = new Point(188, 193);
             PlayerHeightTextBox.Name = "PlayerHeightTextBox";
             PlayerHeightTextBox.Size = new Size(68, 27);
             PlayerHeightTextBox.TabIndex = 3;
             // 
             // PlayerAgeTextBox
             // 
+            PlayerAgeTextBox.BackColor = Color.FromArgb(224, 224, 224);
+            PlayerAgeTextBox.BorderStyle = BorderStyle.FixedSingle;
             PlayerAgeTextBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            PlayerAgeTextBox.Location = new Point(190, 160);
+            PlayerAgeTextBox.Location = new Point(188, 160);
             PlayerAgeTextBox.Name = "PlayerAgeTextBox";
             PlayerAgeTextBox.Size = new Size(68, 27);
             PlayerAgeTextBox.TabIndex = 2;
@@ -146,7 +154,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            label1.Location = new Point(121, 130);
+            label1.Location = new Point(127, 130);
             label1.Name = "label1";
             label1.Size = new Size(55, 20);
             label1.TabIndex = 9;
@@ -157,7 +165,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            label2.Location = new Point(137, 163);
+            label2.Location = new Point(141, 163);
             label2.Name = "label2";
             label2.Size = new Size(41, 20);
             label2.TabIndex = 10;
@@ -168,7 +176,7 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            label3.Location = new Point(118, 207);
+            label3.Location = new Point(122, 196);
             label3.Name = "label3";
             label3.Size = new Size(60, 20);
             label3.TabIndex = 11;
@@ -179,7 +187,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            label4.Location = new Point(114, 246);
+            label4.Location = new Point(118, 229);
             label4.Name = "label4";
             label4.Size = new Size(64, 20);
             label4.TabIndex = 12;
@@ -190,7 +198,7 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            label5.Location = new Point(108, 282);
+            label5.Location = new Point(112, 262);
             label5.Name = "label5";
             label5.Size = new Size(70, 20);
             label5.TabIndex = 13;
@@ -198,10 +206,11 @@
             // 
             // PlayerPositionComboBox
             // 
+            PlayerPositionComboBox.BackColor = Color.FromArgb(224, 224, 224);
             PlayerPositionComboBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
             PlayerPositionComboBox.FormattingEnabled = true;
             PlayerPositionComboBox.Items.AddRange(new object[] { "C", "RW", "LW", "D" });
-            PlayerPositionComboBox.Location = new Point(188, 279);
+            PlayerPositionComboBox.Location = new Point(188, 259);
             PlayerPositionComboBox.Name = "PlayerPositionComboBox";
             PlayerPositionComboBox.Size = new Size(70, 28);
             PlayerPositionComboBox.TabIndex = 5;

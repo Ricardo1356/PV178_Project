@@ -90,15 +90,18 @@ namespace TournamentManager.Frontend
 
         private void RemovePlayerButton_Click(object sender, EventArgs e)
         {
-            if (PlayersTeamView.SelectedItems.Count > 0)
+            if (CheckCanBeManaged())
             {
-                int selectedIndex = PlayersTeamView.SelectedItems[0].Index;
-                this.team.RemovePlayer(GetPlayer(selectedIndex));
-                RefreshPlayersView();
-            }
-            else
-            {
-                MessageBox.Show("Please select a player to remove.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (PlayersTeamView.SelectedItems.Count > 0)
+                {
+                    int selectedIndex = PlayersTeamView.SelectedItems[0].Index;
+                    this.team.RemovePlayer(GetPlayer(selectedIndex));
+                    RefreshPlayersView();
+                }
+                else
+                {
+                    MessageBox.Show("Please select a player to remove.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -121,15 +124,34 @@ namespace TournamentManager.Frontend
 
         private void AddPlayerButton_Click(object sender, EventArgs e)
         {
-            NewPlayerForm newPlayerForm = new NewPlayerForm(this.Backend, this.team);
-            newPlayerForm.ShowDialog();
-            RefreshPlayersView();
+            if (CheckCanBeManaged())
+            {
+                NewPlayerForm newPlayerForm = new NewPlayerForm(this.Backend, this.team);
+                newPlayerForm.ShowDialog();
+                RefreshPlayersView();
+            }     
         }
 
         private void EditTeamButton_Click(object sender, EventArgs e)
         {
-            TeamInfoForm teamInfoForm = new TeamInfoForm(this.Backend, this.team);
-            teamInfoForm.ShowDialog();
+            if (CheckCanBeManaged())
+            {
+                TeamInfoForm teamInfoForm = new TeamInfoForm(this.Backend, this.team);
+                teamInfoForm.ShowDialog();
+            }
+        }
+
+        private bool CheckCanBeManaged()
+        {
+            if (this.team.CanBeManaged)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Team is still registered in a tournament, cannot be edited", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
         }
     }
 }

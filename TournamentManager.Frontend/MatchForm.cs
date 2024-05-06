@@ -20,7 +20,7 @@ namespace TournamentManager.Frontend
         private Team _team2;
         public decimal Team1Score = 0;
         public decimal Team2Score = 0;
-
+        public bool Ended = false;
         public MatchForm(BackendMain backend, Team team1, Team team2)
         {
             InitializeComponent();
@@ -33,7 +33,9 @@ namespace TournamentManager.Frontend
             Team2ScoreLabel.Text = 0.ToString();
             PositionLabels();
             this.MaximizeBox = false;
+            this.ShowIcon = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
         }
 
         private void PositionLabels()
@@ -97,6 +99,7 @@ namespace TournamentManager.Frontend
                 MessageBox.Show("The match can't end in a draw.");
                 return;
             }
+            Ended = true;
             this.Close();   
         }
     }

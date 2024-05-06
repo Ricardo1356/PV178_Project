@@ -26,11 +26,26 @@ namespace TournamentManager.Frontend
 
         private void ListAllTeams()
         {
-            foreach (var team in this.Backend.GetTeams())
+            ExistingTeamsSelectionBox.Items.Clear();
+
+            var teams = this.Backend.GetTeams();
+
+            foreach (var team in teams)
             {
-                this.ExistingTeamsSelectionBox.Items.Add($"{team.City} {team.Name}");
+                if (team.CanBeManaged)
+                {
+                    ExistingTeamsSelectionBox.Items.Add($"{team.City} {team.Name}");
+                }
             }
-            this.ExistingTeamsSelectionBox.BeginUpdate();
+        }
+
+        private void UpdateTeams(List<Team> participatingTeams, Tournament? tournament)
+        {
+            foreach (var team in participatingTeams)
+            {
+                team.SetTournament(tournament);
+            }
+            ListAllTeams();
         }
 
         private void TouramentTypeSelectionCancellButton_Click(object sender, EventArgs e)
@@ -38,43 +53,65 @@ namespace TournamentManager.Frontend
             this.Close();
         }
 
-        private void PlayOffTounamentTypeButton_Click(object sender, EventArgs e)
+        private bool ValidateTournamentSettings(TournamentType type)
         {
+            if (this.textBox1.Text == "")
+            {
+                MessageBox.Show("Please enter a name for the tournament", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
             if (this.ExistingTeamsSelectionBox.CheckedItems.Count < 2 || this.ExistingTeamsSelectionBox.CheckedItems.Count > 8)
             {
                 MessageBox.Show("Please select 2 - 8 teams", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                return false;
             }
-            if (this.ExistingTeamsSelectionBox.CheckedItems.Count % 2 != 0 || this.ExistingTeamsSelectionBox.CheckedItems.Count == 6)
+            if (type == TournamentType.PlayOff)
             {
-                MessageBox.Show("Please select 2, 4 or 8 teams", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                if (this.ExistingTeamsSelectionBox.CheckedItems.Count % 2 != 0 || this.ExistingTeamsSelectionBox.CheckedItems.Count == 6)
+                {
+                    MessageBox.Show("Please select 2, 4, or 8 teams", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
             }
+            return true;
+        }
+
+        private List<Team> GetSelectedTeams()
+        {
             var participatingTeams = new List<Team>();
-            foreach (var team in this.ExistingTeamsSelectionBox.CheckedItems)
+            foreach (var item in this.ExistingTeamsSelectionBox.CheckedItems)
             {
-                participatingTeams.Add(this.Backend.GetTeamByJoined(team.ToString()!));
+                participatingTeams.Add(this.Backend.GetTeamByJoined(item.ToString()!));
             }
+            return participatingTeams;
+        }
 
-            PlayOffTournamentForm newTournament = new PlayOffTournamentForm(this.Backend, this.Backend.CreateNewTournament(TournamentType.PlayOff, participatingTeams));
-            newTournament.ShowDialog();
-
+        private void PlayOffTounamentTypeButton_Click(object sender, EventArgs e)
+        {
+            if (ValidateTournamentSettings(TournamentType.PlayOff))
+            {
+                var participatingTeams = GetSelectedTeams();
+                Tournament t = this.Backend.CreateNewTournament(TournamentType.PlayOff, participatingTeams, textBox1.Text);
+                PlayOffTournamentForm newTournament = new PlayOffTournamentForm(this.Backend, t);
+                UpdateTeams(participatingTeams, t);
+                textBox1.Text = "";
+                newTournament.FormClosed += (s, args) => UpdateTeams(participatingTeams, null);
+                newTournament.Show();
+            }
         }
 
         private void FreeForAllTournamentTypeButton_Click(object sender, EventArgs e)
         {
-            if (this.ExistingTeamsSelectionBox.CheckedItems.Count < 2 || this.ExistingTeamsSelectionBox.CheckedItems.Count > 8)
+            if (ValidateTournamentSettings(TournamentType.FFA))
             {
-                MessageBox.Show("Please select 2 - 8 teams", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                var participatingTeams = GetSelectedTeams();
+                Tournament t = this.Backend.CreateNewTournament(TournamentType.FFA, participatingTeams, textBox1.Text);
+                FFATournamentForm newTournament = new FFATournamentForm(this.Backend, t);
+                UpdateTeams(participatingTeams, t);
+                textBox1.Text = "";
+                newTournament.FormClosed += (s, args) => UpdateTeams(participatingTeams, null);
+                newTournament.Show();
             }
-            var participatingTeams = new List<Team>();
-            foreach (var team in this.ExistingTeamsSelectionBox.CheckedItems)
-            {
-                participatingTeams.Add(this.Backend.GetTeamByJoined(team.ToString()!));
-            }   
-            FFATournamentForm newTournament = new FFATournamentForm(this.Backend, this.Backend.CreateNewTournament(TournamentType.FFA, participatingTeams));
-            newTournament.ShowDialog();
         }
     }
 }

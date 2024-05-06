@@ -78,6 +78,8 @@
             // 
             // NewTeamNameTextBox
             // 
+            NewTeamNameTextBox.BackColor = Color.FromArgb(224, 224, 224);
+            NewTeamNameTextBox.BorderStyle = BorderStyle.FixedSingle;
             NewTeamNameTextBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
             NewTeamNameTextBox.Location = new Point(184, 83);
             NewTeamNameTextBox.Name = "NewTeamNameTextBox";
@@ -87,6 +89,8 @@
             // 
             // NewTeamCityTextBox
             // 
+            NewTeamCityTextBox.BackColor = Color.FromArgb(224, 224, 224);
+            NewTeamCityTextBox.BorderStyle = BorderStyle.FixedSingle;
             NewTeamCityTextBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
             NewTeamCityTextBox.Location = new Point(184, 112);
             NewTeamCityTextBox.Name = "NewTeamCityTextBox";
@@ -143,29 +147,32 @@
             // 
             // TopColorButton
             // 
+            TopColorButton.BackColor = Color.FromArgb(224, 224, 224);
             TopColorButton.Location = new Point(184, 141);
             TopColorButton.Name = "TopColorButton";
             TopColorButton.Size = new Size(44, 23);
             TopColorButton.TabIndex = 8;
-            TopColorButton.UseVisualStyleBackColor = true;
+            TopColorButton.UseVisualStyleBackColor = false;
             TopColorButton.Click += TopColorButton_Click;
             // 
             // BackColorButton
             // 
+            BackColorButton.BackColor = Color.FromArgb(224, 224, 224);
             BackColorButton.Location = new Point(234, 141);
             BackColorButton.Name = "BackColorButton";
             BackColorButton.Size = new Size(44, 23);
             BackColorButton.TabIndex = 9;
-            BackColorButton.UseVisualStyleBackColor = true;
+            BackColorButton.UseVisualStyleBackColor = false;
             BackColorButton.Click += BackColorButton_Click;
             // 
             // ButColorButton
             // 
+            ButColorButton.BackColor = Color.FromArgb(224, 224, 224);
             ButColorButton.Location = new Point(284, 141);
             ButColorButton.Name = "ButColorButton";
             ButColorButton.Size = new Size(44, 23);
             ButColorButton.TabIndex = 10;
-            ButColorButton.UseVisualStyleBackColor = true;
+            ButColorButton.UseVisualStyleBackColor = false;
             ButColorButton.Click += ButColorButton_Click;
             // 
             // PreviewButton
@@ -197,16 +204,18 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label5.Location = new Point(24, 174);
+            label5.Location = new Point(19, 169);
             label5.Name = "label5";
-            label5.Size = new Size(154, 21);
+            label5.Size = new Size(159, 21);
             label5.TabIndex = 13;
-            label5.Text = "Team Abbrevation:";
+            label5.Text = "Team Abbreviation:";
             // 
             // TeamAbbrevationTextBox
             // 
+            TeamAbbrevationTextBox.BackColor = Color.FromArgb(224, 224, 224);
+            TeamAbbrevationTextBox.BorderStyle = BorderStyle.FixedSingle;
             TeamAbbrevationTextBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            TeamAbbrevationTextBox.Location = new Point(184, 172);
+            TeamAbbrevationTextBox.Location = new Point(184, 168);
             TeamAbbrevationTextBox.Name = "TeamAbbrevationTextBox";
             TeamAbbrevationTextBox.Size = new Size(56, 27);
             TeamAbbrevationTextBox.TabIndex = 14;
