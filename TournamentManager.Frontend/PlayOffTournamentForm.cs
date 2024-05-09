@@ -10,7 +10,7 @@ namespace TournamentManager.Frontend
         private PlayOffTournament Tournament;
         private TeamButton? lastWinner = null;
         private List<List<DuelButton>> duels = new List<List<DuelButton>>();
-        private List<POButton> buttons = new List<POButton>();
+        private List<List<POButton>> buttons = new List<List<POButton>>();
         private List<(Point Start, Point End)> linesToDraw = new List<(Point Start, Point End)>();
 
         private const int _margin = 30;
@@ -45,6 +45,7 @@ namespace TournamentManager.Frontend
             int roundCount = (int)Math.Log2(this.Tournament.ParticipatingTeams.Count);
             
             duels.Add(new List<DuelButton>());
+            buttons.Add(new List<POButton>());
             for (int i = 0; i < this.Tournament.ParticipatingTeams.Count; i += 2)
             {
                 Team team1 = this.Tournament.ParticipatingTeams[i];
@@ -75,10 +76,10 @@ namespace TournamentManager.Frontend
                 Team2Button.Click += Button_Click!;
                 FirstDuelMB.Click += Button_Click!;
                 WinnerButton.Click += Button_Click!;
-                buttons.Add(Team1PO);
-                buttons.Add(Team2PO);
-                buttons.Add(FirstDuelPO);
-                buttons.Add(WinnerPO);
+                buttons[0].Add(Team1PO);
+                buttons[0].Add(Team2PO);
+                buttons[0].Add(FirstDuelPO);
+                buttons[0].Add(WinnerPO);
 
                 currentPosition.Y += _margin/2;
                 duels[0].Add(FirstDuelPO);
@@ -93,6 +94,7 @@ namespace TournamentManager.Frontend
             for (int round = 1; round < roundCount; round++)
             {
                 duels.Add(new List<DuelButton>());
+                buttons.Add(new List<POButton>());
                 for (int i = 0; i < duels[round - 1].Count; i += 2)
                 {
                     DuelButton DuelButton1 = duels[round - 1][i];
@@ -119,8 +121,8 @@ namespace TournamentManager.Frontend
 
                     duels[round].Add(DuelPO);
 
-                    buttons.Add(DuelPO);
-                    buttons.Add(WinnerPO);
+                    buttons[round].Add(DuelPO);
+                    buttons[round].Add(WinnerPO);
 
                     AddLinesToDraw(DuelButton1.WinnerPO.Button, DuelButton2.WinnerPO.Button, DuelPO.Button);
 
@@ -244,25 +246,27 @@ namespace TournamentManager.Frontend
 
         private void ShadeALlTeamOccurences(Team team)
         {
-            foreach (POButton button in buttons)
+            foreach (var inner in buttons)
             {
-                if (button is TeamButton)
+                foreach (var button in inner)
                 {
-                    TeamButton teamButton = (TeamButton) button;
-                    if (teamButton.Team != null && teamButton.Team == team)
+                    if (button is TeamButton)
                     {
-                        teamButton.FightLost();
+                        TeamButton teamButton = (TeamButton)button;
+                        if (teamButton.Team != null && teamButton.Team == team)
+                        {
+                            teamButton.FightLost();
+                        }
+                    }
+                    else
+                    {
+                        DuelButton duelButton = (DuelButton)button;
+                        if (duelButton.Team1 == team || duelButton.Team2 == team)
+                        {
+                            duelButton.ShadeButton();
+                        }
                     }
                 }
-                else
-                {
-                    DuelButton duelButton = (DuelButton) button;
-                    if (duelButton.Team1 == team || duelButton.Team2 == team)
-                    {
-                        duelButton.ShadeButton();
-                    }
-                }
-
             }
         }
 
@@ -302,14 +306,18 @@ namespace TournamentManager.Frontend
 
         private POButton GetClickedButton(Button button)
         {
-            foreach (var b in this.buttons)
+            foreach (var inner in this.buttons)
             {
-                if (b.Button == button)
+                foreach (var b in inner)
                 {
-                    return b;
+                    if (b.Button == button)
+                    {
+                        return b;
+                    }
                 }
             }
             return null!;
         }
+     
     }
 }
