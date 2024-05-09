@@ -7,6 +7,8 @@ namespace TournamentManager.Backend
 {
     public static class FileWriter
     {
+
+
         public static void SaveTeams(List<Team> teams)
         {
             try
@@ -60,5 +62,7 @@ namespace TournamentManager.Backend
                 DataValidationService.ValidateTeamDataDto(teamDataDto);
             }
         }
+
+        
     }
 }
