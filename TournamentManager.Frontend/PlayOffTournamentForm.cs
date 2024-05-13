@@ -19,6 +19,8 @@ namespace TournamentManager.Frontend
         private const int _buttonHeight = 70;
         private Color _white = Color.FromArgb(255, 255, 255);
 
+        private bool _paused = false;
+
         public PlayOffTournamentForm(Tournament Tournament)
         {
             this.Tournament = (PlayOffTournament)Tournament;
@@ -135,11 +137,27 @@ namespace TournamentManager.Frontend
             {
                 Text = "End Tournament",
                 Size = new Size(_buttonWidth + 50, _buttonHeight),
-                Location = new Point(last.X + _margin, last.Y + _margin)
+                Location = new Point(last.X - _buttonWidth + _margin, last.Y + _margin)
             };
+
+            MulticolorButton pause = new MulticolorButton
+            {
+                Text = "Pause Tournament",
+                Size = new Size(_buttonWidth + 50, _buttonHeight),
+                Location = new Point(end.Right + _spacing, end.Top)
+            };
+            pause.Click += PauseTournament!;
             end.Click += EndTournament!;
+            this.Controls.Add(pause);
             this.Controls.Add(end);
         }
+
+        private void PauseTournament(object sender, EventArgs e)
+        {
+            this._paused = true;
+            this.Close();
+        }
+
 
         private MulticolorButton CreateMCButton(string text, Color top, Color back, Color bot, Point location)
         {
@@ -184,7 +202,7 @@ namespace TournamentManager.Frontend
 
         private new void FormClosed(object sender, FormClosingEventArgs e)
         {
-            if (lastWinner == null || lastWinner.Team == null)
+            if (!_paused && (lastWinner == null || lastWinner.Team == null) && e.CloseReason != CloseReason.UserClosing)
             {
                 MessageBox.Show("The tournament is not finished yet", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Cancel = true;
