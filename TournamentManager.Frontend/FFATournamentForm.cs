@@ -7,8 +7,8 @@ namespace TournamentManager.Frontend
     public partial class FFATournamentForm : Form
     {
         private FFATournament Tournament;
-        private const int _buttonWidht = 160;
-        private const int _buttonHeight = 100;
+        private const int _buttonWidht = 120;
+        private const int _buttonHeight = 80;
         private const int _spacing = 10;
 
         private Dictionary<Button, (Team, Team, bool)> matches = new Dictionary<Button, (Team, Team, bool)>();
