@@ -19,10 +19,17 @@ namespace TournamentManager.Frontend
         {
             this.Backend = Backend;
             InitializeComponent();
-            this.MaximizeBox = false;
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             ListAllTeams();
             this.FormClosing += (s, args) => UpdateTournamentListView(mainForm);
+            Init();
+        }
+
+        private void Init()
+        {
+            this.ShowIcon = false;
+            this.Text = "Select Tournament Type";
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
         
         private void ListAllTeams()

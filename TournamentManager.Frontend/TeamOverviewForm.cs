@@ -20,6 +20,7 @@ namespace TournamentManager.Frontend
         {
             this.Text = $"{this.team.City} {this.team.Name} Team Edit";
             this.MaximizeBox = false;
+            this.ShowIcon = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             InitializeTeamOverview();
             RefreshPlayersView();

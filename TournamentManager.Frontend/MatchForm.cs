@@ -27,6 +27,7 @@ namespace TournamentManager.Frontend
 
         private void Init(Team team1, Team team2)
         {
+            this.Text = $"{team1.Name} vs {team2.Name}";
             Team1Label.Text = $"{team1.City} {team1.Name}";
             Team2Label.Text = $"{team2.City} {team2.Name}";
             Team1ScoreLabel.Text = 0.ToString();

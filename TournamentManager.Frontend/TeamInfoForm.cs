@@ -27,8 +27,10 @@ namespace TournamentManager.Frontend
 
         private void Init()
         {
-            this.MaximizeBox = false;
+            this.Text = $"Edit {this.team.City} {this.team.Name} info";
             this.ShowIcon = false;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.BackColor = ShadeColor(team.GetBackColor(), 0.8);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             label1.Text = $"{team.City}";
