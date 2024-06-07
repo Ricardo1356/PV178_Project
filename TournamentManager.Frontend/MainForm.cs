@@ -213,68 +213,16 @@ namespace TournamentManager.Frontend
                 return;
             }
 
-            if (listView.ListViewItemSorter is ListViewItemComparer currentComparer && currentComparer.Column == e.Column)
+            if (listView.ListViewItemSorter is ColumnSorter currentComparer && currentComparer.Column == e.Column)
             {
                 currentComparer.Order = currentComparer.Order == SortOrder.Ascending ? SortOrder.Descending : SortOrder.Ascending;
             }
             else
             {
-                listView.ListViewItemSorter = new ListViewItemComparer(e.Column);
+                listView.ListViewItemSorter = new ColumnSorter(e.Column);
             }
 
             listView.Sort();
         }
-
-        public class ListViewItemComparer : IComparer
-        {
-            public int Column { get; set; }
-            public SortOrder Order { get; set; }
-
-            public ListViewItemComparer(int column)
-            {
-                Column = column;
-                Order = SortOrder.Ascending;
-            }
-
-            public int Compare(object x, object y)
-            {
-                ListViewItem itemX = x as ListViewItem;
-                ListViewItem itemY = y as ListViewItem;
-
-                int compareResult;
-
-                switch (Column)
-                {
-                    case 0: // Name
-                    case 2: // Type
-                        compareResult = String.Compare(itemX.SubItems[Column].Text, itemY.SubItems[Column].Text);
-                        break;
-
-                    case 1: // Finished
-                        bool boolX = bool.Parse(itemX.SubItems[Column].Text);
-                        bool boolY = bool.Parse(itemY.SubItems[Column].Text);
-                        compareResult = boolX.CompareTo(boolY);
-                        break;
-
-                    case 3: // Team Count
-                        int intX = int.Parse(itemX.SubItems[Column].Text);
-                        int intY = int.Parse(itemY.SubItems[Column].Text);
-                        compareResult = intX.CompareTo(intY);
-                        break;
-
-                    default:
-                        compareResult = String.Compare(itemX.SubItems[Column].Text, itemY.SubItems[Column].Text);
-                        break;
-                }
-
-                if (Order == SortOrder.Descending)
-                {
-                    compareResult = -compareResult;
-                }
-
-                return compareResult;
-            }
-        }
-
     }
 }
