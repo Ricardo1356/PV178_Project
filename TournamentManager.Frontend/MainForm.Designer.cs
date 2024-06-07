@@ -33,16 +33,17 @@
             AppExitButton = new MulticolorButton();
             RegisterNewTeamButton = new MulticolorButton();
             TeamsListView = new ListView();
+            TournamentListView = new ListView();
             SuspendLayout();
             // 
             // StartNewTournamentButton
             // 
             StartNewTournamentButton.BackgroundColor = Color.FromArgb(255, 255, 255);
-            StartNewTournamentButton.BorderThickness = 32;
+            StartNewTournamentButton.BorderThickness = 24;
             StartNewTournamentButton.BottomBorderColor = Color.FromArgb(255, 255, 255);
-            StartNewTournamentButton.Location = new Point(341, 325);
+            StartNewTournamentButton.Location = new Point(583, 59);
             StartNewTournamentButton.Name = "StartNewTournamentButton";
-            StartNewTournamentButton.Size = new Size(184, 96);
+            StartNewTournamentButton.Size = new Size(294, 73);
             StartNewTournamentButton.TabIndex = 1;
             StartNewTournamentButton.Text = "Start Tournament";
             StartNewTournamentButton.TextColor = Color.Black;
@@ -55,7 +56,7 @@
             AppExitButton.BackgroundColor = Color.FromArgb(255, 255, 255);
             AppExitButton.BorderThickness = 13;
             AppExitButton.BottomBorderColor = Color.FromArgb(255, 255, 255);
-            AppExitButton.Location = new Point(619, 12);
+            AppExitButton.Location = new Point(736, 12);
             AppExitButton.Name = "AppExitButton";
             AppExitButton.Size = new Size(141, 41);
             AppExitButton.TabIndex = 2;
@@ -68,11 +69,11 @@
             // RegisterNewTeamButton
             // 
             RegisterNewTeamButton.BackgroundColor = Color.FromArgb(255, 255, 255);
-            RegisterNewTeamButton.BorderThickness = 32;
+            RegisterNewTeamButton.BorderThickness = 24;
             RegisterNewTeamButton.BottomBorderColor = Color.FromArgb(255, 255, 255);
-            RegisterNewTeamButton.Location = new Point(12, 325);
+            RegisterNewTeamButton.Location = new Point(583, 139);
             RegisterNewTeamButton.Name = "RegisterNewTeamButton";
-            RegisterNewTeamButton.Size = new Size(323, 96);
+            RegisterNewTeamButton.Size = new Size(294, 73);
             RegisterNewTeamButton.TabIndex = 4;
             RegisterNewTeamButton.Text = "Add New Team";
             RegisterNewTeamButton.TextColor = Color.Black;
@@ -92,13 +93,24 @@
             TeamsListView.UseCompatibleStateImageBehavior = false;
             TeamsListView.DoubleClick += TeamListView_DoubleClick;
             // 
+            // TournamentListView
+            // 
+            TournamentListView.Location = new Point(12, 241);
+            TournamentListView.Name = "TournamentListView";
+            TournamentListView.Size = new Size(865, 228);
+            TournamentListView.TabIndex = 8;
+            TournamentListView.UseCompatibleStateImageBehavior = false;
+            TournamentListView.ColumnClick += TournamentListView_ColumnClick;
+            TournamentListView.DoubleClick += TournamentListView_DoubleClick;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources._0Sb75t1_2394455732;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(772, 433);
+            ClientSize = new Size(889, 484);
+            Controls.Add(TournamentListView);
             Controls.Add(TeamsListView);
             Controls.Add(RegisterNewTeamButton);
             Controls.Add(AppExitButton);
@@ -116,5 +128,6 @@
         private MulticolorButton AppExitButton;
         private MulticolorButton RegisterNewTeamButton;
         private ListView TeamsListView;
+        private ListView TournamentListView;
     }
 }

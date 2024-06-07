@@ -15,15 +15,16 @@ namespace TournamentManager.Frontend
     public partial class TournamentTypeSelectionForm : Form
     {
         private BackendMain Backend;
-        public TournamentTypeSelectionForm(BackendMain Backend)
+        public TournamentTypeSelectionForm(BackendMain Backend, MainForm mainForm)
         {
             this.Backend = Backend;
             InitializeComponent();
             this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             ListAllTeams();
+            this.FormClosing += (s, args) => UpdateTournamentListView(mainForm);
         }
-
+        
         private void ListAllTeams()
         {
             ExistingTeamsSelectionBox.Items.Clear();
@@ -39,11 +40,26 @@ namespace TournamentManager.Frontend
             }
         }
 
-        private void UpdateTeams(List<Team> participatingTeams, Tournament? tournament)
+        private void UpdateTournamentListView(MainForm mainForm)
         {
-            foreach (var team in participatingTeams)
+            mainForm.LoadTournamentsIntoListView();
+        }
+
+        private void UpdateTeams(List<Team> participatingTeams, Tournament Tournament, bool tournamentStart=false)
+        {
+            if (tournamentStart)
             {
-                team.SetTournament(tournament);
+                foreach (var team in participatingTeams)
+                {
+                    team.SetTournament(Tournament);
+                }
+            }
+            if (Tournament.Finished)
+            {
+                foreach (var team in participatingTeams)
+                {
+                    team.SetTournament(null);
+                }              
             }
             ListAllTeams();
         }
@@ -73,6 +89,11 @@ namespace TournamentManager.Frontend
                     return false;
                 }
             }
+            if (this.Backend.TournamentNameExists(this.textBox1.Text))
+            {
+                MessageBox.Show("A tournament with this name already exists", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
             return true;
         }
 
@@ -92,10 +113,10 @@ namespace TournamentManager.Frontend
             {
                 var participatingTeams = GetSelectedTeams();
                 Tournament t = this.Backend.CreateNewTournament(TournamentType.PlayOff, participatingTeams, textBox1.Text);
-                PlayOffTournamentForm newTournament = new PlayOffTournamentForm(t);
-                UpdateTeams(participatingTeams, t);
+                PlayOffTournamentForm newTournament = new PlayOffTournamentForm(t, this.Backend);
+                UpdateTeams(participatingTeams, t, true);
                 textBox1.Text = "";
-                newTournament.FormClosed += (s, args) => UpdateTeams(participatingTeams, null);
+                newTournament.FormClosed += (s, args) => UpdateTeams(participatingTeams, t);
                 newTournament.Show();
             }
         }
@@ -106,10 +127,10 @@ namespace TournamentManager.Frontend
             {
                 var participatingTeams = GetSelectedTeams();
                 Tournament t = this.Backend.CreateNewTournament(TournamentType.FFA, participatingTeams, textBox1.Text);
-                FFATournamentForm newTournament = new FFATournamentForm(t);
-                UpdateTeams(participatingTeams, t);
+                FFATournamentForm newTournament = new FFATournamentForm(t, this.Backend);
+                UpdateTeams(participatingTeams, t, true);
                 textBox1.Text = "";
-                newTournament.FormClosed += (s, args) => UpdateTeams(participatingTeams, null);
+                newTournament.FormClosed += (s, args) => UpdateTeams(participatingTeams, t);
                 newTournament.Show();
             }
         }

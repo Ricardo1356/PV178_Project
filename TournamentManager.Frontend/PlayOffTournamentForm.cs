@@ -1,6 +1,6 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using System.Text;
+﻿using System.Text.Json;
 using TournamentManager.Backend;
+using TournamentManager.Backend.DTOs;
 using TournamentManager.Backend.Structures;
 
 namespace TournamentManager.Frontend
@@ -8,6 +8,7 @@ namespace TournamentManager.Frontend
     public partial class PlayOffTournamentForm : Form
     {
         private PlayOffTournament Tournament;
+        private BackendMain Backend;
         private TeamButton? lastWinner = null;
         private List<List<DuelButton>> duels = new List<List<DuelButton>>();
         private List<List<POButton>> buttons = new List<List<POButton>>();
@@ -21,31 +22,40 @@ namespace TournamentManager.Frontend
 
         private bool _paused = false;
 
-        public PlayOffTournamentForm(Tournament Tournament)
+        public PlayOffTournamentForm(Tournament Tournament, BackendMain backend)
         {
+            this.Backend = backend;
             this.Tournament = (PlayOffTournament)Tournament;
             this.Tournament.ShuffleTeams();
             InitializeComponent();
             Init();
+            SaveTournament();
         }
 
-        private void Init()
+        public PlayOffTournamentForm(TournamentDto tournamentDto, BackendMain backend)
+        {
+            this.Backend = backend;
+            this.Tournament = new PlayOffTournament(tournamentDto.TeamNames.Count, backend.GetMultipleTeams(tournamentDto.TeamNames), tournamentDto.Name);
+            InitializeComponent();
+            Init(tournamentDto.Duels);
+        }
+
+        private void Init(List<List<DuelDto>>? doneDuels = null)
         {
             this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Text = this.Tournament.Name;
             this.ShowIcon = false;
             this.FormClosing += FormClosed!;
-            Generate();
+            Generate(doneDuels);
         }
 
-        private void Generate()
+        private void Generate(List<List<DuelDto>>? doneDuels = null)
         {
             Point last = new Point(0, 0);
             Point currentPosition = new Point(_margin, _margin);
 
             int roundCount = (int)Math.Log2(this.Tournament.ParticipatingTeams.Count);
-            
             duels.Add(new List<DuelButton>());
             buttons.Add(new List<POButton>());
             for (int i = 0; i < this.Tournament.ParticipatingTeams.Count; i += 2)
@@ -69,7 +79,11 @@ namespace TournamentManager.Frontend
                 TeamButton WinnerPO = new TeamButton(WinnerButton);
 
                 DuelButton FirstDuelPO = new DuelButton(FirstDuelMB, WinnerPO, team1, team2);
-
+                if (doneDuels != null && doneDuels[0][i/2].IsFinished)
+                {
+                    SetLayoutAfterMatch(FirstDuelPO, Backend.GetTeamByName(doneDuels[0][i/2].Winner), Backend.GetTeamByName(doneDuels[0][i/2].Loser), 
+                        doneDuels[0][i/2].Team1Score, doneDuels[0][i/2].Team2Score);
+                }
                 this.Controls.Add(Team1Button);
                 this.Controls.Add(Team2Button);
                 this.Controls.Add(FirstDuelMB);
@@ -112,6 +126,12 @@ namespace TournamentManager.Frontend
                     TeamButton WinnerPO = new TeamButton(Winner);
                     DuelButton DuelPO = new DuelButton(NextDuel, WinnerPO, DuelButton1.Winner, DuelButton2.Winner);
 
+                    if (doneDuels != null && doneDuels[round][i/2].IsFinished)
+                    {
+                        SetLayoutAfterMatch(DuelPO, Backend.GetTeamByName(doneDuels[round][i/2].Winner), Backend.GetTeamByName(doneDuels[round][i/2].Loser),
+                                                       doneDuels[round][i/2].Team1Score, doneDuels[round][i/2].Team2Score);
+                    }
+
                     DuelButton1.WinnerPO.NextDuel = DuelPO;
                     DuelButton2.WinnerPO.NextDuel = DuelPO;
 
@@ -144,7 +164,7 @@ namespace TournamentManager.Frontend
             {
                 Text = "Pause Tournament",
                 Size = new Size(_buttonWidth + 50, _buttonHeight),
-                Location = new Point(end.Right + _spacing, end.Top)
+                Location = new Point(end.Right + _spacing/2, end.Top)
             };
             pause.Click += PauseTournament!;
             end.Click += EndTournament!;
@@ -155,9 +175,65 @@ namespace TournamentManager.Frontend
         private void PauseTournament(object sender, EventArgs e)
         {
             this._paused = true;
-            this.Close();
+            Backend.SaveTournaments();
+            this.Close();       
         }
 
+        private TournamentDto CreateTournamentDto()
+        {
+            TournamentDto tournamentDto = new TournamentDto
+            {
+                Name = this.Tournament.Name,
+                TeamNames = new List<string>(),
+                Duels = new List<List<DuelDto>>(),
+                Type = "PlayOff",
+                IsFinished = false
+            };
+
+            foreach (var team in this.Tournament.ParticipatingTeams)
+            {
+                tournamentDto.TeamNames.Add(team.Name);
+            }
+
+            foreach (var round in this.duels)
+            {
+                List<DuelDto> roundDto = new List<DuelDto>();
+                foreach (var duel in round)
+                {
+                    DuelDto duelDto;
+                    if (duel.IsFinished)
+                    {
+                        duelDto = new DuelDto
+                        {
+                            Team1 = duel.Team1.Name,
+                            Team2 = duel.Team2.Name,
+                            Winner = duel.Winner.Name,
+                            IsFinished = true,
+                            Loser = duel.Winner == duel.Team1 ? duel.Team2.Name : duel.Team1.Name,
+                            Team1Score = duel.Team1Score,
+                            Team2Score = duel.Team2Score
+                        };
+                    }
+                    else
+                    {
+                        duelDto = new DuelDto
+                        {
+                            Team1 = null,
+                            Team2 = null,
+                            Winner = null,
+                            IsFinished = false,
+                            Loser = null,
+                            Team1Score = 0,
+                            Team2Score = 0
+
+                        };
+                    }
+                    roundDto.Add(duelDto);
+                }
+                tournamentDto.Duels.Add(roundDto);
+            }
+            return tournamentDto;
+        }
 
         private MulticolorButton CreateMCButton(string text, Color top, Color back, Color bot, Point location)
         {
@@ -196,6 +272,13 @@ namespace TournamentManager.Frontend
             }
             else
             {
+                TournamentDto tournamentDto = CreateTournamentDto();
+                tournamentDto.IsFinished = true;
+                Backend.UpdateTournamentDto(this.Tournament, tournamentDto);
+                foreach (var team in this.Tournament.ParticipatingTeams)
+                {
+                    team.SetTournament(null);
+                }
                 this.Close();
             }
         }
@@ -206,7 +289,8 @@ namespace TournamentManager.Frontend
             {
                 MessageBox.Show("The tournament is not finished yet", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Cancel = true;
-            }          
+            }   
+            Backend.ReleaseTournament(this.Tournament.Name);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -236,8 +320,16 @@ namespace TournamentManager.Frontend
             (bool ended, Team winner, Team loser, int team1Score, int team2Score) = GetWinner(duelButton.Team1, duelButton.Team2);
             if (ended == false) return;
 
+            SetLayoutAfterMatch(duelButton, winner, loser, team1Score, team2Score);
+            SaveTournament();
+        }
+
+        private void SetLayoutAfterMatch(DuelButton duelButton, Team winner, Team loser, int team1Score, int team2Score)
+        {
             duelButton.IsFinished = true;
             duelButton.Winner = winner;
+            duelButton.Team1Score = team1Score;
+            duelButton.Team2Score = team2Score;
             ShadeALlTeamOccurences(loser);
             duelButton.WinnerPO.SetWinner(winner);
             duelButton.Button.UpdateColorsByTeam(winner);
@@ -296,7 +388,7 @@ namespace TournamentManager.Frontend
             {
                 return (false, team1, team2, 0, 0);
             }
-
+            
             if (matchForm.Team1Score > matchForm.Team2Score)
             {
                 return (true, team1, team2, (int)matchForm.Team1Score, (int)matchForm.Team2Score);
@@ -305,6 +397,13 @@ namespace TournamentManager.Frontend
             {
                 return (true, team2, team1, (int)matchForm.Team1Score, (int)matchForm.Team2Score);
             }
+        }
+
+        private void SaveTournament()
+        {
+            TournamentDto tournamentDto = CreateTournamentDto();
+            this.Tournament.TournamentDto = tournamentDto;
+            this.Backend.UpdateTournamentDto(this.Tournament, tournamentDto);
         }
 
         private int GetDuelButtonIndex(DuelButton duelButton)
@@ -336,6 +435,5 @@ namespace TournamentManager.Frontend
             }
             return null!;
         }
-     
     }
 }
