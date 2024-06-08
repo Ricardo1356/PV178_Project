@@ -178,7 +178,7 @@ POSITIONS = ["C", "LW", "RW", "D"]
 
 
 # PUT YOUR PATH HERE
-path = "C:\\School\\PV178\\data_for_project"
+path = ""
 
 
 def generate_players(num_players):
